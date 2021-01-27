@@ -12,7 +12,7 @@
         </div>
 
         <div class="text-center mt-5">
-            @include('frontend.welcome.desktop.parts.buttons',['btn_1_title' => 'Каталог', 'btn_1_url' => '', 'count' => '1000'])
+            @include('site.frontend.welcome.desktop.parts.buttons',['btn_1_title' => 'Каталог', 'btn_1_url' => '', 'count' => '1000'])
         </div>
     </div>
 </div>

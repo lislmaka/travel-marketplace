@@ -21,12 +21,14 @@ class WelcomeController extends Controller
             ->where('rating', '>=', 4)
             ->limit(4)
             ->get();
+        $countOfReviews = Review::where('active', true)->count();
 
         $view_data = array(
             'description' => 'Laravel 8 - проба пера',
             'title' => 'Laravel 8 - проба пера',
             'events' => $events,
             'reviews' => $reviews,
+            'countOfReviews' => $countOfReviews,
             'demo_faces' => DemoData::DemoFaces()
         );
 

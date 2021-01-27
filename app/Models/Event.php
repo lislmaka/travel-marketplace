@@ -14,6 +14,11 @@ class Event extends Model
         return $this->hasMany(PivotEventCategory::class);
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
     public function country()
     {
         return $this->belongsTo(EventCountry::class);

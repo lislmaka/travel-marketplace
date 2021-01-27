@@ -22,7 +22,7 @@
                                     </span>
                                 </div>
                             @endif
-                             <span class="badge bg-light text-muted">
+                            <span class="badge bg-light text-muted">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <a href="#" class="stretched-link text-decoration-none text-muted">
                                     {{ $event->city->name }}
@@ -40,32 +40,32 @@
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Рейтинг
+                                @lang('Рейтинг')
                                 <span class="badge bg-light text-muted">
                                     @if($event->rating > 3)
                                         @for($i=1; $i<=$event->rating; $i++)
                                             <i class="fas fa-star text-success"></i>
                                         @endfor
-                                        {{ number_format($event->rating, 0, '', ',') }}
+                                        {{ number_format($event->rating, 0, '', '.') }}
                                     @else
                                         @for($i=1; $i<=$event->rating; $i++)
                                             <i class="fas fa-star text-warning"></i>
                                         @endfor
-                                        {{ number_format($event->rating, 0, '', ',') }}
+                                        {{ number_format($event->rating, 0, '', '.') }}
                                     @endif
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Цена от
+                                @lang('Цена от')
                                 <span class="badge bg-light text-muted">
                                     <i class="fas fa-ruble-sign"></i>
-                                    {{ number_format($event->price, 0, '', ',') }}
+                                    {{ number_format($event->price, 0, '', '.') }}
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Отзывы
+                                @lang('Отзывы')
                                 <span class="badge bg-light text-muted">
-                                    {{ number_format(rand(10, 500), 0, '', ',') }}
+                                    {{ number_format($event->reviews->count(), 0, '', '.') }}
                                 </span>
                             </li>
                         </ul>

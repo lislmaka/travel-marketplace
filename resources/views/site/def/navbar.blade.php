@@ -16,11 +16,19 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 {{-- Begin events --}}
-                <li class="nav-item fw-normal">
-                    <a class="nav-link" href="#" title="Каталог">
-                        @lang('Каталог')
-                    </a>
-                </li>
+                @if( Route::current()->getName() == 'events.index' )
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold active" href="{{ route('events.index') }}" title="Каталог">
+                            @lang('Каталог')
+                        </a>
+                    </li>
+                @else
+                    <li class="nav-item fw-normal">
+                        <a class="nav-link" href="{{ route('events.index') }}" title="Каталог">
+                            @lang('Каталог')
+                        </a>
+                    </li>
+                @endif
                 {{-- End events --}}
 
                 {{-- Begin --}}

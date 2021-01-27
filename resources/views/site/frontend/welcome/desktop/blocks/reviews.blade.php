@@ -30,31 +30,31 @@
 
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Место
+                                @lang('Место')
                                 <span class="badge bg-light text-muted">
                                     {{ $review->event->city->name }}
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Цена
+                                @lang('Цена')
                                 <span class="badge bg-light text-muted">
                                     <i class="fas fa-ruble-sign"></i>
-                                    {{ number_format($review->event->price, 0, '', ',') }}
+                                    {{ number_format($review->event->price, 0, '', '.') }}
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Оценка
+                                @lang('Оценка')
                                 <span class="badge bg-light text-muted">
                                     @if($review->rating > 3)
                                         @for($i=1; $i<=$review->rating; $i++)
                                             <i class="fas fa-star text-success"></i>
                                         @endfor
-                                        {{ number_format($review->rating, 0, '', ',') }}
+                                        {{ number_format($review->rating, 0, '', '.') }}
                                     @else
                                         @for($i=1; $i<=$review->rating; $i++)
                                             <i class="fas fa-star text-warning"></i>
                                         @endfor
-                                        {{ number_format($review->rating, 0, '', ',') }}
+                                        {{ number_format($review->rating, 0, '', '.') }}
                                     @endif
                                 </span>
                             </li>
@@ -65,7 +65,7 @@
         </div>
 
         <div class="text-center mt-5">
-            @include('site.frontend.welcome.desktop.parts.buttons',['btn_1_title' => 'Все отзывы', 'btn_1_url' => '', 'count' => '1000'])
+            @include('site.frontend.welcome.desktop.parts.buttons',['btn_1_title' => 'Все отзывы', 'btn_1_url' => '', 'count' => $countOfReviews])
         </div>
     </div>
 </div>

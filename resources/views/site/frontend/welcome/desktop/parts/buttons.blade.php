@@ -2,7 +2,7 @@
     @lang($btn_1_title)
     @if($count)
         <span class="badge bg-light text-dark">
-            {{ number_format(rand(10, $count), 0, '', ',') }}
+            {{ number_format($count, 0, '', '.') }}
         </span>
     @endif
 </a>
