@@ -14,19 +14,19 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     /**
-     * @param $page_info
+     * @param $pageInfo
      * @return array[]
      */
-    private function breadcrumbs($page_info)
+    private function breadcrumbs($pageInfo)
     {
         $breadcrumbs = array(
             array(
-                'url' => $page_info->pageCategory->slug,
-                'title' => $page_info->pageCategory->name
+                'url' => $pageInfo->pageCategory->url,
+                'title' => $pageInfo->pageCategory->name
             ),
             array(
-                'url' => $page_info->slug,
-                'title' => $page_info->title
+                'url' => $pageInfo->slug,
+                'title' => $pageInfo->title
             )
         );
 
