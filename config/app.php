@@ -179,6 +179,7 @@ return [
          * Personal
          */
         App\Providers\UserAgentServiceProvider::class,
+        App\Providers\FooterPagesServiceProvider::class,
 
     ],
 

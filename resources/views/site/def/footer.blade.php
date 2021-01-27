@@ -1,29 +1,6 @@
 <div class="container-fluid bg-dark mt-5">
     <div class="container-xxl py-3">
         <div class="row">
-            {{-- Сформировать массив категорий страниц с кол-вом станиц в каждой категории --}}
-            {{-- Это нужно для формирования tooltip с кол-вом оставщихся страниц --}}
-            {{-- Можно удалить за ненадобностью --}}
-            @php
-                $categoryPagesCount = array();
-            @endphp
-            @foreach($footerPageCategories as $pageCategory)
-                @foreach($footerPages as $page)
-                    @if($page->page_category_id == $pageCategory->id)
-                        @if(array_key_exists($pageCategory->id, $categoryPagesCount))
-                            @php
-                                $categoryPagesCount[$pageCategory->id]++;
-                            @endphp
-                        @else
-                            @php
-                                $categoryPagesCount[$pageCategory->id] = 1;
-                            @endphp
-                        @endif
-                    @endif
-                @endforeach
-            @endforeach
-            {{-- --}}
-
             @php
                 $maxShowPages = 5;
             @endphp
@@ -40,13 +17,13 @@
                                 <a href="{{ url($pageCategory->url) }}" class="text-white text-decoration-none"
                                    title="@lang($pageCategory->name)">
                                     {{Str::upper(__($pageCategory->name))}}
-                                    @if($categoryPagesCount[$pageCategory->id] > $maxShowPages)
+                                    @if($footerPagesInCategories[$pageCategory->id] > $maxShowPages)
                                         @php
-                                            $countShowPagesMore = $categoryPagesCount[$pageCategory->id] - $maxShowPages;
+                                            $countShowPagesMore = $footerPagesInCategories[$pageCategory->id] - $maxShowPages;
                                         @endphp
                                         <span class="badge bg-light fw-normal text-dark" data-toggle="tooltip"
                                               data-placement="top"
-                                              title="@lang('Общее кол-во страниц :num', ['num' => $categoryPagesCount[$pageCategory->id]])">
+                                              title="@lang('Общее кол-во страниц :num', ['num' => $footerPagesInCategories[$pageCategory->id]])">
                                             @lang('еще') {{ $countShowPagesMore }}
                                         </span>
                                     @endif

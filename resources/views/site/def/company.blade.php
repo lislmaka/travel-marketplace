@@ -11,8 +11,8 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card bg-transparent border-0">
-                <div class="card-body">
+            <div class="card bg-transparent border-0 m-0 p-0">
+                <div class="card-body m-0 p-0 d-flex align-self-center">
                     <a href="#"><i class="fab fa-vk h2 me-3 text-primary"></i></a>
                     <a href="#"><i class="fab fa-facebook h2 me-3 text-primary"></i></a>
                     <a href="#"><i class="fab fa-instagram h2 me-3 text-primary"></i></a>

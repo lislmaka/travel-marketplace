@@ -25,10 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-        if (!app()->runningInConsole()) {
-            view()->share('footerPageCategories', PageCategory::all());
-            view()->share('footerPages', Page::where('active', true)->where('show', true)->get());
-        }
+
     }
 }
