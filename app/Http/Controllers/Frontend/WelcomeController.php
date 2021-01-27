@@ -15,7 +15,15 @@ class WelcomeController extends Controller
     //
     public function index(Request $request)
     {
-        $events = Event::where('active', true)->limit(4)->get();
+        $eventsAllCount = Event::where('active', true)->count();
+
+        $eventsIdeas = Event::where('active', true)->inRandomOrder()->limit(4)->get();
+        $eventsIdeasCount = $eventsIdeas->count();
+        $eventsPopularDestinations = Event::where('active', true)->inRandomOrder()->limit(4)->get();
+        $eventsPopularDestinationsCount = $eventsPopularDestinations->count();
+        $eventsPopularVariants = Event::where('active', true)->inRandomOrder()->limit(4)->get();
+        $eventsPopularVariantsCount = $eventsPopularVariants->count();
+
         $reviews = Review::where('active', true)
             ->inRandomOrder()
             ->where('rating', '>=', 4)
@@ -26,7 +34,16 @@ class WelcomeController extends Controller
         $view_data = array(
             'description' => 'Laravel 8 - проба пера',
             'title' => 'Laravel 8 - проба пера',
-            'events' => $events,
+
+            'eventsAllCount' => $eventsAllCount,
+
+            'eventsIdeas' => $eventsIdeas,
+            'eventsIdeasCount' => $eventsIdeasCount,
+            'eventsPopularDestinations' => $eventsPopularDestinations,
+            'eventsPopularDestinationsCount' => $eventsPopularDestinationsCount,
+            'eventsPopularVariants' => $eventsPopularVariants,
+            'eventsPopularVariantsCount' => $eventsPopularVariantsCount,
+
             'reviews' => $reviews,
             'countOfReviews' => $countOfReviews,
             'demo_faces' => DemoData::DemoFaces()

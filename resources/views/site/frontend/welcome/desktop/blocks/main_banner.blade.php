@@ -10,7 +10,7 @@
                     @lang('«Авигид» – это первый туристический маркетплейс')
                 </p>
 
-                @include('site.frontend.welcome.desktop.parts.buttons',['btn_1_title' => 'Посмотреть предложения', 'btn_1_url' => route('events.index'), 'count' => '10000'])
+                @include('site.frontend.welcome.desktop.parts.buttons',['btn_1_title' => 'Посмотреть предложения', 'btn_1_url' => route('events.index'), 'count' => $eventsAllCount])
 
             </div>
             <div class="col-md-4">

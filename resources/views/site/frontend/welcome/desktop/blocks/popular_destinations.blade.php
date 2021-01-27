@@ -8,7 +8,7 @@
     <div class="container-xl">
 
         <div class="row row-cols-md-4 g-4">
-            @foreach($events as $key => $event)
+            @foreach($eventsPopularDestinations as $key => $event)
 
                 <div class="col">
                     <div class="card h-100 shadow-sm my-border-bottom-info">
@@ -75,7 +75,7 @@
         </div>
 
         <div class="text-center mt-5">
-            @include('site.frontend.welcome.desktop.parts.buttons',['btn_1_title' => 'Все направления', 'btn_1_url' => route('events.index'), 'count' => '1000'])
+            @include('site.frontend.welcome.desktop.parts.buttons',['btn_1_title' => 'Все направления', 'btn_1_url' => route('events.index'), 'count' => $eventsPopularDestinationsCount])
         </div>
     </div>
 </div>
