@@ -4,7 +4,6 @@
             @php
                 $maxShowPages = 5;
             @endphp
-
             @for ($columnNumber = 1; $columnNumber <= 3; $columnNumber++)
                 <div class="col-md-4">
                     @foreach($footerPageCategories as $pageCategory)
@@ -45,7 +44,7 @@
                                         <li class="list-group-item bg-transparent">
                                             <a href="{{ url('/'.$pageCategory->slug.'/'.$page->slug) }}"
                                                class="text-white text-decoration-none" title="{{ $page->title }}">
-                                                {{ Str::limit($page->title, 40) }}
+                                                {{ Str::limit($page->title, 35) }}
                                             </a>
                                         </li>
                                     @endif

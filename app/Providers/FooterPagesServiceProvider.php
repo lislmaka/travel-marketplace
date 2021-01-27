@@ -37,10 +37,12 @@ class FooterPagesServiceProvider extends ServiceProvider
             $footerPagesInCategories = array();
             foreach ($footerPageCategories as $pageCategory) {
                 foreach ($footerPages as $page) {
-                    if (array_key_exists($pageCategory->id, $footerPagesInCategories)) {
-                        $footerPagesInCategories[$pageCategory->id]++;
-                    } else {
-                        $footerPagesInCategories[$pageCategory->id] = 1;
+                    if ($page->page_category_id == $pageCategory->id) {
+                        if (array_key_exists($pageCategory->id, $footerPagesInCategories)) {
+                            $footerPagesInCategories[$pageCategory->id]++;
+                        } else {
+                            $footerPagesInCategories[$pageCategory->id] = 1;
+                        }
                     }
                 }
             }

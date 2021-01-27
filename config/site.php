@@ -14,5 +14,6 @@ return [
     // max 39
     'count_of_cities' => 39,
     'count_of_options' => 10,
+    //'count_of_reviews' => 100,
 
 ];
