@@ -1,7 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\WelcomeController;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,18 @@ use App\Http\Controllers\Frontend\WelcomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Set locale
+Route::get('locale/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'ru'])) {
+        abort(400);
+    }
+    Session::put('locale', $locale);
+    App::setLocale($locale);
+
+    return Redirect::to(URL::to(URL::previous()));
+    //return redirect(url(URL::previous()));
+
+})->name('set.locale');
 
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');

@@ -24,6 +24,9 @@
 
 <body>
 <div id="app">
+    <div class="shadow-sm sticky-top">
+        @includeIf('site.def.navbar')
+    </div>
 
     @yield('main_page')
 
