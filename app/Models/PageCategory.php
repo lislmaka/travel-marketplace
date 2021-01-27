@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class PageCategory extends Model
 {
     use HasFactory;
+
+    public function pages()
+    {
+        return $this->hasMany(Page::class)->where('active', true);
+    }
 }

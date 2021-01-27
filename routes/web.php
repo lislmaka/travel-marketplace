@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\EventController;
+use App\Http\Controllers\Frontend\PageController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\URL;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+require __DIR__.'/auth.php';
+
 // Set locale
 Route::get('locale/{locale}', function ($locale) {
     if (!in_array($locale, ['en', 'ru'])) {
@@ -40,8 +44,17 @@ Route::get('/events', [EventController::class, 'index'])->name('events.index');
 // Event
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
 
+//
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+
+
+// Pages routes
+Route::get('/{page_category}/{page_info?}', [PageController::class, 'index'])->name('pages.index');
+
+// 404
+Route::fallback(function () {
+    abort(404);
+});

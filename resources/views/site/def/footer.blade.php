@@ -42,7 +42,8 @@
                                             $countShowPages++;
                                         @endphp
                                         <li class="list-group-item bg-transparent">
-                                            <a href="{{ url('/'.$pageCategory->slug.'/'.$page->slug) }}"
+{{--                                            <a href="{{ url('/'.$pageCategory->url.'/'.$page->slug) }}"--}}
+                                            <a href="{{ route('pages.index', ['page_category' => $pageCategory->url, 'page_info' => $page->slug]) }}"
                                                class="text-white text-decoration-none" title="{{ $page->title }}">
                                                 {{ Str::limit($page->title, 35) }}
                                             </a>
