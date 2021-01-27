@@ -10,7 +10,7 @@
             @includeIf('site.frontend.welcome.desktop.blocks.popular_destinations')
             @includeIf('site.frontend.welcome.desktop.blocks.popular_variants')
             @includeIf('site.frontend.welcome.desktop.blocks.ideas')
-{{--            @includeIf('frontend.welcome.desktop.blocks.reviews')--}}
+            @includeIf('site.frontend.welcome.desktop.blocks.reviews')
 {{--            @includeIf('frontend.welcome.desktop.blocks.map')--}}
         </div>
     @endif
