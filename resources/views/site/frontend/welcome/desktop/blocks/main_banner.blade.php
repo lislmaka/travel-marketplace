@@ -1,8 +1,21 @@
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="py-5 bg-light main-banner-bg-desktop">
+    <div class="container-xl">
+
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="display-4 fw-bold text-white">
+                    @lang('Впечатления разные, сервис – один!')
+                </h1>
+                <p class="h2 my-5 text-white">
+                    @lang('«Авигид» – это первый туристический маркетплейс')
+                </p>
+
+                @include('site.frontend.welcome.desktop.parts.buttons',['btn_1_title' => 'Посмотреть предложения', 'btn_1_url' => route('events.index'), 'count' => '10000'])
+
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
     </div>
 </div>

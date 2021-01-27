@@ -5,7 +5,6 @@
                 <span class="badge bg-light text-muted">
                     <i class="fas fa-globe"></i>
                     {{ config('app.name') }}
-                    v{{ Illuminate\Foundation\Application::VERSION }}
                 </span>
             </span>
         </a>

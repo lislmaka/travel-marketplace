@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\EventController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,12 @@ Route::get('locale/{locale}', function ($locale) {
 
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+
+// Events
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
+
+// Event
+Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

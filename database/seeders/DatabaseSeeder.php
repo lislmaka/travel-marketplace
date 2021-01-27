@@ -17,5 +17,10 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(PageCategorySeeder::class);
         $this->call(PageSeeder::class);
+        $this->call(EventCountrySeeder::class);
+        $this->call(EventCitySeeder::class);
+        $this->call(EventSeeder::class);
+        $this->call(EventCategorySeeder::class);
+        $this->call(PivotEventCategorySeeder::class);
     }
 }

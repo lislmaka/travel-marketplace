@@ -1,0 +1,54 @@
+@each $color, $value in $theme-colors {
+    $shadow-color: shift-color($value, $alert-bg-scale);
+    .my-border-left-#{$color} {
+        border-left-width: .25rem;
+        border-left-color: $shadow-color;
+    }
+}
+
+@each $color, $value in $theme-colors {
+    $border-color: shift-color($value, $alert-bg-scale);
+    .my-border-left-#{$color}:hover {
+        border-left-width: .25rem;
+        border-left-color: $value;
+    }
+}
+
+@each $color, $value in $theme-colors {
+    $shadow-color: shift-color($value, $alert-bg-scale);
+    .my-border-bottom-#{$color} {
+        border-bottom-width: .25rem;
+        border-bottom-color: $shadow-color;
+    }
+}
+
+@each $color, $value in $theme-colors {
+    $border-color: shift-color($value, $alert-bg-scale);
+    .my-border-bottom-#{$color}:hover {
+        border-bottom-width: .25rem;
+        border-bottom-color: $value;
+    }
+}
+
+/* sticky top */
+.sticky-offset {
+    top: 140px;
+    z-index: 1;
+}
+
+/*
+
+ */
+.event-active-navbar {
+    font-weight: bold;
+}
+
+/* Main banner bg */
+.main-banner-bg-desktop {
+    background-image: url("../images/bg/main_banner_bg_desktop.jpg");
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+

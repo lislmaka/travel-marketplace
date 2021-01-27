@@ -4,7 +4,8 @@
             <div class="font-weight-normal">
                 &copy; {{ Config::get('app.name') }}, 2019 - {{ now()->year }} /
                 {{ config('site.site_phone') }} /
-                {{ config('site.site_email') }}
+                {{ config('site.site_email') }} /
+                v{{ Illuminate\Foundation\Application::VERSION }}
                 <br>
                 @lang('Информация, размещенная на сайте, не является публичной офертой')
             </div>
