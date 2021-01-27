@@ -18,11 +18,11 @@ class WelcomeController extends Controller
         $eventsAllCount = Event::where('active', true)->count();
 
         $eventsIdeas = Event::where('active', true)->inRandomOrder()->limit(4)->get();
-        $eventsIdeasCount = $eventsIdeas->count();
+        $eventsIdeasCount = rand(100, 10000); //$eventsIdeas->count();
         $eventsPopularDestinations = Event::where('active', true)->inRandomOrder()->limit(4)->get();
-        $eventsPopularDestinationsCount = $eventsPopularDestinations->count();
+        $eventsPopularDestinationsCount = rand(100, 10000); //$eventsPopularDestinations->count();
         $eventsPopularVariants = Event::where('active', true)->inRandomOrder()->limit(4)->get();
-        $eventsPopularVariantsCount = $eventsPopularVariants->count();
+        $eventsPopularVariantsCount = rand(100, 10000); //$eventsPopularVariants->count();
 
         $reviews = Review::where('active', true)
             ->inRandomOrder()
