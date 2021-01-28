@@ -6839,7 +6839,8 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
+__webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js"); // Yandex Map
+//require('./yandex_map.js');
 
 /***/ }),
 

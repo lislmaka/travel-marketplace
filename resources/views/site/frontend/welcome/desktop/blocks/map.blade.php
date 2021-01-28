@@ -1,4 +1,4 @@
-@component('frontend.welcome.desktop.parts.bock_header',['header' => 'Все объекты на карте'])
+@component('site.frontend.welcome.desktop.parts.bock_header',['header' => 'Все объекты на карте'])
     <div class="mt-3 text-muted">
         @lang('Выберите удобный для себя вариант')
     </div>

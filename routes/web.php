@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Frontend\EventController;
 use App\Http\Controllers\Frontend\PageController;
+use App\Http\Controllers\Frontend\YandexController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,7 @@ Route::get('/events', [EventController::class, 'index'])->name('events.index');
 
 // Event
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
+Route::post('/events/map_json', [YandexController::class, 'index'])->name('yandex_map.index');
 
 //
 Route::get('/dashboard', function () {
