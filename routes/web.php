@@ -43,9 +43,16 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
 
 // Event
-Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
 Route::post('/events/map_json', [YandexController::class, 'index'])->name('yandex_map.index');
+Route::get('/events/default', [EventController::class, 'defaultSettings'])->name('events.events_default');
+Route::get('/events/seen/clean', [EventController::class, 'eventsClean'])->name('events.events_seen_clean');
+Route::get('/events/view/{view}', [EventController::class, 'viewMode'])->name('events.view_mode');
+Route::get('/events/sort/{sort}', [EventController::class, 'sortMode'])->name('events.sort_mode');
+Route::get('/events/category/{id}', [EventController::class, 'showEventsByCategory'])->name('events.events_categories');
+Route::get('/events/country/{id}', [EventController::class, 'showEventsByCountry'])->name('events.events_countries');
+Route::get('/events/city/{id}', [EventController::class, 'showEventsByCity'])->name('events.events_cities');
 
+Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
 //
 Route::get('/dashboard', function () {
     return view('dashboard');

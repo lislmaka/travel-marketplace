@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
+@section('sidebar')
+    @parent
+    @includeIf('site.frontend.events.desktop.blocks.navbar')
+@endsection
 @section('content')
     {{-- Begin Desktop --}}
     @if ($agent->isDesktop())
         <div class="container-xxl">
             <div class="d-none d-md-block">
-                @includeIf('def.breadcrumb')
+                @includeIf('site.def.breadcrumb')
 
                 <div class="row">
                     <div class="col-md-9">
@@ -30,7 +34,7 @@
     {{-- Begin Mobile --}}
     @if ($agent->isMobile())
         <div class="d-block d-md-none">
-            @includeIf('def.breadcrumb')
+            @includeIf('site.def.breadcrumb')
 
             <div class="row">
                 <div class="col-md-3">

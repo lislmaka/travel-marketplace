@@ -31,7 +31,9 @@
 <body>
 <div id="app">
     <div class="shadow-sm sticky-top">
-        @includeIf('site.def.navbar')
+        @section('sidebar')
+            @includeIf('site.def.navbar')
+        @show
     </div>
 
     @yield('main_page')
