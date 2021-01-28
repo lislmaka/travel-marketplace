@@ -11,7 +11,7 @@
             @includeIf('site.frontend.welcome.desktop.blocks.popular_variants')
             @includeIf('site.frontend.welcome.desktop.blocks.ideas')
             @includeIf('site.frontend.welcome.desktop.blocks.reviews')
-{{--            @includeIf('frontend.welcome.desktop.blocks.map')--}}
+            @includeIf('site.frontend.welcome.desktop.blocks.map')
         </div>
     @endif
     {{-- End Desktop --}}
@@ -25,3 +25,7 @@
     {{-- End Mobile --}}
 @endsection
 
+@push('scripts_yandex_map')
+    <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript" defer></script>
+    <script src="{{ asset(mix('js/yandex_map.js')) }}" defer></script>
+@endpush

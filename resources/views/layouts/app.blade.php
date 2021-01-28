@@ -25,6 +25,7 @@
     {{--  Styles  --}}
     <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet">
 
+    @stack('scripts_yandex_map')
 </head>
 
 <body>
