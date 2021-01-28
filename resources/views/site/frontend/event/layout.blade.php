@@ -50,3 +50,6 @@
     {{-- End Mobile --}}
 @endsection
 
+@push('scripts')
+    <script src="{{ asset(mix('js/vuejs.js')) }}" defer></script>
+@endpush

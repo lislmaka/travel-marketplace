@@ -25,7 +25,7 @@
     {{-- End Mobile --}}
 @endsection
 
-@push('scripts_yandex_map')
+@push('scripts')
     <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript" defer></script>
     <script src="{{ asset(mix('js/yandex_map.js')) }}" defer></script>
 @endpush
