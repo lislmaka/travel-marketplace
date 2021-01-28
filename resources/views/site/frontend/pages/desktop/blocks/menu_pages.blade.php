@@ -3,7 +3,7 @@
         {{ $categoryInfo->name }}
     </div>
     <ul class="list-group list-group-flush">
-        @foreach($categoryInfo->pages as $page)
+        @foreach($categoryInfo->pages->where('active', true) as $page)
             @if($pageInfo->slug == $page->slug)
 
                 <a href="{{ route('pages.index', ['page_category' => $categoryInfo->url, 'page_info' => $page->slug]) }}"

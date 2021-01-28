@@ -11,6 +11,6 @@ class PageCategory extends Model
 
     public function pages()
     {
-        return $this->hasMany(Page::class)->where('active', true);
+        return $this->hasMany(Page::class);
     }
 }
