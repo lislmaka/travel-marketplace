@@ -651,6 +651,7 @@ class EventController extends Controller
             'title' => 'Каталог',
             'breadcrumbs' => $this->breadcrumbs($request),
             'demo_images' => DemoData::DemoImages(),
+            'demo_faces' => DemoData::DemoFaces(),
 
             // Catalog
             'events' => $events,

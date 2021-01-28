@@ -18,11 +18,12 @@
                     </span>
                 </div>
                 <div class="card-body">
-                    <div class="card-title overflow-hidden" style="height: 3rem;">
+                    <div class="card-title overflow-hidden d-flex justify-content-start" >
+                        <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle me-3" alt="..." width="{{ config('site.img-size-2') }}">
                         <a href="{{ route('events.show', ['event' => $event->id]) }}"
                            class="fw-bold text-decoration-none stretched-link"
                            title="{{ $event->name }}">
-                            {{ Str::limit($event->name, 50) }}
+                            {{ Str::limit($event->name, 40) }}
                         </a>
                     </div>
                 </div>
@@ -34,26 +35,26 @@
                                 @for($i=1; $i<=$event->rating; $i++)
                                     <i class="fas fa-star text-success"></i>
                                 @endfor
-                                {{ number_format($event->rating, 0, '', ',') }}
+                                {{ number_format($event->rating, 0, '', '.') }}
                             @else
                                 @for($i=1; $i<=$event->rating; $i++)
                                     <i class="fas fa-star text-warning"></i>
                                 @endfor
-                                {{ number_format($event->rating, 0, '', ',') }}
+                                {{ number_format($event->rating, 0, '', '.') }}
                             @endif
                         </span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Цена
                         <span class="badge bg-light text-muted">
+                            {{ number_format($event->price, 0, '', '.') }}
                             <i class="fas fa-ruble-sign"></i>
-                            {{ number_format($event->price, 0, '', ',') }}
                         </span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Отзывы
                         <span class="badge bg-light text-muted">
-                            {{ number_format(rand(10, 500), 0, '', ',') }}
+                            {{ number_format(rand(10, 500), 0, '', '.') }}
                         </span>
                     </li>
                 </ul>

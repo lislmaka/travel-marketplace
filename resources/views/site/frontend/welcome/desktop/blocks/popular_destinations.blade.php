@@ -30,11 +30,15 @@
                             </span>
                         </div>
                         <div class="card-body">
-                            <div class="card-title overflow-hidden" style="height: 3rem;">
+                            <div class="card-title align-self-center">
+                                <span class="float-start me-3">
+                                    <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle" alt="..." width="{{ config('site.img-size-2') }}">
+                                </span>
+
                                 <a href="{{ route('events.show', ['event' => $event->id]) }}"
                                    class="fw-bold text-decoration-none stretched-link"
                                    title="{{ $event->name }}">
-                                    {{ Str::limit($event->name, 50) }}
+                                    {{ Str::limit($event->name, 30) }}
                                 </a>
                             </div>
                         </div>
