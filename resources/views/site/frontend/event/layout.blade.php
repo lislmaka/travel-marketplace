@@ -9,7 +9,7 @@
     {{-- Begin Desktop --}}
     <div class="container-xxl">
         <div class="d-none d-md-block">
-            @includeIf('def.breadcrumb')
+            @includeIf('site.def.breadcrumb')
             <div class="row">
                 <div class="col-md-9">
                     @includeIf('site.frontend.event.desktop.blocks.event_info')
@@ -36,7 +36,7 @@
 
     {{-- Begin Mobile --}}
     <div class="d-block d-md-none">
-        @includeIf('def.breadcrumb')
+        @includeIf('site.def.breadcrumb')
 
         <div class="row">
             <div class="col-md-3">

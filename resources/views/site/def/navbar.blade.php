@@ -41,6 +41,16 @@
 
             </ul>
 
+            @if(session('events.events_seen'))
+                <div class="btn-group me-3" role="group" aria-label="Basic example">
+                    <a class="btn btn-primary" href="{{ route('logout') }}" role="button"
+                       data-bs-toggle="modal" data-bs-target="#eventsSeen">
+                        @lang('Просмотрено')
+                        <span class="badge bg-light text-muted">{{ count(session('events.events_seen')) }}</span>
+                    </a>
+                </div>
+            @endif
+
             <div class="dropdown me-3 ms-1">
                 <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-bs-toggle="dropdown" aria-expanded="false">

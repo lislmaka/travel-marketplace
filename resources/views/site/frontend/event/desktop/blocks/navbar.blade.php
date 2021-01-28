@@ -2,24 +2,24 @@
     <div class="container-xxl">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="#description">Описание</a>
+                <a class="nav-link" href="#description" onclick="gotoHref(this)">Описание</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#order">Заказ тура</a>
+                <a class="nav-link" href="#order" onclick="gotoHref(this)">Заказ тура</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#photos">Фотографии тура</a>
+                <a class="nav-link" href="#photos" onclick="gotoHref(this)">Фотографии тура</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#city">
+                <a class="nav-link" href="#city" onclick="gotoHref(this)">
                     {{ $event_info->city->name }}
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#similars">Похожие туры</a>
+                <a class="nav-link" href="#similars" onclick="gotoHref(this)">Похожие туры</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#reviews">Отзывы</a>
+                <a class="nav-link" href="#reviews" onclick="gotoHref(this)">Отзывы</a>
             </li>
         </ul>
     </div>
