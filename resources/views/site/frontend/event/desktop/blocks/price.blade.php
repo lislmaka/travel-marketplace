@@ -1,20 +1,19 @@
 <div class="card border-light mb-3">
-    <div class="card-header fw-bold lead text-center">
-        @lang('Стоимость тура')
-    </div>
+{{--    <div class="card-header fw-bold lead text-center">--}}
+{{--        @lang('Стоимость тура')--}}
+{{--    </div>--}}
 
     <input type="hidden" id="price" value="{{ $event_info->price }}">
     <input type="hidden" id="old_price" value="{{ $event_info->old_price }}">
 
 
 
-    <div class="card-body">
+    <div class="card-body shadow-lg">
         <div class="d-flex flex-column ms-3 align-items-center">
 
-            <div class="h3 m-0">
+            <div class="h1 m-0">
                 <span class="badge bg-light text-muted">
                     <i class="fas fa-ruble-sign"></i>
-{{--                    {{ number_format($event_info->price, 0, '', ',') }}--}}
                     @{{ formatPrice(summa) }}
                 </span>
             </div>
