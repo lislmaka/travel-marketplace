@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\EventOption;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,5 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EventCategorySeeder::class);
         $this->call(PivotEventCategorySeeder::class);
         $this->call(ReviewSeeder::class);
+        $this->call(EventOptionSeeder::class);
+        $this->call(PivotEventOptionSeeder::class);
     }
 }

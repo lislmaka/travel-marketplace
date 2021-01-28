@@ -470,7 +470,7 @@ class EventController extends Controller
             'demo_faces' => DemoData::DemoFaces()
         );
 
-        return view('frontend.event.layout', $view_data);
+        return view('site.frontend.event.layout', $view_data);
     }
 
     /**

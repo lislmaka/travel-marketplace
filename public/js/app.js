@@ -6841,6 +6841,10 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js"); // Yandex Map
 //require('./yandex_map.js');
+// My js files
+
+
+__webpack_require__(/*! ./myjs.js */ "./resources/js/myjs.js");
 
 /***/ }),
 
@@ -6882,6 +6886,31 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/myjs.js":
+/*!******************************!*\
+  !*** ./resources/js/myjs.js ***!
+  \******************************/
+/***/ (() => {
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+/*
+Переход по быстрым ссылкам
+ */
+
+var divId;
+$('.nav-link').click(function () {
+  $('.nav-link').removeClass("event-active-navbar");
+  $(this).addClass("event-active-navbar");
+  divId = $(this).attr('href');
+  $('html, body').animate({
+    scrollTop: $(divId).offset().top - 150
+  }, 100);
+});
 
 /***/ }),
 
