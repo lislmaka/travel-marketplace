@@ -12,8 +12,9 @@
 
 namespace App\Models{
 /**
- * App\Models\Event
+ * Class Event
  *
+ * @package App\Models
  * @property int $id
  * @property int $country_id
  * @property int $city_id
@@ -63,8 +64,9 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\EventCategory
+ * Class EventCategory
  *
+ * @package App\Models
  * @property int $id
  * @property string $name
  * @property string $slug
@@ -88,8 +90,9 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\EventCity
+ * Class EventCity
  *
+ * @package App\Models
  * @property int $id
  * @property int $country_id
  * @property string $name
@@ -115,8 +118,9 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\EventCountry
+ * Class EventCountry
  *
+ * @package App\Models
  * @property int $id
  * @property string $name
  * @property string $slug
@@ -138,8 +142,9 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\EventOption
+ * Class EventOption
  *
+ * @package App\Models
  * @property int $id
  * @property string $name
  * @property string $description
@@ -165,8 +170,9 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\Page
+ * Class Page
  *
+ * @package App\Models
  * @property int $id
  * @property int $page_category_id
  * @property string $title
@@ -197,8 +203,9 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\PageCategory
+ * Class PageCategory
  *
+ * @package App\Models
  * @property int $id
  * @property string $name
  * @property string $url
@@ -226,8 +233,9 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\PivotEventCategory
+ * Class PivotEventCategory
  *
+ * @package App\Models
  * @property int $id
  * @property int $category_id
  * @property int $event_id
@@ -249,8 +257,9 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\PivotEventOption
+ * Class PivotEventOption
  *
+ * @package App\Models
  * @property int $id
  * @property int $option_id
  * @property int $event_id
@@ -274,8 +283,9 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\Review
+ * Class Review
  *
+ * @package App\Models
  * @property int $id
  * @property int $user_id
  * @property int $event_id
@@ -305,8 +315,9 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\User
+ * Class User
  *
+ * @package App\Models
  * @property int $id
  * @property string $name
  * @property string $email
