@@ -412,16 +412,17 @@ class EventController extends Controller
         }
     }
 
+
     /**
-     * @param  Request  $request
+     * @param $request
      * @param $event
      */
     private function setEventsSeen($request, $event)
     {
         if($request->session()->has('events.events_seen')) {
             if (!in_array($event, $request->session()->get('events.events_seen'))) {
-                if(count($request->session()->get('events.events_seen')) >= 5) {
-                    $request->session()->put('events.events_seen', array_slice($request->session()->get('events.events_seen'), 0, 4));
+                if(count($request->session()->get('events.events_seen')) >= 4) {
+                    $request->session()->put('events.events_seen', array_slice($request->session()->get('events.events_seen'), 0, 3));
                 }
                 $request->session()->push('events.events_seen', $event);
             }
