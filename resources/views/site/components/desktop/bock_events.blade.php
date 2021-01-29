@@ -20,16 +20,12 @@
                 </span>
             </div>
             <div class="card-body">
-                <div class="card-title align-self-center">
-                    <span class="float-start me-3">
-                        <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle" alt="..."
-                             width="{{ config('site.img-size-2') }}">
-                    </span>
-
+                <div class="card-title overflow-hidden d-flex justify-content-start" >
+                    <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle me-3" alt="..." width="{{ config('site.img-size-2') }}">
                     <a href="{{ route('events.show', ['event' => $event->id]) }}"
                        class="fw-bold text-decoration-none stretched-link"
                        title="{{ $event->name }}">
-                        {{ Str::limit($event->name, 30) }}
+                        {{ Str::limit($event->name, 40) }}
                     </a>
                 </div>
             </div>

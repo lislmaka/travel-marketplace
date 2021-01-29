@@ -22,20 +22,20 @@
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     @lang('Место')
                     <span class="badge bg-light text-muted">
-                                    {{ $review->event->city->name }}
-                                </span>
+                        {{ $review->event->city->name }}
+                    </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     @lang('Цена')
                     <span class="badge bg-light text-muted">
-                                    {{ number_format($review->event->price, 0, '', '.') }}
-                                    <i class="fas fa-ruble-sign"></i>
-                                </span>
+                        {{ number_format($review->event->price, 0, '', '.') }}
+                        <i class="fas fa-ruble-sign"></i>
+                    </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     @lang('Оценка')
                     <span class="badge bg-light text-muted">
-                                    @if($review->rating > 3)
+                        @if($review->rating > 3)
                             @for($i=1; $i<=$review->rating; $i++)
                                 <i class="fas fa-star text-success"></i>
                             @endfor
@@ -46,7 +46,7 @@
                             @endfor
                             {{ number_format($review->rating, 0, '', '.') }}
                         @endif
-                                </span>
+                    </span>
                 </li>
             </ul>
         </div>
