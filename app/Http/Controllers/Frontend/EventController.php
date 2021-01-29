@@ -48,6 +48,7 @@ class EventController extends Controller
 
 
     /**
+     * @param $request
      * @param  null  $obj
      * @return array[]|\string[][]
      */
@@ -393,8 +394,10 @@ class EventController extends Controller
         }
     }
 
+
     /**
-     *
+     * @param $request
+     * @return int
      */
     private function countPaginate($request)
     {

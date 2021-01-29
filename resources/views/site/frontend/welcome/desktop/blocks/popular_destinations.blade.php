@@ -62,8 +62,8 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 @lang('Цена от')
                                 <span class="badge bg-light text-muted">
-                                    <i class="fas fa-ruble-sign"></i>
                                     {{ number_format($event->price, 0, '', '.') }}
+                                    <i class="fas fa-ruble-sign"></i>
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
