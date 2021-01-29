@@ -1,4 +1,4 @@
-@component('site.frontend.welcome.desktop.parts.bock_header',['header' => 'Отзывы и впечатления'])
+@component('site.components.desktop.bock_header',['header' => 'Отзывы и впечатления'])
     <div class="mt-3 text-muted">
         @lang('Почитайте что говорят наши клиенты')
     </div>
@@ -65,7 +65,7 @@
         </div>
 
         <div class="text-center mt-5">
-            @include('site.frontend.welcome.desktop.parts.buttons',['btn_1_title' => 'Все отзывы', 'btn_1_url' => '', 'count' => $countOfReviews])
+            @include('site.components.desktop.button',['btn_1_title' => 'Все отзывы', 'btn_1_url' => '', 'count' => $countOfReviews])
         </div>
     </div>
 </div>

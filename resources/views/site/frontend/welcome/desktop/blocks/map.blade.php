@@ -1,4 +1,4 @@
-@component('site.frontend.welcome.desktop.parts.bock_header',['header' => 'Все объекты на карте'])
+@component('site.components.desktop.bock_header',['header' => 'Все объекты на карте'])
     <div class="mt-3 text-muted">
         @lang('Выберите удобный для себя вариант')
     </div>
@@ -12,7 +12,7 @@
         </div>
 
         <div class="text-center mt-5">
-            @include('site.frontend.welcome.desktop.parts.buttons',['btn_1_title' => 'Каталог', 'btn_1_url' => '', 'count' => '1000'])
+            @include('site.components.desktop.button',['btn_1_title' => 'Каталог', 'btn_1_url' => '', 'count' => '1000'])
         </div>
     </div>
 </div>

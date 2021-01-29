@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="col-md-3 py-3 d-flex align-items-center">
-                @include('site.frontend.welcome.desktop.parts.buttons',['btn_1_title' => 'Получить скидку', 'btn_1_url' => '', 'count' => ''])
+                @include('site.components.desktop.button',['btn_1_title' => 'Получить скидку', 'btn_1_url' => '', 'count' => ''])
             </div>
         </div>
     </div>
