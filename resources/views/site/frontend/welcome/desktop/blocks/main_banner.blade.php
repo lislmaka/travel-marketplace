@@ -7,7 +7,8 @@
                     @lang('Впечатления разные, сервис – один!')
                 </h1>
                 <p class="h2 my-5 text-white">
-                    @lang('«Авигид» – это первый туристический маркетплейс')
+                    <span class="fw-bold">{{ config('app.name') }}</span>
+                    @lang('– туристический маркетплейс')
                 </p>
 
                 @include('site.components.desktop.button',['btn_1_title' => 'Посмотреть предложения', 'btn_1_url' => route('events.index'), 'count' => $eventsAllCount])

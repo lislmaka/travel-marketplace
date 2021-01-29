@@ -5,12 +5,11 @@
     </div>
 @endcomponent
 
+<input type="hidden" id="event_id" value="{{ $event_info->id }}">
+
 <div class="card my-border-left-info">
     <div class="card-body">
         <div class="card mb-3 ms-3 float-end" style="width: 22rem;">
-            <div class="card-header fw-bold lead">
-                @lang('Где находиться '.$event_info->city->name)
-            </div>
             <div class="card-body p-0">
                 <div id="YMapsID" style="height: 200px;"></div>
             </div>

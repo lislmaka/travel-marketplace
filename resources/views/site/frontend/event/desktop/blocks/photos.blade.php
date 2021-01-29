@@ -4,7 +4,7 @@
     </div>
 @endcomponent
 
-<div class="row row-cols-md-4 g-4">
+<div class="row row-cols-md-4 g-3">
     @php(shuffle($demo_images))
     @foreach($demo_images as $demo_image)
         @if($loop->index > 7)

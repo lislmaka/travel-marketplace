@@ -26,13 +26,6 @@
                     </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    @lang('Цена')
-                    <span class="badge bg-light text-muted">
-                        {{ number_format($review->event->price, 0, '', '.') }}
-                        <i class="fas fa-ruble-sign"></i>
-                    </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
                     @lang('Оценка')
                     <span class="badge bg-light text-muted">
                         @if($review->rating > 3)

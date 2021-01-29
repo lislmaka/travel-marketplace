@@ -32,8 +32,8 @@ class WelcomeController extends Controller
         $countOfReviews = Review::where('active', true)->count();
 
         $view_data = array(
-            'description' => 'Laravel 8 - проба пера',
-            'title' => 'Laravel 8 - проба пера',
+            'description' => 'Туристический маркетплейс. Впечатления разные, сервис – один!',
+            'title' => config('app.name').' – туристический маркетплейс',
 
             'eventsAllCount' => $eventsAllCount,
 

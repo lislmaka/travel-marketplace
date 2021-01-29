@@ -8,7 +8,7 @@
 <div class="container-fluid">
     <div class="container-xl">
 
-        <div class="row row-cols-4 g-4">
+        <div class="row row-cols-4 g-3">
             @include('site.components.desktop.bock_events', ['events' => $eventsIdeas])
         </div>
 

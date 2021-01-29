@@ -43,7 +43,9 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
 
 // Event
-Route::post('/events/map_json', [YandexController::class, 'index'])->name('yandex_map.index');
+Route::post('/events/map_all', [YandexController::class, 'getAll'])->name('yandex_map.all');
+Route::post('/events/map_city', [YandexController::class, 'getCity'])->name('yandex_map.city');
+
 Route::get('/events/default', [EventController::class, 'defaultSettings'])->name('events.events_default');
 Route::get('/events/seen/clean', [EventController::class, 'eventsClean'])->name('events.events_seen_clean');
 Route::get('/events/view/{view}', [EventController::class, 'viewMode'])->name('events.view_mode');

@@ -1,4 +1,4 @@
-<div class="card border-light mb-3">
+<div class="card border-light mb-3 shadow-lg">
 {{--    <div class="card-header fw-bold lead text-center">--}}
 {{--        @lang('Стоимость тура')--}}
 {{--    </div>--}}
@@ -8,7 +8,7 @@
 
 
 
-    <div class="card-body shadow-lg">
+    <div class="card-body">
         <div class="d-flex flex-column ms-3 align-items-center">
 
             <div class="h1 m-0">

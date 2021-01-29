@@ -15,6 +15,9 @@
                     @includeIf('site.frontend.event.desktop.blocks.event_info')
                     @includeIf('site.frontend.event.desktop.blocks.order')
                     @includeIf('site.frontend.event.desktop.blocks.photos')
+                    @includeIf('site.frontend.event.desktop.blocks.city')
+                    @includeIf('site.frontend.event.desktop.blocks.similars')
+                    @includeIf('site.frontend.event.desktop.blocks.reviews')
                 </div>
                 <div class="col-md-3">
                     <div class="sticky-top sticky-offset">
@@ -23,13 +26,13 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    @includeIf('site.frontend.event.desktop.blocks.city')
-                    @includeIf('site.frontend.event.desktop.blocks.similars')
-                    @includeIf('site.frontend.event.desktop.blocks.reviews')
-                </div>
-            </div>
+{{--            <div class="row">--}}
+{{--                <div class="col-md-12">--}}
+{{--                    @includeIf('site.frontend.event.desktop.blocks.city')--}}
+{{--                    @includeIf('site.frontend.event.desktop.blocks.similars')--}}
+{{--                    @includeIf('site.frontend.event.desktop.blocks.reviews')--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </div>
     {{-- End Desktop --}}
@@ -51,5 +54,7 @@
 @endsection
 
 @push('scripts')
+    <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript" defer></script>
+    <script src="{{ asset(mix('js/yandex_map.js')) }}" defer></script>
     <script src="{{ asset(mix('js/vuejs.js')) }}" defer></script>
 @endpush
