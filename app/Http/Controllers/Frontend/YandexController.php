@@ -9,7 +9,56 @@ use Illuminate\Http\Request;
 
 class YandexController extends Controller
 {
-    public function index(Request $request)
+    public function getCity(Request $request)
+    {
+
+        $events = Event::where('active', true);
+        //$events->where('city_id', 1);
+
+        if ($request->has('event_id')) {
+            $events->where('id', $request->input('event_id'));
+        }
+
+        $events = $events->get();
+
+        $map_info = array(
+            'type' => 'FeatureCollection',
+            'features' => array(),
+        );
+
+        foreach ($events as $event) {
+            $coordinates_array = json_decode($event->coordinates, true);
+
+            $preset = $event->old_price ? 'islands#redStretchyIcon' : 'islands#blueStretchyIcon';
+
+            $map_info['features'][] = array(
+                'type' => 'Feature',
+                'geometry' => array(
+                    'type' => 'Point',
+                    'coordinates' => array(
+                        $coordinates_array['latitude'],
+                        $coordinates_array['longitude']
+                    ),
+                ),
+                'properties' => array(
+                    'balloonContentHeader' => $event->name,
+                    'balloonContentBody' => $event->short_description,
+                    'balloonContentFooter' => '<a href="'.route('events.show',
+                            ['event' => $event->id]).'" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Посмотреть</a>',
+                    'iconContent' => number_format($event->price, 0, '', '.').' <i class="fas fa-ruble-sign"></i> '
+                ),
+                'options' => array(
+                    'preset' => $preset,
+                ),
+            );
+        }
+
+
+        $json_string = json_encode($map_info);
+        echo $json_string;
+    }
+
+    public function getAll(Request $request)
     {
 
         $events = Event::where('active', true);
@@ -59,8 +108,9 @@ class YandexController extends Controller
                 'properties' => array(
                     'balloonContentHeader' => $event->name,
                     'balloonContentBody' => $event->short_description,
-                    'balloonContentFooter' => '<a href="'.route('events.show', ['event' => $event->id]).'" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Посмотреть</a>',
-                    'iconContent' => '<i class="fas fa-ruble-sign"></i> '.number_format($event->price, 0, '', ',')
+                    'balloonContentFooter' => '<a href="'.route('events.show',
+                            ['event' => $event->id]).'" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Посмотреть</a>',
+                    'iconContent' => number_format($event->price, 0, '', '.').' <i class="fas fa-ruble-sign"></i> '
                 ),
                 'options' => array(
                     'preset' => $preset,
