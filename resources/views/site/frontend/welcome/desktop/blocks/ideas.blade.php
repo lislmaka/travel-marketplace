@@ -23,7 +23,7 @@
                                     </span>
                                 </div>
                             @endif
-                             <span class="badge bg-light text-muted">
+                            <span class="badge bg-light text-muted">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <a href="#" class="stretched-link text-decoration-none text-muted">
                                     {{ $event->city->name }}
@@ -33,7 +33,8 @@
                         <div class="card-body">
                             <div class="card-title align-self-center">
                                 <span class="float-start me-3">
-                                    <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle" alt="..." width="{{ config('site.img-size-2') }}">
+                                    <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle" alt="..."
+                                         width="{{ config('site.img-size-2') }}">
                                 </span>
 
                                 <a href="{{ route('events.show', ['event' => $event->id]) }}"
