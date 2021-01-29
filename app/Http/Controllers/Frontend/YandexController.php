@@ -41,10 +41,6 @@ class YandexController extends Controller
                     ),
                 ),
                 'properties' => array(
-                    'balloonContentHeader' => $event->name,
-                    'balloonContentBody' => $event->short_description,
-                    'balloonContentFooter' => '<a href="'.route('events.show',
-                            ['event' => $event->id]).'" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Посмотреть</a>',
                     'iconContent' => number_format($event->price, 0, '', '.').' <i class="fas fa-ruble-sign"></i> '
                 ),
                 'options' => array(
