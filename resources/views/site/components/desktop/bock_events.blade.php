@@ -4,24 +4,30 @@
         <div class="card h-100 shadow-sm my-border-bottom-info">
             <img src="{{ asset('images/demo/demo1/'.$event->img) }}" class="card-img-top" alt="...">
             <div class="card-img-overlay">
-                @if($event->old_price)
-                    <div class="lead">
-                        <span class="badge bg-danger">
-                            @php($discount = round(100 - ($event->price * 100) / $event->old_price))
-                            @lang('Скидка') {{ $discount }} %
-                        </span>
-                    </div>
-                @endif
-                <span class="badge bg-light text-muted">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <a href="#" class="stretched-link text-decoration-none text-muted">
-                        {{ $event->city->name }}
-                    </a>
-                </span>
+                <div class="position-absolute top-0 end-0 p-3 text-end">
+                    @if($event->old_price)
+                        <div class="lead">
+                            <span class="badge bg-danger">
+                                @php($discount = round(100 - ($event->price * 100) / $event->old_price))
+                                @lang('Скидка') {{ $discount }} %
+                            </span>
+                        </div>
+                    @endif
+                    <span class="badge bg-light text-muted">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <a href="#" class="stretched-link text-decoration-none text-muted">
+                            {{ $event->city->name }}
+                        </a>
+                    </span>
+                </div>
+
+                <div class="position-absolute top-0 start-0 p-3">
+                    <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle" alt="..." width="{{ config('site.img-size-2') }}">
+                </div>
             </div>
             <div class="card-body">
-                <div class="card-title overflow-hidden" style="height: 4.5rem">
-                    <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle me-3 float-start" alt="..." width="{{ config('site.img-size-2') }}">
+                <div class="card-title overflow-hidden" style="height: 3rem">
+{{--                    <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle me-3 float-start" alt="..." width="{{ config('site.img-size-2') }}">--}}
                     <a href="{{ route('events.show', ['event' => $event->id]) }}"
                        class="fw-bold text-decoration-none stretched-link"
                        title="{{ $event->name }}">
