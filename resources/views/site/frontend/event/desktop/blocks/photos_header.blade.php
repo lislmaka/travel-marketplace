@@ -1,11 +1,11 @@
 <div class="row row-cols-md-2 g-1 ">
     @php(shuffle($demo_images))
     <div class="col-md-8 m-0 position-relative">
-        <img src="{{ asset('images/demo/demo1/'.$demo_images[rand(1, count($demo_images))]->getBaseName()) }}" class="img-fluid" alt="...">
+        <img src="{{ asset('images/demo/demo1/'.$demo_images[rand(1, count($demo_images) - 1)]->getBaseName()) }}" class="img-fluid" alt="...">
         <div class="position-absolute bottom-0 start-0">
             <h1 class="card-header h2 fw-bold py-3 bg-light d-flex justify-content-start">
                 <div class="me-3">
-                    <img src="{{ $demo_faces[rand(1, count($demo_faces))] }}" class="img-thumbnail rounded-circle" alt="..." width="{{ config('site.img-size-3') }}">
+                    <img src="{{ $demo_faces[rand(1, count($demo_faces) - 1)] }}" class="img-thumbnail rounded-circle" alt="..." width="{{ config('site.img-size-3') }}">
                 </div>
                 <div class="w-100">
                     {{ $event_info->name }}
