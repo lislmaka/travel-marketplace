@@ -59,7 +59,7 @@ const app = new Vue({
     methods: {
         formatPrice(value) {
             //let val = (value/1).toFixed(2).replace('.', ',')
-            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
         },
         downCount: function () {
             if (this.quantity === 1) {

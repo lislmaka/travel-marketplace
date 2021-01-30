@@ -6,14 +6,14 @@
 
 <input type="hidden" id="event_options" value="{{ $event_options_json }}">
 
-<div class="card border-light">
+<div class="card border-light mb-3">
     <ul class="list-group list-group-flush">
         <li class="list-group-item d-flex justify-content-between align-items-start">
             <div class="fw-bold lead">
-                @lang('Опция')
+                @lang('Основные данные')
             </div>
             <div class="fw-bold lead">
-                @lang('Цена')
+
             </div>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -28,7 +28,34 @@
                         <button class="btn btn-secondary" type="button" v-on:click="upCount">+</button>
                     </div>
                 </div>
-{{--                <input type="text" class="form-control" aria-label="" aria-describedby="" value="1" v-model="quantity">--}}
+            </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="fw-bold">
+                @lang('Дата')
+                <div class="small text-muted fw-normal">
+                    @lang('Выберите интересующую вас дату проведения мероприятия')
+                    <br>
+                    @lang('Диапазон дат на этот тур с '.now()->format('Y-m-d').' по '.now()->addDays(rand(5, 10))->format('Y-m-d'))
+                </div>
+            </div>
+            <div class="row d-flex justify-content-end align-items-center">
+                <div class="col-md-12">
+                    <input type="date" value="{{ now()->format('Y-m-d') }}" min="{{ now()->format('Y-m-d') }}" max="{{ now()->addDays(30)->format('Y-m-d') }}">
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="card border-light">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="fw-bold lead">
+                @lang('Опция')
+            </div>
+            <div class="fw-bold lead">
+                @lang('Цена')
             </div>
         </li>
 
@@ -44,8 +71,8 @@
                 </div>
             </div>
             <span class="badge bg-primary rounded-pill">
-                <i class="fas fa-ruble-sign"></i>
                 @{{ formatPrice(event_option.price) }}
+                <i class="fas fa-ruble-sign"></i>
             </span>
         </label>
 

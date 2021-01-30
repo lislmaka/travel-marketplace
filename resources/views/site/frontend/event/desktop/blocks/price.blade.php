@@ -13,16 +13,16 @@
 
             <div class="h1 m-0">
                 <span class="badge bg-light text-muted">
-                    <i class="fas fa-ruble-sign"></i>
                     @{{ formatPrice(summa) }}
+                    <i class="fas fa-ruble-sign"></i>
                 </span>
             </div>
             @if($event_info->old_price)
                 <div class="lead m-0">
                     <span class="badge bg-light text-muted fw-normal">
                         <del>
-                            <i class="fas fa-ruble-sign"></i>
                             @{{ formatPrice(summa_old) }}
+                            <i class="fas fa-ruble-sign"></i>
                         </del>
                     </span>
                 </div>
@@ -33,16 +33,16 @@
         <li class="list-group-item d-flex justify-content-between align-items-center border-top">
             @lang('Цена 1 чел.')
             <span class="badge bg-primary rounded-pill">
-                <i class="fas fa-ruble-sign"></i>
-                {{ number_format($event_info->price, 0, '', ',') }}
+                {{ number_format($event_info->price, 0, '', '.') }}
+                 <i class="fas fa-ruble-sign"></i>
             </span>
         </li>
         @if($event_info->old_price)
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 @lang('Старая цена')
                 <span class="badge bg-primary rounded-pill">
+                    {{ number_format($event_info->old_price, 0, '', '.') }}
                     <i class="fas fa-ruble-sign"></i>
-                    {{ number_format($event_info->old_price, 0, '', ',') }}
                 </span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -62,8 +62,8 @@
             <div class="fw-bold">@lang('Итого')</div>
 
             <span class="badge bg-primary rounded-pill">
-                <i class="fas fa-ruble-sign"></i>
                  @{{ formatPrice(summa) }}
+                <i class="fas fa-ruble-sign"></i>
             </span>
         </li>
     </ul>
