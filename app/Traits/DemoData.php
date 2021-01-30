@@ -14,6 +14,14 @@ trait DemoData
         return $images_array;
     }
 
+    public static function DemoImages2($count = 20)
+    {
+        $directory = public_path('images/demo/demo2');
+        $images_array = File::files($directory);
+
+        return $images_array;
+    }
+
     public static function DemoFaces($count = 20)
     {
 

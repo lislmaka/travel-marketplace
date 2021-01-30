@@ -1,9 +1,26 @@
-<div class="row row-cols-md-4 g-1 mt-0">
+<div class="row row-cols-md-2 g-1 ">
     @php(shuffle($demo_images))
-    @foreach($demo_images as $demo_image)
-        @if($loop->index > 7)
-            @break
-        @endif
-    <div class="col"><img src="{{ asset('images/demo/demo1/'.$demo_image->getBaseName()) }}" class="img-fluid" alt="..."></div>
-    @endforeach
+    <div class="col-md-8 m-0 position-relative">
+        <img src="{{ asset('images/demo/demo1/'.$demo_images[rand(1, count($demo_images))]->getBaseName()) }}" class="img-fluid" alt="...">
+        <div class="position-absolute bottom-0 start-0">
+            <h1 class="card-header h2 fw-bold py-3 bg-light d-flex justify-content-start">
+                <div class="me-3">
+                    <img src="{{ $demo_faces[rand(1, count($demo_faces))] }}" class="img-thumbnail rounded-circle" alt="..." width="{{ config('site.img-size-3') }}">
+                </div>
+                <div class="w-100">
+                    {{ $event_info->name }}
+                </div>
+            </h1>
+        </div>
+    </div>
+    <div class="col-md-4 m-0">
+        <div class="row row-cols-md-1 g-1 m-0">
+            @foreach($demo_images as $demo_image)
+                @if($loop->index > 1)
+                    @break
+                @endif
+                <div class="col"><img src="{{ asset('images/demo/demo1/'.$demo_image->getBaseName()) }}" class="img-fluid" alt="..."></div>
+            @endforeach
+        </div>
+    </div>
 </div>
