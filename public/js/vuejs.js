@@ -106,6 +106,16 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
     formatPrice: function formatPrice(value) {
       //let val = (value/1).toFixed(2).replace('.', ',')
       return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+    downCount: function downCount() {
+      if (this.quantity === 1) {
+        this.quantity = 1;
+      } else {
+        this.quantity--;
+      }
+    },
+    upCount: function upCount() {
+      this.quantity++;
     }
   },
   filters: {

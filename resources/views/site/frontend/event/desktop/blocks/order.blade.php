@@ -20,8 +20,15 @@
             <div class="fw-bold">
                 @lang('Кол-во человек')
             </div>
-            <div class="w-25">
-                <input type="text" class="form-control" aria-label="" aria-describedby="" value="1" v-model="quantity">
+            <div class="row d-flex justify-content-end align-items-center">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <button class="btn btn-secondary" type="button" v-on:click="downCount">-</button>
+                        <input type="text" class="form-control text-center" v-model="quantity" disabled>
+                        <button class="btn btn-secondary" type="button" v-on:click="upCount">+</button>
+                    </div>
+                </div>
+{{--                <input type="text" class="form-control" aria-label="" aria-describedby="" value="1" v-model="quantity">--}}
             </div>
         </li>
 

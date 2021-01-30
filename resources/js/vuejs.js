@@ -60,7 +60,17 @@ const app = new Vue({
         formatPrice(value) {
             //let val = (value/1).toFixed(2).replace('.', ',')
             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-        }
+        },
+        downCount: function () {
+            if (this.quantity === 1) {
+                this.quantity = 1;
+            } else {
+                this.quantity--;
+            }
+        },
+        upCount: function () {
+            this.quantity++;
+        },
     },
     filters: {
         truncate: function (str, len) {
