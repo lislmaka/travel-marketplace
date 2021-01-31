@@ -8,11 +8,20 @@ use App\Models\Review;
 use Illuminate\Http\Request;
 use App\Traits\DemoData;
 
+/**
+ * Class WelcomeController
+ * @package App\Http\Controllers\Frontend
+ */
 class WelcomeController extends Controller
 {
     use DemoData;
 
     //
+
+    /**
+     * @param  Request  $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(Request $request)
     {
         $eventsAllCount = Event::where('active', true)->count();
