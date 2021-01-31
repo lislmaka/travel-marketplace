@@ -180,7 +180,7 @@ return [
          */
         App\Providers\UserAgentServiceProvider::class,
         App\Providers\FooterPagesServiceProvider::class,
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        //Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 
