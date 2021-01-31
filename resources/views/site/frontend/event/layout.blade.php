@@ -12,17 +12,19 @@
             <div class="d-none d-md-block">
                 <div class="row">
                     <div class="col-md-12">
-                        @includeIf('site.frontend.event.desktop.blocks.photos_header')
+                        @includeIf('site.frontend.event.desktop.blocks.photos-header')
                     </div>
                 </div>
                 @includeIf('site.def.breadcrumb')
                 <div class="row">
                     <div class="col-md-9">
-                        @includeIf('site.frontend.event.desktop.blocks.event_info')
+                        @includeIf('site.frontend.event.desktop.blocks.event-info')
                         @includeIf('site.frontend.event.desktop.blocks.order')
+                        @includeIf('site.frontend.event.desktop.blocks.author')
                         @includeIf('site.frontend.event.desktop.blocks.photos')
                         @includeIf('site.frontend.event.desktop.blocks.city')
-                        @includeIf('site.frontend.event.desktop.blocks.similars')
+                        @includeIf('site.frontend.event.desktop.blocks.similar-author')
+                        @includeIf('site.frontend.event.desktop.blocks.similar-city')
                         @includeIf('site.frontend.event.desktop.blocks.reviews')
                     </div>
                     <div class="col-md-3">

@@ -458,8 +458,9 @@ class EventController extends Controller
             ->join('event_options', 'event_options.id', '=', 'pivot_event_options.option_id');
         $event_options = $event_options->get();
 
-        $similar_events = Event::where('active', true)->limit(4)->get();
-        $reviews = Review::where('active', true)->limit(4)->get();
+        $similar_author = Event::where('active', true)->limit(4)->inRandomOrder()->get();
+        $similar_city = Event::where('active', true)->limit(4)->inRandomOrder()->get();
+        $reviews = Review::where('active', true)->limit(4)->inRandomOrder()->get();
 
         $view_data = array(
             'description' => $event_info->short_description,
@@ -468,7 +469,8 @@ class EventController extends Controller
             'event_info' => $event_info,
             'event_options' => $event_options,
             'event_options_json' => $event_options->toJson(),
-            'similar_events' => $similar_events,
+            'similar_author' => $similar_author,
+            'similar_city' => $similar_city,
             'reviews' => $reviews,
             'demo_images' => DemoData::DemoImages(),
             'demo_faces' => DemoData::DemoFaces()

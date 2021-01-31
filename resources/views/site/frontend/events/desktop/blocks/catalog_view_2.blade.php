@@ -1,3 +1,3 @@
-@include('site.components.desktop.bock_events_horizontal', ['events' => $events])
+@include('site.components.desktop.bock-events-horizontal', ['events' => $events])
 
 {{ $events->links() }}

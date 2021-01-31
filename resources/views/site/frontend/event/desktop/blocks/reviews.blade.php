@@ -6,5 +6,5 @@
 
 <div class="row row-cols-md-1 g-3">
 
-    @include('site.components.desktop.bock_reviews_horizontal', ['reviews' => $reviews])
+    @include('site.components.desktop.bock-reviews-horizontal', ['reviews' => $reviews])
 </div>

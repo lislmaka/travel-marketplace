@@ -1,4 +1,4 @@
-@component('site.components.desktop.bock_header',['header' => 'Отзывы и впечатления'])
+@component('site.components.desktop.bock-header',['header' => 'Отзывы и впечатления'])
     <div class="mt-3 text-muted">
         @lang('Почитайте что говорят наши клиенты')
     </div>
@@ -8,7 +8,7 @@
     <div class="container-xl">
 
         <div class="row row-cols-md-4 g-3">
-            @include('site.components.desktop.bock_reviews_vertically', ['reviews' => $reviews])
+            @include('site.components.desktop.bock-reviews-vertically', ['reviews' => $reviews])
         </div>
 
         <div class="text-center mt-5">

@@ -42,14 +42,14 @@
                             <div class="h3 m-0">
                                 <span class="badge bg-light text-muted">
                                     <i class="fas fa-ruble-sign"></i>
-                                    {{ number_format($event->price, 0, '', ',') }}
+                                    {{ number_format($event->price, 0, '', '.') }}
                                 </span>
                             </div>
                             @if($event->old_price)
                                 <div class="lead m-0">
                                     <span class="badge bg-light text-muted fw-normal">
                                         <del>
-                                            {{ number_format($event->old_price, 0, '', ',') }}
+                                            {{ number_format($event->old_price, 0, '', '.') }}
                                         </del>
                                     </span>
                                 </div>
