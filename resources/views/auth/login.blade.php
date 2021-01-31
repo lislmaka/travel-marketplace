@@ -19,9 +19,7 @@
                             </span>
                         </a>
 
-
-
-                        <div class="card">
+                        <div class="card border-light">
                             <div class="card-header fw-bold lead text-center">
                                 @lang('Вход в систему бронирования')
                             </div>
@@ -52,13 +50,13 @@
                                     @enderror
                                 </div>
 
-                                {{--                                <div class="form-check">--}}
-                                {{--                                    <input class="form-check-input" type="checkbox" name="remember"--}}
-                                {{--                                           id="remember" {{ old('remember') ? 'checked' : '' }}>--}}
-                                {{--                                    <label class="form-check-label" for="remember">--}}
-                                {{--                                        {{ __('Remember Me') }}--}}
-                                {{--                                    </label>--}}
-                                {{--                                </div>--}}
+{{--                                <div class="form-check">--}}
+{{--                                    <input class="form-check-input" type="checkbox" name="remember"--}}
+{{--                                           id="remember" {{ old('remember') ? 'checked' : '' }}>--}}
+{{--                                    <label class="form-check-label" for="remember">--}}
+{{--                                        {{ __('Remember Me') }}--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
                             </div>
                             <div class="card-header d-flex justify-content-evenly border-bottom-0 border-top">
                                 <a href="#"><i class="fab fa-vk h2 text-primary"></i></a>
@@ -67,7 +65,7 @@
                                 <a href="#"><i class="fab fa-telegram-plane h2 text-primary"></i></a>
                             </div>
                             <div class="card-footer d-flex justify-content-center">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-lg btn-primary">
                                     @lang('Войти в систему')
                                 </button>
                             </div>
@@ -87,7 +85,6 @@
                                             </a>
                                         </li>
                                     @endif
-
                                 </ul>
                             </div>
                         </div>
