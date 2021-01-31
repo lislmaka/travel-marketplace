@@ -60,17 +60,18 @@
         </li>
 
         <label class="list-group-item d-flex justify-content-between align-items-start"
-               v-for="event_option in event_options">
+               v-for="(event_option, index) in event_options"
+               v-bind:class="[event_option.active ? 'list-group-item-primary' : '']">
             <div>
                 <div class="fw-bold">
-                    <input class="form-check-input me-1" type="checkbox" v-bind:value="event_option.price" v-model="event_options_checked">
+                    <input class="form-check-input me-1" type="checkbox" v-bind:value="index" v-model="event_options_checked">
                     @{{ event_option.name }}
                 </div>
                 <div class="small text-muted">
                     @{{ event_option.description | truncate(100) }}
                 </div>
             </div>
-            <span class="badge bg-primary rounded-pill">
+            <span class="badge bg-primary rounded-pill" v-bind:class="[event_option.active ? 'bg-primary' : 'bg-light text-muted']">
                 @{{ formatPrice(event_option.price) }}
                 <i class="fas fa-ruble-sign"></i>
             </span>

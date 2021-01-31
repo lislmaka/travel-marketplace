@@ -80,10 +80,16 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
     summa: function summa() {
       var total_summs = 0;
       var quantity = this.quantity;
+      var event_options = this.event_options; //
+
+      this.event_options.forEach(function (item, i, arr) {
+        event_options[i].active = false;
+      });
 
       if (this.event_options_checked) {
         this.event_options_checked.forEach(function (item, i, arr) {
-          total_summs = total_summs + item * quantity;
+          total_summs += event_options[item].price * quantity;
+          event_options[item].active = true;
         });
       }
 
@@ -92,10 +98,11 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
     summa_old: function summa_old() {
       var total_summs = 0;
       var quantity = this.quantity;
+      var event_options = this.event_options;
 
       if (this.event_options_checked) {
         this.event_options_checked.forEach(function (item, i, arr) {
-          total_summs = total_summs + item * quantity;
+          total_summs += event_options[item].price * quantity;
         });
       }
 

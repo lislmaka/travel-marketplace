@@ -38,9 +38,17 @@ const app = new Vue({
         summa: function () {
             let total_summs = 0;
             let quantity = this.quantity;
+            let event_options = this.event_options;
+
+            //
+            this.event_options.forEach(function (item, i, arr) {
+                event_options[i].active = false;
+            });
+
             if (this.event_options_checked) {
                 this.event_options_checked.forEach(function (item, i, arr) {
-                    total_summs = total_summs + item * quantity;
+                    total_summs += event_options[item].price * quantity;
+                    event_options[item].active = true;
                 });
             }
             return this.quantity * this.price + total_summs;
@@ -48,9 +56,10 @@ const app = new Vue({
         summa_old: function () {
             let total_summs = 0;
             let quantity = this.quantity;
+            let event_options = this.event_options;
             if (this.event_options_checked) {
                 this.event_options_checked.forEach(function (item, i, arr) {
-                    total_summs = total_summs + item * quantity;
+                    total_summs += event_options[item].price * quantity;
                 });
             }
             return this.quantity * this.old_price + total_summs;

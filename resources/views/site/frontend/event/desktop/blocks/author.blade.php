@@ -12,6 +12,12 @@
         <div class="col-md-10 p-3">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
+                    ФИО
+                    <span class="badge bg-light text-muted rounded-pill">
+                        {{ $event_info->user->name }}
+                    </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
                     Образование
                     <span class="badge bg-light text-muted rounded-pill">
                         Высшее

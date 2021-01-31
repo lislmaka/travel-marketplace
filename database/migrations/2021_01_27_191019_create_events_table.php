@@ -17,6 +17,7 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->bigInteger('country_id')->unsigned();
             $table->bigInteger('city_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->string('name');
             $table->string('slug');
             $table->string('img');
@@ -33,6 +34,7 @@ class CreateEventsTable extends Migration
 
             $table->foreign('country_id')->references('id')->on('event_countries')->onDelete('cascade');
             $table->foreign('city_id')->references('id')->on('event_cities')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
