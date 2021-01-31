@@ -8,7 +8,7 @@
 
 <div class="card border-light mb-3">
     <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex justify-content-between align-items-start">
+        <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-secondary">
             <div class="fw-bold lead">
                 @lang('Основные данные')
             </div>
@@ -50,7 +50,7 @@
 
 <div class="card border-light">
     <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex justify-content-between align-items-start">
+        <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-secondary">
             <div class="fw-bold lead">
                 @lang('Опция')
             </div>
