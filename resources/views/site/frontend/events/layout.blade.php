@@ -7,6 +7,8 @@
 @section('content')
     {{-- Begin Desktop --}}
     @if ($agent->isDesktop())
+        @includeIf('site.frontend.events.desktop.blocks.search-horizontal')
+
         <div class="container-xxl">
             <div class="d-none d-md-block">
                 @includeIf('site.def.breadcrumb')
