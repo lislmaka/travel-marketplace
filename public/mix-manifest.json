@@ -1,6 +1,6 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/js/yandex_map.js": "/js/yandex_map.js",
-    "/js/vuejs.js": "/js/vuejs.js",
-    "/css/app.css": "/css/app.css"
+    "/js/app.js": "/js/app.js?id=389c09a2273c6c1f52d9",
+    "/js/yandex_map.js": "/js/yandex_map.js?id=905d50c00780b3ed0aae",
+    "/js/vuejs.js": "/js/vuejs.js?id=cbf6d785f6f12a01273a",
+    "/css/app.css": "/css/app.css?id=780ca9849f8cb7ce5fc0"
 }
