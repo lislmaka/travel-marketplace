@@ -4,18 +4,27 @@
         <input
             type="text"
             class="form-control"
-            placeholder="@lang('Выберите страну или город')"
+            placeholder="@lang('Введите страну или город')"
             wire:model="query"
             wire:keydown.escape="clearSearch"
+            wire:click="searchAll"
         />
-        @if(!empty($query))
+        <span class="input-group-text bg-light" id="basic-addon2">
+            <span class="small">
+                @lang('Всего туров')
+            </span>
+            <span class="badge bg-primary rounded-pill ms-1">
+                {{ number_format($countOfAllEvents, 0, '', '.') }}
+            </span>
+        </span>
+        @if(!empty($query) || $showAll)
             <button class="btn btn-secondary" type="button" id="button-addon2"
                     wire:click="clearSearch">
                 <i class="fas fa-times"></i>
             </button>
         @endif
     </div>
-    @if(!empty($query))
+    @if(!empty($query) || $showAll)
         @php
             $cols = $events_countries->isEmpty() || $events_cities->isEmpty() ? 1 : 2
         @endphp
@@ -29,17 +38,17 @@
                                     @lang('Страны')
                                     <span class="badge bg-primary rounded-pill">{{ $events_countries->count() }}</span>
                                 </div>
-                                <ul class="list-group list-group-flush">
+                                <ul class="list-group list-group-flush overflow-auto" style="max-height: 200px">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <span class="fw-bold">@lang('Страна')</span>
                                         <span class="fw-bold">@lang('Кол-во туров')</span>
                                     </li>
                                     @foreach($events_countries as $country)
-                                        <a href="{{ route('events.events_countries', ['id' => $country->id]) }}"
+                                        <a href="{{ route('events.events_countries', ['id' => $country->country_id]) }}"
                                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                            {{ $country->name }}
+                                            {{ $country->country->name }}
                                             <span class="badge bg-light text-muted rounded-pill">
-                                            {{ number_format(rand(1, 10000), 0, '', '.') }}
+                                            {{ number_format($country->count, 0, '', '.') }}
                                         </span>
                                         </a>
                                     @endforeach
@@ -61,12 +70,15 @@
                                     </li>
                                     @if($events_cities->isNotEmpty())
                                         @foreach($events_cities as $city)
-                                            <a href="{{ route('events.events_cities', ['id' => $city->id]) }}"
+                                            <a href="{{ route('events.events_cities', ['id' => $city->city_id]) }}"
                                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                                {{ $city->name }}
+                                                <div>
+                                                    {{ $city->city->name }}
+                                                    <div class="small text-muted">{{ $city->country->name }}</div>
+                                                </div>
                                                 <span class="badge bg-light text-muted rounded-pill">
-                                                {{ number_format(rand(1, 10000), 0, '', '.') }}
-                                            </span>
+                                                    {{ number_format($city->count, 0, '', '.') }}
+                                                </span>
                                             </a>
                                         @endforeach
                                     @endif
@@ -80,12 +92,20 @@
 
         @else
             <div class="position-absolute top-0 start-0 mt-5 w-100" style="z-index: 10">
-                <div class="card border-light mt-1 w-100">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item list-group-item-danger">
-                            @lang('Не найдено результатов по вашему запросу')
-                        </li>
-                    </ul>
+                <div class="card text-dark bg-warning mt-1 w-100">
+                    <div class="card-header lead fw-bold">
+                        @lang('Не найдено результатов по вашему запросу')
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text">
+                            Не удалось найти туры по вашему запросу
+                            <span class="badge bg-secondary">{{ $query }}</span>
+                        </div>
+                        <div class="card-text mt-3">
+                            Попробуйте ввести менее специфический запрос. Начните поиск со страны либо более крупного
+                            населенного пункта
+                        </div>
+                    </div>
                 </div>
             </div>
         @endif
