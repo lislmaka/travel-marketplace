@@ -38,7 +38,7 @@
                                     @lang('Страны')
                                     <span class="badge bg-primary rounded-pill">{{ $events_countries->count() }}</span>
                                 </div>
-                                <ul class="list-group list-group-flush overflow-auto" style="max-height: 200px">
+                                <ul class="list-group list-group-flush overflow-auto" style="max-height: 250px">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <span class="fw-bold">@lang('Страна')</span>
                                         <span class="fw-bold">@lang('Кол-во туров')</span>
@@ -63,7 +63,7 @@
                                     @lang('Города')
                                     <span class="badge bg-primary rounded-pill">{{ $events_cities->count() }}</span>
                                 </div>
-                                <ul class="list-group list-group-flush overflow-auto" style="max-height: 200px">
+                                <ul class="list-group list-group-flush overflow-auto" style="max-height: 250px">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <span class="fw-bold">@lang('Город')</span>
                                         <span class="fw-bold">@lang('Кол-во туров')</span>

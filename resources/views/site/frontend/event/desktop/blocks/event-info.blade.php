@@ -1,19 +1,34 @@
 <div class="card border-light">
-{{--    <h1 class="card-header h2 fw-bold py-3 bg-transparent" id="description">--}}
-{{--        {{ $event_info->name }}--}}
-{{--    </h1>--}}
-
-    <div class="card-body" id="description">
-        <div class="card-title">
-            @foreach($event_info->categories as $category)
-                <span class="badge bg-secondary">{{ $category->category->name }}</span>
-            @endforeach
+    <div class="card-body d-flex justify-content-between align-items-start" id="description">
+        <div class="w-100">
+            <div class="card-title">
+                @foreach($event_info->categories as $category)
+                    <span class="badge bg-secondary">{{ $category->category->name }}</span>
+                @endforeach
+            </div>
+            <div class="card-title">
+                <span class="badge bg-secondary"><i class="fas fa-map-marker-alt"></i></span>
+                <span class="badge bg-secondary">{{ $event_info->country->name }}</span>
+                <span class="badge bg-secondary">{{ $event_info->city->name }}</span>
+            </div>
+{{--            <div class="card-text">--}}
+{{--                {!! $event_info->description !!}--}}
+{{--            </div>--}}
         </div>
-        <div class="card-title">
-            <span class="badge bg-secondary"><i class="fas fa-map-marker-alt"></i></span>
-            <span class="badge bg-secondary">{{ $event_info->country->name }}</span>
-            <span class="badge bg-secondary">{{ $event_info->city->name }}</span>
+        <div class="w-100 text-end">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary">
+                    @lang('В избранное')
+                    <span class="badge bg-light text-muted">1</span>
+                </button>
+                <button type="button" class="btn btn-primary">
+                    @lang('Сравнить')
+                    <span class="badge bg-light text-muted">1</span>
+                </button>
+            </div>
         </div>
+    </div>
+    <div class="card-body">
         <div class="card-text">
             {!! $event_info->description !!}
         </div>
