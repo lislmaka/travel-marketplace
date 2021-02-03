@@ -13,7 +13,7 @@
     @elseif($blockType == 'popular_categories')
         @php
             $headerText = 'Популярные категории';
-            $headerHint = 'Категории, которые пользуются наибольшим спросом';
+            $headerHint = 'Туры из категорий, которые пользуются наибольшим спросом';
         @endphp
     @endif
 
