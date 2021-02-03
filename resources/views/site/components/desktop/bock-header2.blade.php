@@ -50,7 +50,7 @@
                                 @endphp
                             @endif
 
-                            <li class="nav-item small fw-bold" role="presentation">
+                            <li class="nav-item fw-bold" role="presentation">
                                 <a class="nav-link {{ $active }}" id="home-tab"
                                    data-bs-toggle="tab" href="#home" role="tab"
                                    aria-controls="home" aria-selected="true"
