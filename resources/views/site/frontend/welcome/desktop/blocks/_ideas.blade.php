@@ -1,4 +1,4 @@
-@component('site.components.desktop.bock-header2',['header' => 'Идеи для новых открытий'])
+@component('site.components.desktop.bock-header2',['header' => 'Идеи для новых открытий', 'top' => ''])
     <div class="mt-3 text-muted">
         @lang('Рассмотрите возможные варианты новых путешествий')
     </div>

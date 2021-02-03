@@ -4,12 +4,12 @@
     {{-- Begin Desktop --}}
     @if ($agent->isDesktop())
         <div class="d-none d-md-block">
-            @includeIf('site.frontend.welcome.desktop.blocks.main_banner')
+            @includeIf('site.frontend.welcome.desktop.blocks.main-banner')
             @includeIf('site.frontend.welcome.desktop.blocks.discount')
             @includeIf('site.frontend.welcome.desktop.blocks.benefits')
-            @includeIf('site.frontend.welcome.desktop.blocks.popular_destinations')
-            @includeIf('site.frontend.welcome.desktop.blocks.popular_variants')
-            @includeIf('site.frontend.welcome.desktop.blocks.ideas')
+            @includeIf('site.frontend.welcome.desktop.blocks.popular-countries')
+            @includeIf('site.frontend.welcome.desktop.blocks.popular-cities')
+            @includeIf('site.frontend.welcome.desktop.blocks.popular-categories')
             @includeIf('site.frontend.welcome.desktop.blocks.reviews')
             @includeIf('site.frontend.welcome.desktop.blocks.map')
         </div>
@@ -28,4 +28,6 @@
 @push('scripts')
     <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript" defer></script>
     <script src="{{ asset(mix('js/yandex_map.js')) }}" defer></script>
+    @livewireStyles
+    @livewireScripts
 @endpush

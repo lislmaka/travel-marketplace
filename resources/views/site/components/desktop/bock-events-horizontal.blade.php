@@ -20,10 +20,6 @@
                             </a>
                         </span>
                     </div>
-
-{{--                    <div class="position-absolute bottom-0 start-0 p-3">--}}
-{{--                        <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle" alt="..." width="{{ config('site.img-size-2') }}">--}}
-{{--                    </div>--}}
                 </div>
             </div>
             <div class="col-md-9">
@@ -82,11 +78,6 @@
                         @endforeach
                     </div>
                 </div>
-{{--                <div class="card-footer text-muted bg-transparent p-3">--}}
-{{--                    @foreach($event->categories as $category)--}}
-{{--                        <span class="badge bg-light text-muted">{{ $category->category->name }}</span>--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
             </div>
         </div>
     </div>

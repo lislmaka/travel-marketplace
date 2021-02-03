@@ -1,4 +1,4 @@
-@component('site.components.desktop.bock-header2',['header' => 'Популярные варианты отдыха'])
+@component('site.components.desktop.bock-header2',['header' => 'Популярные варианты отдыха', 'top' => ''])
     <div class="mt-3 text-muted">
         @lang('Посмотрите какие варианты отдыха пользуются наибольшим спросом')
     </div>

@@ -27,7 +27,6 @@
             </div>
             <div class="card-body">
                 <div class="card-title overflow-hidden" style="height: 3rem">
-{{--                    <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle me-3 float-start" alt="..." width="{{ config('site.img-size-2') }}">--}}
                     <a href="{{ route('events.show', ['event' => $event->id]) }}"
                        class="fw-bold text-decoration-none stretched-link"
                        title="{{ $event->name }}">
