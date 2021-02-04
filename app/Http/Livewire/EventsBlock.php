@@ -77,7 +77,7 @@ class EventsBlock extends Component
             ->where('events.active', true)
             ->groupBy('category_id')
             ->orderBy('count', 'desc')
-            ->limit(4)
+            ->limit(3)
             ->get();
 
         $this->eventsCount = Event::where('active', true)->count();

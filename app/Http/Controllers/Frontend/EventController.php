@@ -26,25 +26,25 @@ class EventController extends Controller
     /**
      * @var string
      */
-    private $events_view_mode_default = 'view_4';
+    private $eventsViewModeDefault = 'view_4';
     /**
      * @var string
      */
-    private $events_sort_mode_default = 'sort_1';
+    private $eventsSortModeDefault = 'sort_1';
 
     /**
      * @var string
      */
-    private $events_categories_default = 'all';
+    private $eventsCategoriesDefault = 'all';
     /**
      * @var string
      */
-    private $events_countries_default = 'all';
+    private $eventsCountriesDefault = 'all';
 
     /**
      * @var string
      */
-    private $events_cities_default = 'all';
+    private $eventsCitiesDefault = 'all';
 
 
     /**
@@ -82,26 +82,27 @@ class EventController extends Controller
                     'title' => 'Каталог'
                 )
             );
-            if ($request->session()->get('events.events_country') != $this->events_countries_default) {
+            if ($request->session()->get('events.events_country') != $this->eventsCountriesDefault) {
                 array_push($breadcrumbs, array(
                     'url' => '',
                     'title' => EventCountry::find($request->session()->get('events.events_country'))->name,
                 ));
             }
-            if ($request->session()->get('events.events_city') != $this->events_cities_default) {
+            if ($request->session()->get('events.events_city') != $this->eventsCitiesDefault) {
                 $cityObj = EventCity::find($request->session()->get('events.events_city'));
 
-                array_push($breadcrumbs, array(
-                    'url' => '',
-                    'title' => EventCountry::find($cityObj->country_id)->name,
-                ));
-
+                if ($request->session()->get('events.events_country') == $this->eventsCountriesDefault) {
+                    array_push($breadcrumbs, array(
+                        'url' => '',
+                        'title' => EventCountry::find($cityObj->country_id)->name,
+                    ));
+                }
                 array_push($breadcrumbs, array(
                     'url' => '',
                     'title' => $cityObj->name,
                 ));
             }
-            if ($request->session()->get('events.events_category') != $this->events_categories_default) {
+            if ($request->session()->get('events.events_category') != $this->eventsCategoriesDefault) {
                 array_push($breadcrumbs, array(
                     'url' => '',
                     'title' => EventCategory::find($request->session()->get('events.events_category'))->name,
@@ -113,13 +114,14 @@ class EventController extends Controller
         return $breadcrumbs;
     }
 
+
     /**
      * @param $request
      * @return \string[][]
      */
     private function eventsViews($request)
     {
-        $events_views = array(
+        return array(
             'view_1' =>
                 array(
                     'title' => 'Расширенный вариант',
@@ -156,9 +158,6 @@ class EventController extends Controller
                     'active' => $request->session()->get('events.events_view_mode') == 'view_5' ? 'active' : '',
                 ),
         );
-
-        return $events_views;
-
     }
 
     /**
@@ -167,7 +166,7 @@ class EventController extends Controller
      */
     private function eventsSorts($request)
     {
-        $events_sorts = array(
+         return array(
             'sort_1' =>
                 array(
                     'title' => 'по убыванию цены',
@@ -204,9 +203,6 @@ class EventController extends Controller
                     'active' => $request->session()->get('events.events_sort_mode') == 'sort_5' ? 'active' : '',
                 ),
         );
-
-        return $events_sorts;
-
     }
 
     /**
@@ -215,7 +211,7 @@ class EventController extends Controller
      */
     private function eventsFilters($request)
     {
-        $events_filters = array(
+        return array(
             'all' =>
                 array(
                     'title' => 'Все туры',
@@ -249,9 +245,6 @@ class EventController extends Controller
                     'active' => $request->session()->get('projects.events_filter_mode') == 'filter_3' ? 'active' : '',
                 ),
         );
-
-        return $events_filters;
-
     }
 
     /**
@@ -284,15 +277,17 @@ class EventController extends Controller
      */
     public function defaultSettings(Request $request)
     {
-        $request->session()->put('events.events_country', $this->events_countries_default);
-        $request->session()->put('events.events_city', $this->events_cities_default);
-        $request->session()->put('events.events_category', $this->events_categories_default);
+        $request->session()->put('events.events_country', $this->eventsCountriesDefault);
+        $request->session()->put('events.events_city', $this->eventsCitiesDefault);
+        $request->session()->put('events.events_category', $this->eventsCategoriesDefault);
 
         return redirect()->route('events.index');
     }
 
+
     /**
-     *
+     * @param  Request  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function eventsClean(Request $request)
     {
@@ -349,10 +344,10 @@ class EventController extends Controller
         if ($request->session()->has('events.events_view_mode')) {
             if (!array_key_exists($request->session()->get('events.events_view_mode'),
                 $this->eventsViews($request))) {
-                $request->session()->put('events.events_view_mode', $this->events_view_mode_default);
+                $request->session()->put('events.events_view_mode', $this->eventsViewModeDefault);
             }
         } else {
-            $request->session()->put('events.events_view_mode', $this->events_view_mode_default);
+            $request->session()->put('events.events_view_mode', $this->eventsViewModeDefault);
         }
 
         //
@@ -361,10 +356,10 @@ class EventController extends Controller
         if ($request->session()->has('events.events_sort_mode')) {
             if (!array_key_exists($request->session()->get('events.events_sort_mode'),
                 $this->eventsSorts($request))) {
-                $request->session()->put('events.events_sort_mode', $this->events_sort_mode_default);
+                $request->session()->put('events.events_sort_mode', $this->eventsSortModeDefault);
             }
         } else {
-            $request->session()->put('events.events_sort_mode', $this->events_sort_mode_default);
+            $request->session()->put('events.events_sort_mode', $this->eventsSortModeDefault);
         }
 
         //
@@ -372,10 +367,10 @@ class EventController extends Controller
         //
         if ($request->session()->has('events.events_category')) {
             if (EventCategory::where('id', $request->session()->get('events.events_category'))->doesntExist()) {
-                $request->session()->put('events.events_category', $this->events_categories_default);
+                $request->session()->put('events.events_category', $this->eventsCategoriesDefault);
             }
         } else {
-            $request->session()->put('events.events_category', $this->events_categories_default);
+            $request->session()->put('events.events_category', $this->eventsCategoriesDefault);
         }
 
         //
@@ -383,10 +378,10 @@ class EventController extends Controller
         //
         if ($request->session()->has('events.events_country')) {
             if (Event::where('country_id', $request->session()->get('events.events_country'))->doesntExist()) {
-                $request->session()->put('events.events_country', $this->events_countries_default);
+                $request->session()->put('events.events_country', $this->eventsCountriesDefault);
             }
         } else {
-            $request->session()->put('events.events_country', $this->events_countries_default);
+            $request->session()->put('events.events_country', $this->eventsCountriesDefault);
         }
 
         //
@@ -394,10 +389,10 @@ class EventController extends Controller
         //
         if ($request->session()->has('events.events_city')) {
             if (Event::where('city_id', $request->session()->get('events.events_city'))->doesntExist()) {
-                $request->session()->put('events.events_city', $this->events_cities_default);
+                $request->session()->put('events.events_city', $this->eventsCitiesDefault);
             }
         } else {
-            $request->session()->put('events.events_city', $this->events_cities_default);
+            $request->session()->put('events.events_city', $this->eventsCitiesDefault);
         }
     }
 
@@ -445,10 +440,6 @@ class EventController extends Controller
      */
     public function show(Request $request, $event)
     {
-        /*
-         *
-         */
-        //$request->session()->push('events.events_seen', 'developers');
 
         if (Event::where('id', $event)->doesntExist()) {
             abort(404);
@@ -456,69 +447,66 @@ class EventController extends Controller
 
         $this->setEventsSeen($request, $event);
 
-        $event_info = Event::where('active', true)->find($event);
+        $eventInfo = Event::where('active', true)->find($event);
 
         /*
          *
          */
-        $event_options = PivotEventOption::where('event_id', $event)
+        $eventOptions = PivotEventOption::where('event_id', $event)
             ->join('event_options', 'event_options.id', '=', 'pivot_event_options.option_id');
-        $event_options = $event_options->get();
+        $eventOptions = $eventOptions->get();
 
-        $similar_author = Event::where('active', true)->limit(4)->inRandomOrder()->get();
-        $similar_city = Event::where('active', true)->limit(4)->inRandomOrder()->get();
+        $similarAuthor = Event::where('active', true)->limit(4)->inRandomOrder()->get();
+        $similarCity = Event::where('active', true)->limit(4)->inRandomOrder()->get();
         $reviews = Review::where('active', true)->limit(4)->inRandomOrder()->get();
 
-        $view_data = array(
-            'description' => $event_info->short_description,
-            'title' => $event_info->name,
-            'breadcrumbs' => $this->breadcrumbs($request, $event_info),
-            'event_info' => $event_info,
-            'event_options' => $event_options,
-            'event_options_json' => $event_options->toJson(),
-            'similar_author' => $similar_author,
-            'similar_city' => $similar_city,
+        $viewData = array(
+            'description' => $eventInfo->short_description,
+            'title' => $eventInfo->name,
+            'breadcrumbs' => $this->breadcrumbs($request, $eventInfo),
+            'event_info' => $eventInfo,
+            'event_options' => $eventOptions,
+            'event_options_json' => $eventOptions->toJson(),
+            'similar_author' => $similarAuthor,
+            'similar_city' => $similarCity,
             'reviews' => $reviews,
             'demo_images' => DemoData::DemoImages(),
             'demo_faces' => DemoData::DemoFaces()
         );
 
-        return view('site.frontend.event.layout', $view_data);
+        return view('site.frontend.event.layout', $viewData);
     }
 
     /**
-     * @param  Request  $request
-     * @param  Faker  $faker
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Формирования каталога туров
+     *
+     * @param $request
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function index(Request $request, Faker $faker)
+    private function getEvents($request)
     {
-        $this->checkSessionValues($request);
-        $this->countPaginate($request);
-
-        /*--------------------------------------------------------------------------------------------------------------
-         * Формирования каталога
-         --------------------------------------------------------------------------------------------------------------*/
         $events = Event::where('active', true);
 
         /*
          * Если выбрана категория
          */
-        if ($request->session()->get('events.events_category') != $this->events_categories_default) {
+        if ($request->session()->get('events.events_category') != $this->eventsCategoriesDefault) {
             $event_ids = PivotEventCategory::select('event_id')
                 ->where('category_id', $request->session()->get('events.events_category'))->get();
             $events->whereIn('id', $event_ids);
         }
+
         /*
          * Если выбрана страна
          */
-        if ($request->session()->get('events.events_country') != $this->events_countries_default) {
+        if ($request->session()->get('events.events_country') != $this->eventsCountriesDefault) {
             $events->where('country_id', $request->session()->get('events.events_country'));
         }
+
         /*
          * Если выбран город
          */
-        if ($request->session()->get('events.events_city') != $this->events_cities_default) {
+        if ($request->session()->get('events.events_city') != $this->eventsCitiesDefault) {
             $events->where('city_id', $request->session()->get('events.events_city'));
         }
 
@@ -541,50 +529,62 @@ class EventController extends Controller
             $events->orderBy('rating', 'asc');
         }
 
-        $events = $events->paginate($this->countPaginate($request));
+        return $events->paginate($this->countPaginate($request));
+    }
 
-        /*--------------------------------------------------------------------------------------------------------------
-         * Кол-во туров по категориям
-         --------------------------------------------------------------------------------------------------------------*/
-        $events_categories_collection = PivotEventCategory::select(DB::raw('count(event_id) as event_count, category_id'))
+
+    /**
+     * Кол-во туров по категориям
+     *
+     * @param $request
+     * @return \Illuminate\Support\Collection
+     */
+    private function getCountOfEventsByCategories($request)
+    {
+
+        $eventsCategoriesCollection = PivotEventCategory::select(DB::raw('count(event_id) as event_count, category_id'))
             ->join('events', 'events.id', '=', 'pivot_event_categories.event_id')
             ->join('event_categories', 'event_categories.id', '=', 'pivot_event_categories.category_id')
             ->where('events.active', true)
             ->groupBy('category_id')
             ->orderByRaw('event_categories.name asc');
-        if ($request->session()->has('events.events_country') && $request->session()->get('events.events_country') != $this->events_countries_default) {
-            $events_categories_collection->where('events.country_id',
+        if ($request->session()->has('events.events_country') && $request->session()->get('events.events_country') != $this->eventsCountriesDefault) {
+            $eventsCategoriesCollection->where('events.country_id',
                 $request->session()->get('events.events_country'));
         }
-        if ($request->session()->has('events.events_city') && $request->session()->get('events.events_city') != $this->events_cities_default) {
-            $events_categories_collection->where('events.city_id', $request->session()->get('events.events_city'));
+        if ($request->session()->has('events.events_city') && $request->session()->get('events.events_city') != $this->eventsCitiesDefault) {
+            $eventsCategoriesCollection->where('events.city_id', $request->session()->get('events.events_city'));
         }
-        $events_categories_collection = $events_categories_collection->get();
+        return $eventsCategoriesCollection->get();
+    }
 
-
-
-        /*--------------------------------------------------------------------------------------------------------------
-         * Кол-во туров по странам
-         --------------------------------------------------------------------------------------------------------------*/
-        $events_countries_collection = Event::where('events.active', true)
-            ->select(DB::raw('count(events.id) as count, events.country_id'))
-            ->join('event_countries', 'event_countries.id', '=', 'events.country_id')
-            ->groupBy('country_id')
-            ->orderByRaw('event_countries.name asc');
-        if ($request->session()->get('events.events_category') != $this->events_categories_default) {
-            $event_ids = PivotEventCategory::select('event_id')
-                ->where('category_id', $request->session()->get('events.events_category'))->get();
-            $events_countries_collection->whereIn('events.id', $event_ids);
+    /**
+     * Общее кол-во событий для всех категорий
+     *
+     * @param $request
+     * @return int
+     */
+    private function getEventsCategoriesTotal($request)
+    {
+        $eventsCategoriesTotal = Event::where('active', true);
+        if ($request->session()->get('events.events_country') != $this->eventsCountriesDefault) {
+            $eventsCategoriesTotal->where('country_id', $request->session()->get('events.events_country'));
         }
-        if ($request->session()->get('events.events_city') != $this->events_cities_default) {
-            $events_countries_collection->where('city_id', $request->session()->get('events.events_city'));
+        if ($request->session()->get('events.events_city') != $this->eventsCitiesDefault) {
+            $eventsCategoriesTotal->where('city_id', $request->session()->get('events.events_city'));
         }
-        $events_countries_collection = $events_countries_collection->get();
+        return $eventsCategoriesTotal->count();
+    }
 
-        /*--------------------------------------------------------------------------------------------------------------
-         * Кол-во туров по городам
-         --------------------------------------------------------------------------------------------------------------*/
-        $events_cities_collection = Event::where('events.active', true)
+    /**
+     * Кол-во туров по городам
+     *
+     * @param $request
+     * @return Event[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Query\Builder[]|\Illuminate\Support\Collection
+     */
+    private function getCountOfEventsByCities($request)
+    {
+        $eventsCitiesCollection = Event::where('events.active', true)
             ->select(DB::raw('count(events.id) as count, city_id, events.country_id'))
             ->join('event_cities', 'event_cities.id', '=', 'events.city_id')
             ->groupBy('city_id')
@@ -593,73 +593,109 @@ class EventController extends Controller
         /*
          * Если выбрана категория
          */
-        if ($request->session()->get('events.events_category') != $this->events_categories_default) {
+        if ($request->session()->get('events.events_category') != $this->eventsCategoriesDefault) {
             $event_ids = PivotEventCategory::select('event_id')
                 ->where('category_id', $request->session()->get('events.events_category'))->get();
-            $events_cities_collection->whereIn('events.id', $event_ids);
+            $eventsCitiesCollection->whereIn('events.id', $event_ids);
         }
         /*
          * Если выбрана страна
          */
-        if ($request->session()->get('events.events_country') != $this->events_countries_default) {
-            $events_cities_collection->where('events.country_id', $request->session()->get('events.events_country'));
+        if ($request->session()->get('events.events_country') != $this->eventsCountriesDefault) {
+            $eventsCitiesCollection->where('events.country_id', $request->session()->get('events.events_country'));
         }
 
-        $events_cities_collection = $events_cities_collection->get();
+        return $eventsCitiesCollection->get();
+    }
 
-        /*--------------------------------------------------------------------------------------------------------------
-         * Кол-во событий для категорий
-         --------------------------------------------------------------------------------------------------------------*/
-        $events_categories_total = Event::where('active', true);
-        if ($request->session()->get('events.events_country') != $this->events_countries_default) {
-            $events_categories_total->where('country_id', $request->session()->get('events.events_country'));
-        }
-        if ($request->session()->get('events.events_city') != $this->events_cities_default) {
-            $events_categories_total->where('city_id', $request->session()->get('events.events_city'));
-        }
-        $events_categories_total = $events_categories_total->count();
-
-        /*--------------------------------------------------------------------------------------------------------------
-         * Кол-во событий для стран
-         --------------------------------------------------------------------------------------------------------------*/
-        $events_cities_total = Event::where('active', true);
+    /**
+     * Общее кол-во событий для всех городом
+     *
+     * @param $request
+     * @return int
+     */
+    private function getEventsCitiesTotal($request)
+    {
+        $eventsCitiesTotal = Event::where('active', true);
         /*
          * Если указана страна
          */
-        if ($request->session()->get('events.events_country') != $this->events_countries_default) {
-            $events_cities_total->where('country_id', $request->session()->get('events.events_country'));
+        if ($request->session()->get('events.events_country') != $this->eventsCountriesDefault) {
+            $eventsCitiesTotal->where('country_id', $request->session()->get('events.events_country'));
         }
         /*
          * Если указана категория
          */
-        if ($request->session()->get('events.events_category') != $this->events_categories_default) {
+        if ($request->session()->get('events.events_category') != $this->eventsCategoriesDefault) {
             $event_ids = PivotEventCategory::select('event_id')
                 ->where('category_id', $request->session()->get('events.events_category'))->get();
-            $events_cities_total->whereIn('id', $event_ids);
+            $eventsCitiesTotal->whereIn('id', $event_ids);
         }
-        $events_cities_total = $events_cities_total->count();
+        return $eventsCitiesTotal->count();
+    }
 
+    /**
+     * Кол-во туров по странам
+     *
+     * @param $request
+     * @return Event[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Query\Builder[]|\Illuminate\Support\Collection
+     */
+    private function getCountOfEventsByCountries($request)
+    {
+        $eventsCountriesCollection = Event::where('events.active', true)
+            ->select(DB::raw('count(events.id) as count, events.country_id'))
+            ->join('event_countries', 'event_countries.id', '=', 'events.country_id')
+            ->groupBy('country_id')
+            ->orderByRaw('event_countries.name asc');
+        if ($request->session()->get('events.events_category') != $this->eventsCategoriesDefault) {
+            $event_ids = PivotEventCategory::select('event_id')
+                ->where('category_id', $request->session()->get('events.events_category'))->get();
+            $eventsCountriesCollection->whereIn('events.id', $event_ids);
+        }
+        if ($request->session()->get('events.events_city') != $this->eventsCitiesDefault) {
+            $eventsCountriesCollection->where('city_id', $request->session()->get('events.events_city'));
+        }
+        return $eventsCountriesCollection->get();
+    }
 
-        /*--------------------------------------------------------------------------------------------------------------
-         * Кол-во событий для стран
-         --------------------------------------------------------------------------------------------------------------*/
-        $events_countries_total = Event::where('active', true);
+    /**
+     * Общее кол-во событий для всех стран
+     * @param $request
+     * @return int
+     */
+    private function getEventsCountriesTotal($request)
+    {
+        $eventsCountriesTotal = Event::where('active', true);
         /*
          * Если выбрана категория
          */
-        if ($request->session()->get('events.events_category') != $this->events_categories_default) {
+        if ($request->session()->get('events.events_category') != $this->eventsCategoriesDefault) {
             $event_ids = PivotEventCategory::select('event_id')
                 ->where('category_id', $request->session()->get('events.events_category'))->get();
-            $events_countries_total->whereIn('id', $event_ids);
+            $eventsCountriesTotal->whereIn('id', $event_ids);
         }
-        if ($request->session()->get('events.events_city') != $this->events_cities_default) {
-            $events_countries_total->where('city_id', $request->session()->get('events.events_city'));
+        if ($request->session()->get('events.events_city') != $this->eventsCitiesDefault) {
+            $eventsCountriesTotal->where('city_id', $request->session()->get('events.events_city'));
         }
 
-        $events_countries_total = $events_countries_total->count();
+        return $eventsCountriesTotal->count();
+    }
 
+    /**
+     * @param  Request  $request
+     * @param  Faker  $faker
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index(Request $request, Faker $faker)
+    {
+        $this->checkSessionValues($request);
+        $this->countPaginate($request);
 
-        $view_data = array(
+        $eventsCategoriesCollection = $this->getCountOfEventsByCategories($request);
+        $eventsCitiesCollection = $this->getCountOfEventsByCities($request);
+        $eventsCountriesCollection = $this->getCountOfEventsByCountries($request);
+
+        $viewData = array(
             'description' => 'Каталог',
             'title' => 'Каталог',
             'breadcrumbs' => $this->breadcrumbs($request),
@@ -667,26 +703,26 @@ class EventController extends Controller
             'demo_faces' => DemoData::DemoFaces(),
 
             // Catalog
-            'events' => $events,
+            'events' => $this->getEvents($request),
 
             // Cities
-            'events_cities_collection' => $events_cities_collection,
-            'events_cities_total' => $events_cities_total,
-            'events_cities_selected' => $events_cities_collection->first(function ($item) use ($request) {
+            'events_cities_collection' => $eventsCitiesCollection,
+            'events_cities_total' => $this->getEventsCitiesTotal($request),
+            'events_cities_selected' => $eventsCitiesCollection->first(function ($item) use ($request) {
                 return $item->city_id == $request->session()->get('events.events_city');
             }),
 
             // Categories
-            'events_categories_collection' => $events_categories_collection,
-            'events_categories_total' => $events_categories_total,
-            'events_categories_selected' => $events_categories_collection->first(function ($item) use ($request) {
+            'events_categories_collection' => $eventsCategoriesCollection,
+            'events_categories_total' => $this->getEventsCategoriesTotal($request),
+            'events_categories_selected' => $eventsCategoriesCollection->first(function ($item) use ($request) {
                 return $item->category_id == $request->session()->get('events.events_category');
             }),
 
             // Countries
-            'events_countries_collection' => $events_countries_collection,
-            'events_countries_total' => $events_countries_total,
-            'events_countries_selected' => $events_countries_collection->first(function ($item) use ($request) {
+            'events_countries_collection' => $eventsCountriesCollection,
+            'events_countries_total' => $this->getEventsCountriesTotal($request),
+            'events_countries_selected' => $eventsCountriesCollection->first(function ($item) use ($request) {
                 return $item->country_id == $request->session()->get('events.events_country');
             }),
 
@@ -698,6 +734,6 @@ class EventController extends Controller
             'events_filters' => $this->eventsFilters($request),
         );
 
-        return view('site.frontend.events.layout', $view_data);
+        return view('site.frontend.events.layout', $viewData);
     }
 }
