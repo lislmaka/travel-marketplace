@@ -16,6 +16,7 @@
 | Что используется | 
 | ------------- | 
 | Composer |
+| Vagrant |
 | Git / GitHub |
 | npm  |
 | PhpStorm|
