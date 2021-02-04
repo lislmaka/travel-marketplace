@@ -16,16 +16,16 @@
 {{--            </div>--}}
         </div>
         <div class="w-100 text-end">
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-secondary">
-                    @lang('В избранное')
-                    <span class="badge bg-light text-muted">1</span>
-                </button>
-                <button type="button" class="btn btn-primary">
-                    @lang('Сравнить')
-                    <span class="badge bg-light text-muted">1</span>
-                </button>
-            </div>
+            @livewire('add-to-favorites')
+            @livewire('add-to-compare')
+
+{{--            <div class="btn-group" role="group" aria-label="Basic example">--}}
+
+{{--                <button type="button" class="btn btn-primary">--}}
+{{--                    @lang('Сравнить')--}}
+{{--                    <span class="badge bg-light text-muted">1</span>--}}
+{{--                </button>--}}
+{{--            </div>--}}
         </div>
     </div>
     <div class="card-body">
