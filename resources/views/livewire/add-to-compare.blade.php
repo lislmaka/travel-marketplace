@@ -1,7 +1,7 @@
 <div>
     <div>
         @if($added)
-            <button type="button" class="btn btn-sm btn-primary mb-1"
+            <button type="button" class="btn btn-sm btn-secondary mb-1"
                     wire:click="addRemoveCompare">
                 @lang('Удалить из сравнения')
                 <div wire:loading>
@@ -9,7 +9,7 @@
                 </div>
             </button>
         @else
-            <button type="button" class="btn btn-sm btn-secondary mb-1"
+            <button type="button" class="btn btn-sm btn-primary mb-1"
                     wire:click="addRemoveCompare">
                 @lang('Добавить в сравнение')
                 <div wire:loading>
