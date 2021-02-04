@@ -9,6 +9,12 @@
             wire:keydown.escape="clearSearch"
             wire:click="searchAll"
         />
+        <span wire:loading.flex class="input-group-text bg-light align-items-center">
+            <div class="spinner-grow spinner-grow-sm text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </span>
+
         <span class="input-group-text bg-light" id="basic-addon2">
             <span class="small">
                 @lang('Всего туров')
