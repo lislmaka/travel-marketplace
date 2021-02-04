@@ -548,10 +548,16 @@ class EventController extends Controller
             ->where('events.active', true)
             ->groupBy('category_id')
             ->orderByRaw('event_categories.name asc');
+        /*
+         * Если выбрана страна
+         */
         if ($request->session()->has('events.events_country') && $request->session()->get('events.events_country') != $this->eventsCountriesDefault) {
             $eventsCategoriesCollection->where('events.country_id',
                 $request->session()->get('events.events_country'));
         }
+        /*
+         * Если выбран город
+         */
         if ($request->session()->has('events.events_city') && $request->session()->get('events.events_city') != $this->eventsCitiesDefault) {
             $eventsCategoriesCollection->where('events.city_id', $request->session()->get('events.events_city'));
         }
@@ -567,9 +573,15 @@ class EventController extends Controller
     private function getEventsCategoriesTotal($request)
     {
         $eventsCategoriesTotal = Event::where('active', true);
+        /*
+         * Если выбрана страна
+         */
         if ($request->session()->get('events.events_country') != $this->eventsCountriesDefault) {
             $eventsCategoriesTotal->where('country_id', $request->session()->get('events.events_country'));
         }
+        /*
+         * Если выбран город
+         */
         if ($request->session()->get('events.events_city') != $this->eventsCitiesDefault) {
             $eventsCategoriesTotal->where('city_id', $request->session()->get('events.events_city'));
         }
@@ -618,13 +630,13 @@ class EventController extends Controller
     {
         $eventsCitiesTotal = Event::where('active', true);
         /*
-         * Если указана страна
+         * Если выбрана страна
          */
         if ($request->session()->get('events.events_country') != $this->eventsCountriesDefault) {
             $eventsCitiesTotal->where('country_id', $request->session()->get('events.events_country'));
         }
         /*
-         * Если указана категория
+         * Если выбрана категория
          */
         if ($request->session()->get('events.events_category') != $this->eventsCategoriesDefault) {
             $event_ids = PivotEventCategory::select('event_id')
@@ -647,11 +659,17 @@ class EventController extends Controller
             ->join('event_countries', 'event_countries.id', '=', 'events.country_id')
             ->groupBy('country_id')
             ->orderByRaw('event_countries.name asc');
+        /*
+         * Если выбрана категория
+         */
         if ($request->session()->get('events.events_category') != $this->eventsCategoriesDefault) {
             $event_ids = PivotEventCategory::select('event_id')
                 ->where('category_id', $request->session()->get('events.events_category'))->get();
             $eventsCountriesCollection->whereIn('events.id', $event_ids);
         }
+        /*
+         * Если выбран город
+         */
         if ($request->session()->get('events.events_city') != $this->eventsCitiesDefault) {
             $eventsCountriesCollection->where('city_id', $request->session()->get('events.events_city'));
         }
@@ -674,6 +692,9 @@ class EventController extends Controller
                 ->where('category_id', $request->session()->get('events.events_category'))->get();
             $eventsCountriesTotal->whereIn('id', $event_ids);
         }
+        /*
+         * Если выбран город
+         */
         if ($request->session()->get('events.events_city') != $this->eventsCitiesDefault) {
             $eventsCountriesTotal->where('city_id', $request->session()->get('events.events_city'));
         }
