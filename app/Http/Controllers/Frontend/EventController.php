@@ -89,9 +89,16 @@ class EventController extends Controller
                 ));
             }
             if ($request->session()->get('events.events_city') != $this->events_cities_default) {
+                $cityObj = EventCity::find($request->session()->get('events.events_city'));
+
                 array_push($breadcrumbs, array(
                     'url' => '',
-                    'title' => EventCity::find($request->session()->get('events.events_city'))->name,
+                    'title' => EventCountry::find($cityObj->country_id)->name,
+                ));
+
+                array_push($breadcrumbs, array(
+                    'url' => '',
+                    'title' => $cityObj->name,
                 ));
             }
             if ($request->session()->get('events.events_category') != $this->events_categories_default) {
