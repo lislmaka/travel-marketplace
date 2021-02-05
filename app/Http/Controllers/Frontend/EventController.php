@@ -289,9 +289,19 @@ class EventController extends Controller
      * @param  Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function eventsClean(Request $request)
+    public function eventsSeenClean(Request $request)
     {
         $request->session()->forget('events.events_seen');
+        return redirect()->back();
+    }
+
+    /**
+     * @param  Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function eventsCompareClean(Request $request)
+    {
+        $request->session()->forget('events.events_compare');
         return redirect()->back();
     }
 

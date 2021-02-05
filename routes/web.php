@@ -47,7 +47,8 @@ Route::post('/events/map_all', [YandexController::class, 'getAll'])->name('yande
 Route::post('/events/map_city', [YandexController::class, 'getCity'])->name('yandex_map.city');
 
 Route::get('/events/default', [EventController::class, 'defaultSettings'])->name('events.events_default');
-Route::get('/events/seen/clean', [EventController::class, 'eventsClean'])->name('events.events_seen_clean');
+Route::get('/events/seen/clean', [EventController::class, 'eventsSeenClean'])->name('events.events_seen_clean');
+Route::get('/events/compare/clean', [EventController::class, 'eventsCompareClean'])->name('events.events_compare_clean');
 Route::get('/events/view/{view}', [EventController::class, 'viewMode'])->name('events.view_mode');
 Route::get('/events/sort/{sort}', [EventController::class, 'sortMode'])->name('events.sort_mode');
 Route::get('/events/category/{id}', [EventController::class, 'showEventsByCategory'])->name('events.events_categories');

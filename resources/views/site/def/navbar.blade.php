@@ -41,15 +41,13 @@
 
             </ul>
 
-            @if(session('events.events_favorites'))
-                <div class="btn-group me-3" role="group" aria-label="Basic example">
-                    <a class="btn btn-primary" href="#" role="button"
-                       data-bs-toggle="modal" data-bs-target="#eventsSeen">
-                        @lang('Просмотрено')
-                        <span class="badge bg-light text-muted">{{ count(session('events.events_seen')) }}</span>
-                    </a>
-                </div>
-            @endif
+            {{-- Btn Compare Begin --}}
+            @livewire('btn-show-favorites')
+            {{-- Btn Compare End --}}
+
+            {{-- Btn Compare Begin --}}
+            @livewire('btn-show-compare')
+            {{-- Btn Compare End --}}
 
             @if(session('events.events_seen'))
                 <div class="btn-group me-3" role="group" aria-label="Basic example">

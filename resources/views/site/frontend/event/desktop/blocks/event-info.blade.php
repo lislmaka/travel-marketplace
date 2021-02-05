@@ -11,21 +11,10 @@
                 <span class="badge bg-secondary">{{ $event_info->country->name }}</span>
                 <span class="badge bg-secondary">{{ $event_info->city->name }}</span>
             </div>
-{{--            <div class="card-text">--}}
-{{--                {!! $event_info->description !!}--}}
-{{--            </div>--}}
         </div>
         <div class="w-100 text-end">
-            @livewire('add-to-favorites')
-            @livewire('add-to-compare')
-
-{{--            <div class="btn-group" role="group" aria-label="Basic example">--}}
-
-{{--                <button type="button" class="btn btn-primary">--}}
-{{--                    @lang('Сравнить')--}}
-{{--                    <span class="badge bg-light text-muted">1</span>--}}
-{{--                </button>--}}
-{{--            </div>--}}
+            @livewire('btn-add-to-favorites')
+            @livewire('btn-add-to-compare', ['event_id' => $event_info->id])
         </div>
     </div>
     <div class="card-body">

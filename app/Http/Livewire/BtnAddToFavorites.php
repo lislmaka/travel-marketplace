@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class AddToFavorites extends Component
+class BtnAddToFavorites extends Component
 {
     public $added = false;
 
@@ -21,6 +21,6 @@ class AddToFavorites extends Component
 
     public function render()
     {
-        return view('livewire.add-to-favorites');
+        return view('livewire.btn-add-to-favorites');
     }
 }

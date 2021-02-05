@@ -43,6 +43,7 @@
     @includeIf('site.def.footer')
     @includeIf('site.def.company')
     @includeIf('site.def.modals.modal_events_seen')
+    @includeIf('site.def.modals.modal_events_compare')
 </div>
 </body>
 
