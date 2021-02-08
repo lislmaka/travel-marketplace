@@ -9,6 +9,8 @@ class BtnAddToCompare extends Component
     public $added = false;
     public $event_id;
 
+    protected $listeners = ['checkStateBtnAddToCompare' => 'checkStateBtnAddToCompare'];
+
     public function addRemoveCompare()
     {
 
@@ -42,15 +44,21 @@ class BtnAddToCompare extends Component
 
     }
 
-    public function mount($event_id)
+    public function checkStateBtnAddToCompare($event_id)
     {
         $this->event_id = $event_id;
+        $this->added = false;
 
         if (session('events.events_compare')) {
             if (in_array($this->event_id, session('events.events_compare'))) {
                 $this->added = true;
             }
         }
+    }
+
+    public function mount($event_id)
+    {
+        $this->checkStateBtnAddToCompare($event_id);
     }
 
     public function render()
