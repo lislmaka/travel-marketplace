@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal fade" id="eventsCompare" tabindex="-1" aria-labelledby="eventsCompareLabel"
      aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
+    <div class="modal-dialog modal-xl modal-fullscreen-xxl-down modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header bg-secondary text-white">
                 <div class="modal-title lead fw-bold" id="eventsCompareLabel">
