@@ -5,7 +5,7 @@
 @endif
 
 @if(!empty($events))
-    <table class="table table-hover">
+    <table class="table">
         <tbody>
         <tr>
             <td class="w-25">
@@ -33,8 +33,12 @@
                 </td>
             @endforeach
         </tr>
+        </tbody>
+    </table>
+    <table class="table table-hover">
+        <tbody>
         <tr>
-            <td class="fw-bold">
+            <td class="fw-bold w-25">
                 @lang('Название тура')
             </td>
             @foreach($events as $key => $event)
