@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1c93efe220cd6a5d96a2d6c2847b044",
+    "content-hash": "949b4fcc9e5452990c08d031d29d17ed",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5181,6 +5181,65 @@
     ],
     "packages-dev": [
         {
+            "name": "amirami/localizator",
+            "version": "v0.4-alpha",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amiranagram/localizator.git",
+                "reference": "3a57d3350100cdc3889000e1595026e4fb107e67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amiranagram/localizator/zipball/3a57d3350100cdc3889000e1595026e4fb107e67",
+                "reference": "3a57d3350100cdc3889000e1595026e4fb107e67",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/filesystem": "^6.0|^8.0",
+                "illuminate/support": "^6.0|^8.0",
+                "php": "^7.2|^7.4",
+                "symfony/finder": "^4.4|^5.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0",
+                "phpunit/phpunit": "^8.5",
+                "vimeo/psalm": "^3.11"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Amirami\\Localizator\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Amirami\\Localizator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amir Rami",
+                    "email": "me@amirrami.com",
+                    "homepage": "https://amirrami.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Localizator is a small tool for Laravel that gives you the ability to extract untranslated strings from project files. It works using the artisan command line and the provided localize command.",
+            "homepage": "https://github.com/amiranagram/localizator",
+            "support": {
+                "issues": "https://github.com/amiranagram/localizator/issues",
+                "source": "https://github.com/amiranagram/localizator/tree/v0.4-alpha"
+            },
+            "time": "2021-01-16T13:53:51+00:00"
+        },
+        {
             "name": "barryvdh/laravel-debugbar",
             "version": "v3.5.2",
             "source": {
@@ -9217,7 +9276,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "amirami/localizator": 15
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

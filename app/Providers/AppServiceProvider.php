@@ -21,7 +21,11 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         if ($this->app->isLocal()) {
+            // IDE Helper
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+
+            // Localizator
+            $this->app->register(\Amirami\Localizator\ServiceProvider::class);
         }
     }
 
