@@ -1,4 +1,4 @@
-@component('frontend.welcome.mobile.parts.bock_header',['header' => 'Преимущества работы с нами'])
+@component('site.components.mobile.bock-header',['header' => 'Преимущества работы с нами'])
     <div class="mt-3 text-muted">
         @lang('У нас много плюсов. Вот некоторые из них')
     </div>

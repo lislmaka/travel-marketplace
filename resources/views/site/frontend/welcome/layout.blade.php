@@ -20,9 +20,9 @@
     @if ($agent->isMobile())
         <div class="d-block d-md-none">
             @includeIf('site.frontend.welcome.mobile.main-banner')
-{{--            @includeIf('site.frontend.welcome.mobile.discount')--}}
-{{--            @includeIf('site.frontend.welcome.mobile.benefits')--}}
-{{--            @includeIf('site.frontend.welcome.mobile.popular-destinations')--}}
+            @includeIf('site.frontend.welcome.mobile.discount')
+            @includeIf('site.frontend.welcome.mobile.benefits')
+            @includeIf('site.frontend.welcome.mobile.popular-destinations')
 {{--            @includeIf('site.frontend.welcome.mobile.popular-variants')--}}
 {{--            @includeIf('site.frontend.welcome.mobile.ideas')--}}
 {{--            @includeIf('site.frontend.welcome.mobile.reviews')--}}

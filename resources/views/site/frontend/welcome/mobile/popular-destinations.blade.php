@@ -1,26 +1,13 @@
-@component('frontend.welcome.mobile.parts.bock_header',['header' => 'Популярные направления'])
+@component('site.components.mobile.bock-header',['header' => 'Популярные направления'])
     <div class="mt-3 text-muted">
         @lang('Узнайте какие направления отдыха пользуются наибольшим спросом')
     </div>
 @endcomponent
 
 <div class="container-fluid">
-    <div class="container-xl">
+
 
         <div id="popular_destinations" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="false">
-{{--            <ol class="carousel-indicators">--}}
-{{--                @foreach($events as $event)--}}
-{{--                    @php($active = '')--}}
-{{--                    @if($loop->first)--}}
-{{--                        @php($active = 'active')--}}
-{{--                    @endif--}}
-{{--                    <li data-bs-target="#popular_destinations"--}}
-{{--                        data-bs-slide-to="{{ $loop->index }}"--}}
-{{--                        class="{{ $active }}">--}}
-{{--                    </li>--}}
-{{--                @endforeach--}}
-
-{{--            </ol>--}}
             <div class="carousel-inner">
                 @foreach($events as $key => $event)
                     @php($active = '')
@@ -99,10 +86,10 @@
                 <span class="visually-hidden">Next</span>
             </a>
         </div>
-    </div>
+
 
     <div class="text-center mt-5">
-        @include('frontend.welcome.desktop.parts.buttons',['btn_1_title' => 'Все направления', 'btn_1_url' => '', 'count' => '1000'])
+        @include('site.components.mobile.button',['btn_1_title' => 'Все направления', 'btn_1_url' => '', 'count' => '1000'])
     </div>
 </div>
 

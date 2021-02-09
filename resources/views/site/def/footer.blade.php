@@ -1,11 +1,11 @@
 <div class="container-fluid bg-dark mt-5">
-    <div class="container-xxl py-3">
+    <div class="container-xxl py-3 g-0">
         <div class="row">
             @php
                 $maxShowPages = 5;
             @endphp
             @for ($columnNumber = 1; $columnNumber <= 3; $columnNumber++)
-                <div class="col-md-4">
+                <div class="col-md-4 g-0">
                     @foreach($footerPageCategories as $pageCategory)
                         @if($pageCategory->column != $columnNumber)
                             @continue

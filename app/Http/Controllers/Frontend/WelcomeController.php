@@ -46,12 +46,13 @@ class WelcomeController extends Controller
 
             'eventsAllCount' => $eventsAllCount,
 
-            'eventsIdeas' => $eventsIdeas,
-            'eventsIdeasCount' => $eventsIdeasCount,
-            'eventsPopularDestinations' => $eventsPopularDestinations,
-            'eventsPopularDestinationsCount' => $eventsPopularDestinationsCount,
-            'eventsPopularVariants' => $eventsPopularVariants,
-            'eventsPopularVariantsCount' => $eventsPopularVariantsCount,
+//            'eventsIdeas' => $eventsIdeas,
+//            'eventsIdeasCount' => $eventsIdeasCount,
+//            'eventsPopularDestinations' => $eventsPopularDestinations,
+//            'eventsPopularDestinationsCount' => $eventsPopularDestinationsCount,
+//            'eventsPopularVariants' => $eventsPopularVariants,
+//            'eventsPopularVariantsCount' => $eventsPopularVariantsCount,
+            'events' => $eventsIdeas,
 
             'reviews' => $reviews,
             'countOfReviews' => $countOfReviews,
