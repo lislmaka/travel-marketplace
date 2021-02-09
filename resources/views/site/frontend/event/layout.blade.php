@@ -2,7 +2,7 @@
 
 @section('sidebar')
     @parent
-    @includeIf('site.frontend.event.desktop.blocks.navbar')
+    @includeIf('site.frontend.event.desktop.navbar')
 @endsection
 
 @section('content')
@@ -12,24 +12,24 @@
             <div class="d-none d-md-block">
                 <div class="row">
                     <div class="col-md-12">
-                        @includeIf('site.frontend.event.desktop.blocks.photos-header')
+                        @includeIf('site.frontend.event.desktop.photos-header')
                     </div>
                 </div>
                 @includeIf('site.def.breadcrumb')
                 <div class="row">
                     <div class="col-md-9">
-                        @includeIf('site.frontend.event.desktop.blocks.event-info')
-                        @includeIf('site.frontend.event.desktop.blocks.order')
-                        @includeIf('site.frontend.event.desktop.blocks.author')
-                        @includeIf('site.frontend.event.desktop.blocks.photos')
-                        @includeIf('site.frontend.event.desktop.blocks.city')
-                        @includeIf('site.frontend.event.desktop.blocks.similar-author')
-                        @includeIf('site.frontend.event.desktop.blocks.similar-city')
-                        @includeIf('site.frontend.event.desktop.blocks.reviews')
+                        @includeIf('site.frontend.event.desktop.event-info')
+                        @includeIf('site.frontend.event.desktop.order')
+                        @includeIf('site.frontend.event.desktop.author')
+                        @includeIf('site.frontend.event.desktop.photos')
+                        @includeIf('site.frontend.event.desktop.city')
+                        @includeIf('site.frontend.event.desktop.similar-author')
+                        @includeIf('site.frontend.event.desktop.similar-city')
+                        @includeIf('site.frontend.event.desktop.reviews')
                     </div>
                     <div class="col-md-3">
                         <div class="sticky-top sticky-offset">
-                            @includeIf('site.frontend.event.desktop.blocks.price')
+                            @includeIf('site.frontend.event.desktop.price')
                         </div>
                     </div>
                 </div>

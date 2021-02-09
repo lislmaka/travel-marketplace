@@ -1,4 +1,4 @@
-@component('site.frontend.event.desktop.parts.bock_header',['header' => 'Отзывы', 'id' => 'reviews'])
+@component('site.frontend.event.desktop.parts.bock-header',['header' => 'Отзывы', 'id' => 'reviews'])
     <div class="mt-3 text-muted">
         @lang('Отзывы клиентов об этом туре')
     </div>

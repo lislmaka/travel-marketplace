@@ -1,4 +1,4 @@
-@component('site.frontend.event.desktop.parts.bock_header',['header' => 'Другие туры автора', 'id' => 'similar_author'])
+@component('site.frontend.event.desktop.parts.bock-header',['header' => 'Другие туры автора', 'id' => 'similar_author'])
     <div class="mt-3 text-muted">
         @lang('Возможно вас заинтересуют другие туры от этого автора')
     </div>

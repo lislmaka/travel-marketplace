@@ -1,4 +1,4 @@
-@component('site.frontend.event.desktop.parts.bock_header',['header' => 'Заказ тура', 'id' => 'order'])
+@component('site.frontend.event.desktop.parts.bock-header',['header' => 'Заказ тура', 'id' => 'order'])
     <div class="mt-3 text-muted">
         @lang('Выберите необходимые опции для заказа тура')
     </div>

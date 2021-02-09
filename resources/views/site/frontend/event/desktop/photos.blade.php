@@ -1,4 +1,4 @@
-@component('site.frontend.event.desktop.parts.bock_header',['header' => 'Фотографии', 'id' => 'photos'])
+@component('site.frontend.event.desktop.parts.bock-header',['header' => 'Фотографии', 'id' => 'photos'])
     <div class="mt-3 text-muted">
         @lang('Фотографии сделанные нашими клиентами')
     </div>

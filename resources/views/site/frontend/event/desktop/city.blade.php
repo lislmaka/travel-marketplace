@@ -1,4 +1,4 @@
-@component('site.frontend.event.desktop.parts.bock_header',['header' => 'Информация о '.$event_info->city->name, 'id' => 'city'])
+@component('site.frontend.event.desktop.parts.bock-header',['header' => 'Информация о '.$event_info->city->name, 'id' => 'city'])
     <div class="mt-3 text-muted">
         @lang('Общая информация о ')
         {{ $event_info->city->name }}

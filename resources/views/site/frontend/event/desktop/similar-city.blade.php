@@ -1,4 +1,4 @@
-@component('site.frontend.event.desktop.parts.bock_header',['header' => 'Похожие туры', 'id' => 'similar_city'])
+@component('site.frontend.event.desktop.parts.bock-header',['header' => 'Похожие туры', 'id' => 'similar_city'])
     <div class="mt-3 text-muted">
         @lang('Возможно вас заинтересуют похожие туры')
     </div>
