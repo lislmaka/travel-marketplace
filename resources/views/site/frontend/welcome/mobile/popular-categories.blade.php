@@ -30,7 +30,7 @@
 
 
     <div class="text-center mt-5">
-        @include('site.components.mobile.button',['btn_1_title' => 'Все туры', 'btn_1_url' => '', 'count' => '1000'])
+        @include('site.components.mobile.button',['btn_1_title' => 'Все туры', 'btn_1_url' => route('events.index'), 'count' => $eventsAllCount])
     </div>
 </div>
 
