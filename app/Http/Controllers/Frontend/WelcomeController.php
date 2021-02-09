@@ -26,12 +26,14 @@ class WelcomeController extends Controller
     {
         $eventsAllCount = Event::where('active', true)->count();
 
-        $eventsIdeas = Event::where('active', true)->inRandomOrder()->limit(4)->get();
-        $eventsIdeasCount = rand(100, 10000); //$eventsIdeas->count();
-        $eventsPopularDestinations = Event::where('active', true)->inRandomOrder()->limit(4)->get();
-        $eventsPopularDestinationsCount = rand(100, 10000); //$eventsPopularDestinations->count();
-        $eventsPopularVariants = Event::where('active', true)->inRandomOrder()->limit(4)->get();
-        $eventsPopularVariantsCount = rand(100, 10000); //$eventsPopularVariants->count();
+        $eventsPopularCities = Event::where('active', true)->inRandomOrder()->limit(4)->get();
+        $eventsPopularCitiesCount = rand(100, 10000); //$eventsIdeas->count();
+
+        $eventsPopularCountries = Event::where('active', true)->inRandomOrder()->limit(4)->get();
+        $eventsPopularCountriesCount = rand(100, 10000); //$eventsPopularDestinations->count();
+
+        $eventsPopularCategories = Event::where('active', true)->inRandomOrder()->limit(4)->get();
+        $eventsPopularCategoriesCount = rand(100, 10000); //$eventsPopularVariants->count();
 
         $reviews = Review::where('active', true)
             ->inRandomOrder()
@@ -46,13 +48,13 @@ class WelcomeController extends Controller
 
             'eventsAllCount' => $eventsAllCount,
 
-//            'eventsIdeas' => $eventsIdeas,
-//            'eventsIdeasCount' => $eventsIdeasCount,
-//            'eventsPopularDestinations' => $eventsPopularDestinations,
-//            'eventsPopularDestinationsCount' => $eventsPopularDestinationsCount,
-//            'eventsPopularVariants' => $eventsPopularVariants,
-//            'eventsPopularVariantsCount' => $eventsPopularVariantsCount,
-            'events' => $eventsIdeas,
+            'eventsPopularCities' => $eventsPopularCities,
+            'eventsPopularCitiesCount' => $eventsPopularCitiesCount,
+            'eventsPopularCountries' => $eventsPopularCountries,
+            'eventsPopularCountriesCount' => $eventsPopularCountriesCount,
+            'eventsPopularCategories' => $eventsPopularCategories,
+            'eventsPopularCategoriesCount' => $eventsPopularCategoriesCount,
+            //'events' => $eventsPopularCities,
 
             'reviews' => $reviews,
             'countOfReviews' => $countOfReviews,
