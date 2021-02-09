@@ -122,41 +122,41 @@ class EventController extends Controller
     private function eventsViews($request)
     {
         return array(
-            'view_1' =>
-                array(
-                    'title' => 'Расширенный вариант',
-                    'url' => 'view_1',
-                    'symbol' => '',
-                    'active' => $request->session()->get('events.events_view_mode') == 'view_1' ? 'active' : '',
-                ),
+//            'view_1' =>
+//                array(
+//                    'title' => 'Расширенный вариант',
+//                    'url' => 'view_1',
+//                    'symbol' => '',
+//                    'active' => $request->session()->get('events.events_view_mode') == 'view_1' ? 'active' : '',
+//                ),
             'view_2' =>
                 array(
                     'title' => 'Краткий вариант',
                     'url' => 'view_2',
-                    'symbol' => '<span class="badge bg-success">best</span>',
+                    'symbol' => '',
                     'active' => $request->session()->get('events.events_view_mode') == 'view_2' ? 'active' : '',
                 ),
-            'view_3' =>
-                array(
-                    'title' => 'Плитка 2 колонки',
-                    'url' => 'view_3',
-                    'symbol' => '',
-                    'active' => $request->session()->get('events.events_view_mode') == 'view_3' ? 'active' : '',
-                ),
+//            'view_3' =>
+//                array(
+//                    'title' => 'Плитка 2 колонки',
+//                    'url' => 'view_3',
+//                    'symbol' => '',
+//                    'active' => $request->session()->get('events.events_view_mode') == 'view_3' ? 'active' : '',
+//                ),
             'view_4' =>
                 array(
                     'title' => 'Плитка 3 колонки',
                     'url' => 'view_4',
-                    'symbol' => '<span class="badge bg-success">best</span>',
+                    'symbol' => '<span class="badge bg-success">Удобно</span>',
                     'active' => $request->session()->get('events.events_view_mode') == 'view_4' ? 'active' : '',
                 ),
-            'view_5' =>
-                array(
-                    'title' => 'Плитка 4 колонки',
-                    'url' => 'view_5',
-                    'symbol' => '',
-                    'active' => $request->session()->get('events.events_view_mode') == 'view_5' ? 'active' : '',
-                ),
+//            'view_5' =>
+//                array(
+//                    'title' => 'Плитка 4 колонки',
+//                    'url' => 'view_5',
+//                    'symbol' => '',
+//                    'active' => $request->session()->get('events.events_view_mode') == 'view_5' ? 'active' : '',
+//                ),
         );
     }
 

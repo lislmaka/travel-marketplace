@@ -2,6 +2,8 @@ require('./bootstrap');
 
 require('alpinejs');
 
+require('./lightbox2.js');
+
 // Vuejs
 //require('./vuejs.js');
 

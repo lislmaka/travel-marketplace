@@ -10,6 +10,10 @@
         @if($loop->index > 7)
             @break
         @endif
-    <div class="col"><img src="{{ asset('images/demo/demo1/'.$demo_image->getBaseName()) }}" class="img-thumbnail" alt="..."></div>
+        <div class="col">
+            <a href="{{ asset('images/demo/demo1/'.$demo_image->getBaseName()) }}" data-lightbox="roadtrip">
+                <img src="{{ asset('images/demo/demo1/'.$demo_image->getBaseName()) }}" class="img-thumbnail" alt="...">
+            </a>
+        </div>
     @endforeach
 </div>
