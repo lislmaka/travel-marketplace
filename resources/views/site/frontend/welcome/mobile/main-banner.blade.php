@@ -1,4 +1,4 @@
-<div class="py-5 bg-light main-banner-bg-desktop">
+<div class="py-5 bg-light main-banner-bg-mobile">
     <div class="container-xl">
         <h1 class="display-1 fw-bold text-white text-center">
             @lang('Впечатления разные, сервис – один!')

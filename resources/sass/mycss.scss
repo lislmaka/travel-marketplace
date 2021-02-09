@@ -43,9 +43,17 @@
     font-weight: bold;
 }
 
-/* Main banner bg */
+/* Main banner bg desktop*/
 .main-banner-bg-desktop {
     background-image: url("../images/bg/main_banner_bg_desktop.jpg");
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* Main banner bg mobile */
+.main-banner-bg-mobile {
+    background-image: url("../images/bg/main_banner_bg_mobile.jpg");
 
     background-position: center center;
     background-repeat: no-repeat;
