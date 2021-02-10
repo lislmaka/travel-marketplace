@@ -28,6 +28,12 @@ class SearchEventsByCountry extends Component
         $this->reset('querySearch');
     }
 
+    public function clearOtherParams($key)
+    {
+        session(['events.'.$key => 'all']);
+        $this->reset('otherParamsSelected');
+    }
+
     private function getEventsCountriesTotal($request)
     {
         $eventsCountriesTotal = Event::where('active', true);
@@ -80,25 +86,28 @@ class SearchEventsByCountry extends Component
         return $eventsCountriesCollection->get();
     }
 
-    private function checkIfOtherParamsSelected($request)
+    private function checkIfOtherParamsSelected()
     {
-        if ($request->session()->get('events.events_city') != $this->eventsCitiesDefault) {
+        if (session('events.events_city') != $this->eventsCitiesDefault) {
             array_push($this->otherParamsSelected, array(
+                'key' => 'events_city',
                 'message' => 'Выбран город',
-                'info' => EventCity::where('id', $request->session()->get('events.events_city'))->first()
+                'info' => EventCity::where('id', session('events.events_city'))->first()->toArray()
             ));
         }
-        if ($request->session()->get('events.events_category') != $this->eventsCategoriesDefault) {
+        if (session('events.events_category') != $this->eventsCategoriesDefault) {
             array_push($this->otherParamsSelected, array(
+                'key' => 'events_category',
                 'message' => 'Выбрана категория',
-                'info' => EventCategory::where('id', $request->session()->get('events.events_category'))->first()
+                'info' => EventCategory::where('id', session('events.events_category'))->first()->toArray()
             ));
         }
+        //dd($this->otherParamsSelected);
     }
 
     public function render(Request $request)
     {
-        $this->checkIfOtherParamsSelected($request);
+        $this->checkIfOtherParamsSelected();
 
         $eventsCountriesCollection = $this->getCountOfEventsByCountries($request);
 

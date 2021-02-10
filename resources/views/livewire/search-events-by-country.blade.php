@@ -21,9 +21,17 @@
 
     @if(!empty($otherParamsSelected))
         @foreach($otherParamsSelected as $param)
-            <div class="alert alert-warning" role="alert">
-                {{ $param['message'] }}
-                <span class="badge bg-secondary">{{ $param['info']->name }}</span>
+            <div class="alert alert-warning d-flex justify-content-between align-items-center" role="alert">
+                <div>
+                    {{ $param['message'] }}
+                    <span class="badge bg-secondary">{{ $param['info']['name'] }}</span>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-light"
+                    wire:click="clearOtherParams('{{ $param['key'] }}')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </div>
         @endforeach
     @endif
