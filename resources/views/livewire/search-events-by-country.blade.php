@@ -76,4 +76,11 @@
             @endif
         @endforeach
     </ul>
+
+    @if($eventsCountriesCollection->isEmpty())
+        <div class="alert alert-warning mt-3" role="alert">
+            @lang('Не найдено стран по вашему запросу')
+            <span class="badge bg-secondary">{{ $querySearch }}</span>
+        </div>
+    @endif
 </div>
