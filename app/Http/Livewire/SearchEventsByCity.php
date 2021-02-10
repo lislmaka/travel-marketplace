@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Event;
+use App\Models\EventCategory;
+use App\Models\EventCountry;
 use App\Models\PivotEventCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +15,8 @@ class SearchEventsByCity extends Component
     public $eventsCitiesCollection = [];
     public $eventsCitiesTotal = 0;
     public $eventsCitiesSelected = null;
+
+    public $otherParamsSelected = [];
 
     public $querySearch = null;
 
@@ -76,8 +80,26 @@ class SearchEventsByCity extends Component
         return $eventsCitiesTotal->count();
     }
 
+    private function checkIfOtherParamsSelected($request)
+    {
+        if ($request->session()->get('events.events_country') != $this->eventsCountriesDefault) {
+            array_push($this->otherParamsSelected, array(
+                'message' => 'Выбрана страна',
+                'info' => EventCountry::where('id', $request->session()->get('events.events_country'))->first()
+            ));
+        }
+        if ($request->session()->get('events.events_category') != $this->eventsCategoriesDefault) {
+            array_push($this->otherParamsSelected, array(
+                'message' => 'Выбрана категория',
+                'info' => EventCategory::where('id', $request->session()->get('events.events_category'))->first()
+            ));
+        }
+    }
+
     public function render(Request $request)
     {
+        $this->checkIfOtherParamsSelected($request);
+
         $eventsCitiesCollection = $this->getCountOfEventsByCities($request);
         // Cities
         $this->eventsCitiesCollection = $eventsCitiesCollection;
