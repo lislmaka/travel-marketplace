@@ -14,62 +14,7 @@
             </div>
             <div class="modal-body">
                 {{----}}
-
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex align-items-center justify-content-between">
-                        <div class="fw-bold">
-                            @lang('Город')
-                        </div>
-                        <div class="fw-bold">
-                            @lang('Кол-во туров')
-                        </div>
-                    </li>
-                    {{-- --}}
-                    @if($events_cities_selected == null)
-                        <a href="{{ route('events.events_cities', ['id' => 'all']) }}"
-                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active">
-                            @lang('Все города')
-                            <span class="badge bg-light text-muted rounded-pill">
-                                {{ number_format($events_cities_total, 0, '', ',') }}
-                            </span>
-                        </a>
-                    @else
-                        <a href="{{ route('events.events_cities', ['id' => 'all']) }}"
-                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            @lang('Все города')
-                            <span class="badge bg-primary rounded-pill">
-                                {{ number_format($events_cities_total, 0, '', ',') }}
-                            </span>
-                        </a>
-                    @endif
-                    {{-- --}}
-                    @foreach($events_cities_collection as $events_city)
-                        @if($events_cities_selected && $events_city->city_id == $events_cities_selected->city_id)
-                            <a href="{{ route('events.events_cities', ['id' => $events_city->city_id]) }}"
-                               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active">
-                                <div>
-                                    {{ $events_city->city->name }}
-                                    <div class="small text-white">{{ $events_city->country->name }}</div>
-                                </div>
-                                <span
-                                    class="badge bg-light text-muted rounded-pill">{{ number_format($events_city->count, 0, '', ',') }}
-                                </span>
-                            </a>
-                        @else
-                            <a href="{{ route('events.events_cities', ['id' => $events_city->city_id]) }}"
-                               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                <div>
-                                    {{ $events_city->city->name }}
-                                    <div class="small text-muted">{{ $events_city->country->name }}</div>
-                                </div>
-                                <span
-                                    class="badge bg-primary rounded-pill">{{ number_format($events_city->count, 0, '', ',') }}
-                                </span>
-                            </a>
-                        @endif
-
-                    @endforeach
-                </ul>
+                @livewire('search-events-by-city')
                 {{----}}
             </div>
             <div class="modal-footer">
