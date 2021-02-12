@@ -456,7 +456,7 @@ class EventController extends Controller
     public function show(Request $request, $event)
     {
 
-        if (Event::where('id', $event)->doesntExist()) {
+        if (Event::where('id', $event)->where('active', true)->doesntExist()) {
             abort(404);
         }
 

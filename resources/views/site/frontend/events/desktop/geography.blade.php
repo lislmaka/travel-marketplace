@@ -33,6 +33,7 @@
         {{-- Begin поиск по городам --}}
         <div class="card-body pb-1 fw-bold" data-bs-toggle="modal" data-bs-target="#eventsCities">
             @lang('По городам')
+            @livewire('btn-show-help',['helpId' => '1'])
             <div class="small text-muted fw-normal">Выберите город, который вас интересует</div>
         </div>
         <ul class="list-group list-group-flush">
