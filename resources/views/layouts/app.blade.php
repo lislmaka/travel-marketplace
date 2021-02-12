@@ -44,6 +44,7 @@
     @includeIf('site.def.company')
     @includeIf('site.def.modals.modal_events_seen')
     @includeIf('site.def.modals.modal_events_compare')
+    @includeIf('site.def.modals.modal_help')
 </div>
 </body>
 

@@ -11,27 +11,30 @@ use Livewire\Component;
 class SearchEvents extends Component
 {
     public $query = null;
-    public $events_countries;
-    public $events_cities;
-    public $countOfAllEvents = 0;
-    public $showAll = null;
-
-    public function mount()
-    {
-        $this->clearSearch();
-    }
+    public $eventsCountries;
+    public $eventsCities;
 
     public function clearSearch()
     {
-        $this->query = null;
-        $this->showAll = null;
-        $this->events_countries = [];
-        $this->events_cities = [];
+        $this->reset(['query', 'eventsCountries', 'eventsCities']);
     }
 
-    public function searchAll()
+    public function goToCity($city_id)
     {
-        $this->showAll = 'all';
+        session(['events.events_country' => 'all']);
+        session(['events.events_category' => 'all']);
+        session(['events.events_city' => $city_id]);
+
+        return redirect()->route('events.index');
+    }
+
+    public function goToCountry($country_id)
+    {
+        session(['events.events_city' => 'all']);
+        session(['events.events_category' => 'all']);
+        session(['events.events_country' => $country_id]);
+
+        return redirect()->route('events.index');
     }
 
     private function countEventsByCounties($country = null)
@@ -63,27 +66,14 @@ class SearchEvents extends Component
         return $events->get();
     }
 
-    private function countOfAllEvents()
-    {
-        $events = Event::where('events.active', true);
-        return $events->count();
-    }
-
     public function render()
     {
-        $this->countOfAllEvents = $this->countOfAllEvents();
-
         if ($this->query) {
-            $this->showAll = null;
 
-            $this->events_countries = $this->countEventsByCounties($this->query);
-            $this->events_cities = $this->countEventsByCities($this->query);
+            $this->eventsCountries = $this->countEventsByCounties($this->query);
+            $this->eventsCities = $this->countEventsByCities($this->query);
         }
 
-        if ($this->showAll) {
-            $this->events_countries = $this->countEventsByCounties();
-            $this->events_cities = $this->countEventsByCities();
-        }
         return view('livewire.search-events');
     }
 }

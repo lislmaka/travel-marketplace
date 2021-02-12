@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="w-100 text-end">
-            @livewire('btn-add-to-favorites')
+{{--            @livewire('btn-add-to-favorites')--}}
             @livewire('btn-add-to-compare', ['event_id' => $event_info->id])
         </div>
     </div>

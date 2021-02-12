@@ -19,76 +19,59 @@
         @endif
     </div>
 
-    @if(!empty($otherParamsSelected))
-        @foreach($otherParamsSelected as $param)
-            <div class="alert alert-warning d-flex justify-content-between align-items-center" role="alert">
-                <div>
-                    {{ $param['message'] }}
-                    <span class="badge bg-secondary">{{ $param['info']['name'] }}</span>
-                </div>
-                <div>
-                    <button type="button" class="btn btn-light"
-                    wire:click="clearOtherParams('{{ $param['key'] }}')">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-        @endforeach
-    @endif
-
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex align-items-center justify-content-between">
-            <div class="fw-bold">
-                @lang('Страна')
-            </div>
-            <div class="fw-bold">
-                @lang('Кол-во туров')
-            </div>
-        </li>
-        {{-- --}}
-        @if($eventsCountriesSelected == null)
-            <a href="{{ route('events.events_countries', ['id' => 'all']) }}"
-               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active">
-                @lang('Все страны')
-                <span class="badge bg-light text-muted rounded-pill">
-                    {{ number_format($eventsCountriesTotal, 0, '', ',') }}
-                </span>
-            </a>
-        @else
-            <a href="{{ route('events.events_countries', ['id' => 'all']) }}"
-               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                @lang('Все страны')
-                <span class="badge bg-primary rounded-pill">
-                    {{ number_format($eventsCountriesTotal, 0, '', ',') }}
-                </span>
-            </a>
-        @endif
-        {{-- --}}
-        @foreach($eventsCountriesCollection as $eventsCountry)
-            @if($eventsCountriesSelected && $eventsCountry->country_id == $eventsCountriesSelected->country_id)
-                <a href="{{ route('events.events_countries', ['id' => $eventsCountry->country_id]) }}"
-                   class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active">
-                    {{ $eventsCountry->country->name }}
-                    <span class="badge bg-light text-muted rounded-pill">
-                        {{ number_format($eventsCountry->count, 0, '', ',') }}
-                    </span>
-                </a>
-            @else
-                <a href="{{ route('events.events_countries', ['id' => $eventsCountry->country_id]) }}"
-                   class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                    {{ $eventsCountry->country->name }}
-                    <span class="badge bg-primary rounded-pill">
-                        {{ number_format($eventsCountry->count, 0, '', ',') }}
-                    </span>
-                </a>
-            @endif
-        @endforeach
-    </ul>
-
     @if($eventsCountriesCollection->isEmpty())
         <div class="alert alert-warning mt-3" role="alert">
             @lang('Не найдено стран по вашему запросу')
             <span class="badge bg-secondary">{{ $querySearch }}</span>
         </div>
+    @else
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+                <div class="fw-bold">
+                    @lang('Страна')
+                </div>
+                <div class="fw-bold">
+                    @lang('Кол-во туров')
+                </div>
+            </li>
+            {{-- --}}
+            @if($eventsCountriesSelected == null)
+                <a href="{{ route('events.events_countries', ['id' => 'all']) }}"
+                   class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active">
+                    @lang('Все страны')
+                    <span class="badge bg-light text-muted rounded-pill">
+                    {{ number_format($eventsCountriesTotal, 0, '', ',') }}
+                </span>
+                </a>
+            @else
+                <a href="{{ route('events.events_countries', ['id' => 'all']) }}"
+                   class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    @lang('Все страны')
+                    <span class="badge bg-primary rounded-pill">
+                    {{ number_format($eventsCountriesTotal, 0, '', ',') }}
+                </span>
+                </a>
+            @endif
+            {{-- --}}
+            @foreach($eventsCountriesCollection as $eventsCountry)
+                @if($eventsCountriesSelected && $eventsCountry->country_id == $eventsCountriesSelected->country_id)
+                    <a href="{{ route('events.events_countries', ['id' => $eventsCountry->country_id]) }}"
+                       class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active">
+                        {{ $eventsCountry->country->name }}
+                        <span class="badge bg-light text-muted rounded-pill">
+                        {{ number_format($eventsCountry->count, 0, '', ',') }}
+                    </span>
+                    </a>
+                @else
+                    <a href="{{ route('events.events_countries', ['id' => $eventsCountry->country_id]) }}"
+                       class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        {{ $eventsCountry->country->name }}
+                        <span class="badge bg-primary rounded-pill">
+                        {{ number_format($eventsCountry->count, 0, '', ',') }}
+                    </span>
+                    </a>
+                @endif
+            @endforeach
+        </ul>
     @endif
 </div>

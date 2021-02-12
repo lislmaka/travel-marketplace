@@ -11,7 +11,12 @@
         <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-secondary">
             <div class="fw-bold lead">
                 @lang('Основные данные')
+                @php
+                    $help = 'Укажите основные данные по заказу';
+                @endphp
+                @livewire('btn-show-help',['helpId' => $help])
             </div>
+
             <div class="fw-bold lead">
 
             </div>
@@ -53,6 +58,10 @@
         <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-secondary">
             <div class="fw-bold lead">
                 @lang('Опция')
+                @php
+                    $help = 'Выберите интересующие вас опции. Каждая опция по заказу считается из расчета на одного человека если не указаны другие параметры';
+                @endphp
+                @livewire('btn-show-help',['helpId' => $help])
             </div>
             <div class="fw-bold lead">
                 @lang('Цена')

@@ -26,7 +26,7 @@ class EventController extends Controller
     /**
      * @var string
      */
-    private $eventsViewModeDefault = 'view_4';
+    private $eventsViewModeDefault = 'view-4';
     /**
      * @var string
      */
@@ -129,12 +129,12 @@ class EventController extends Controller
 //                    'symbol' => '',
 //                    'active' => $request->session()->get('events.events_view_mode') == 'view_1' ? 'active' : '',
 //                ),
-            'view_2' =>
+            'view-2' =>
                 array(
                     'title' => 'Краткий вариант',
-                    'url' => 'view_2',
+                    'url' => 'view-2',
                     'symbol' => '',
-                    'active' => $request->session()->get('events.events_view_mode') == 'view_2' ? 'active' : '',
+                    'active' => $request->session()->get('events.events_view_mode') == 'view-2' ? 'active' : '',
                 ),
 //            'view_3' =>
 //                array(
@@ -143,12 +143,12 @@ class EventController extends Controller
 //                    'symbol' => '',
 //                    'active' => $request->session()->get('events.events_view_mode') == 'view_3' ? 'active' : '',
 //                ),
-            'view_4' =>
+            'view-4' =>
                 array(
                     'title' => 'Плитка 3 колонки',
-                    'url' => 'view_4',
+                    'url' => 'view-4',
                     'symbol' => '<span class="badge bg-success">Удобно</span>',
-                    'active' => $request->session()->get('events.events_view_mode') == 'view_4' ? 'active' : '',
+                    'active' => $request->session()->get('events.events_view_mode') == 'view-4' ? 'active' : '',
                 ),
 //            'view_5' =>
 //                array(
@@ -254,7 +254,12 @@ class EventController extends Controller
      */
     public function viewMode(Request $request, $view)
     {
-        $request->session()->put('events.events_view_mode', $view);
+        if(in_array($view, $this->eventsViews($request))) {
+            $request->session()->put('events.events_view_mode', $view);
+        } else {
+            $request->session()->put('events.events_view_mode', $this->eventsViewModeDefault);
+        }
+
 
         return redirect()->route('events.index');
     }

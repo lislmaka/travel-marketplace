@@ -7,7 +7,8 @@
 <div class="card border-light my-border-left-info">
     <div class="row g-0">
         <div class="col-md-2 p-3">
-            <img src="{{ $demo_faces[rand(0, count($demo_faces) - 1)] }}" alt="..." class="img-thumbnail rounded-circle">
+            <img src="{{ $demo_faces[rand(0, count($demo_faces) - 1)] }}" alt="..."
+                 class="img-thumbnail rounded-circle">
             <div class="text-center">
                 @if(rand(1, 100) >= 50)
                     <span class="badge bg-primary">@lang('Агентство')</span>
@@ -48,17 +49,30 @@
                     <span class="fw-bold">
                         @lang('E-Mail')
                     </span>
-                    <span class="badge bg-light text-muted rounded-pill">
-                        {{ $event_info->user->email }}
-                    </span>
+                    <div>
+                        <span class="badge bg-light text-muted rounded-pill">
+                            {{ $event_info->user->email }}
+                        </span>
+                        @php
+                            $help = 'Напишите автору тура если у вас есть вопросы';
+                        @endphp
+                        @livewire('btn-show-help',['helpId' => $help])
+                    </div>
+
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <span class="fw-bold">
                         @lang('Телефон')
                     </span>
-                    <span class="badge bg-light text-muted rounded-pill">
-                        {{ $event_info->user->phone }}
-                    </span>
+                    <div>
+                        <span class="badge bg-light text-muted rounded-pill">
+                            {{ $event_info->user->phone }}
+                        </span>
+                        @php
+                            $help = 'Вы можете связаться с автором тура по указанному номеру телефона';
+                        @endphp
+                        @livewire('btn-show-help',['helpId' => $help])
+                    </div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <span class="fw-bold">
@@ -80,7 +94,9 @@
         </div>
     </div>
     <div class="card-footer d-flex justify-content-end">
-        <button type="button" class="btn btn-sm btn-outline-primary ms-3">
+
+        <button type="button" class="btn btn-sm btn-outline-primary ms-3" data-bs-toggle="modal"
+                data-bs-target="#helpModal">
             @lang('Перейти на страницу автора')
         </button>
         <button type="button" class="btn btn-sm btn-outline-primary ms-3">

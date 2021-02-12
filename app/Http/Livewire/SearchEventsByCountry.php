@@ -28,12 +28,6 @@ class SearchEventsByCountry extends Component
         $this->reset('querySearch');
     }
 
-    public function clearOtherParams($key)
-    {
-        session(['events.'.$key => 'all']);
-        $this->reset('otherParamsSelected');
-    }
-
     private function getEventsCountriesTotal($request)
     {
         $eventsCountriesTotal = Event::where('active', true);

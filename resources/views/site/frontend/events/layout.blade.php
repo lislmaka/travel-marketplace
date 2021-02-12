@@ -2,12 +2,12 @@
 
 @section('sidebar')
     @parent
-    @includeIf('site.frontend.events.desktop.blocks.navbar')
+    @includeIf('site.frontend.events.desktop.navbar')
 @endsection
 @section('content')
     {{-- Begin Desktop --}}
     @if ($agent->isDesktop())
-        @includeIf('site.frontend.events.desktop.blocks.search-horizontal')
+        @includeIf('site.frontend.events.desktop.search-horizontal')
 
         <div class="container-xxl">
             <div class="d-none d-md-block">
@@ -15,21 +15,21 @@
 
                 <div class="row">
                     <div class="col-md-9">
-                        @includeIf('site.frontend.events.desktop.blocks.map')
-                        @includeIf('site.frontend.events.desktop.blocks.catalog_'.$events_view_mode)
+                        @includeIf('site.frontend.events.desktop.map')
+                        @includeIf('site.frontend.events.desktop.catalog-'.$events_view_mode)
                     </div>
                     <div class="col-md-3">
-                        {{--                    @includeIf('site.frontend.events.desktop.blocks.search')--}}
-                        @includeIf('site.frontend.events.desktop.blocks.geography')
-{{--                        @includeIf('site.frontend.events.desktop.blocks.thematic')--}}
-                        @includeIf('site.frontend.events.desktop.blocks.categories')
-                        @includeIf('site.frontend.events.desktop.blocks.default')
+                        {{--                    @includeIf('site.frontend.events.desktop.search')--}}
+                        @includeIf('site.frontend.events.desktop.geography')
+{{--                        @includeIf('site.frontend.events.desktop.thematic')--}}
+                        @includeIf('site.frontend.events.desktop.categories')
+                        @includeIf('site.frontend.events.desktop.default')
                     </div>
                 </div>
             </div>
         </div>
-        @includeIf('site.frontend.events.desktop.blocks.modal_countries')
-        @includeIf('site.frontend.events.desktop.blocks.modal_cities')
+        @includeIf('site.frontend.events.desktop.modal-countries')
+        @includeIf('site.frontend.events.desktop.modal-cities')
     @endif
     {{-- End Desktop --}}
 

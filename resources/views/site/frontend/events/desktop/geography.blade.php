@@ -1,12 +1,14 @@
-<form method="POST" action="#">
-    @csrf
-    <div class="card border-light mb-3">
+<div class="card border-light mb-3">
         <div class="card-header fw-bold lead">
             @lang('География туров')
         </div>
         {{-- Begin поиск по странам --}}
         <div class="card-body pb-1 fw-bold" data-bs-toggle="modal" data-bs-target="#eventsCountries">
             @lang('По странам')
+            @php
+                $help = 'Выберите страну которая вас интересует. Выбор страны повлияет на отображение городов доступных для выбора. Вы всегда можете сбросить фильтр чтобы выбрать другую страну или город';
+            @endphp
+            @livewire('btn-show-help',['helpId' => $help])
             <div class="small text-muted fw-normal">Выберите страну, которая вас интересует</div>
         </div>
         <ul class="list-group list-group-flush">
@@ -62,5 +64,5 @@
         </ul>
         {{-- End поиск по городам --}}
     </div>
-</form>
+
 
