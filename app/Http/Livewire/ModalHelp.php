@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\ServiceHelp;
 use Livewire\Component;
 
 class ModalHelp extends Component
@@ -9,14 +10,13 @@ class ModalHelp extends Component
     protected $listeners = ['showHelpModal' => 'showHelpModal'];
 
     public $message = '';
+    public $title = '';
 
-    public function mount()
-    {
-        $this->reset('message');
-    }
     public function showHelpModal($helpId)
     {
-        $this->message = $helpId;
+        $helpCollection = ServiceHelp::inRandomOrder()->first();
+        $this->message = $helpCollection->help_ru;
+        $this->title = $helpCollection->title;
     }
 
     public function render()

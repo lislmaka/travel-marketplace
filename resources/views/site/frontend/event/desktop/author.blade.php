@@ -53,10 +53,7 @@
                         <span class="badge bg-light text-muted rounded-pill">
                             {{ $event_info->user->email }}
                         </span>
-                        @php
-                            $help = 'Напишите автору тура если у вас есть вопросы';
-                        @endphp
-                        @livewire('btn-show-help',['helpId' => $help])
+                        @livewire('btn-show-help',['helpId' => '1'])
                     </div>
 
                 </li>
@@ -68,10 +65,7 @@
                         <span class="badge bg-light text-muted rounded-pill">
                             {{ $event_info->user->phone }}
                         </span>
-                        @php
-                            $help = 'Вы можете связаться с автором тура по указанному номеру телефона';
-                        @endphp
-                        @livewire('btn-show-help',['helpId' => $help])
+                        @livewire('btn-show-help',['helpId' => '1'])
                     </div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
