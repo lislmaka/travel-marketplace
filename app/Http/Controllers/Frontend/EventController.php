@@ -254,7 +254,7 @@ class EventController extends Controller
      */
     public function viewMode(Request $request, $view)
     {
-        if(in_array($view, $this->eventsViews($request))) {
+        if(array_key_exists($view, $this->eventsViews($request))) {
             $request->session()->put('events.events_view_mode', $view);
         } else {
             $request->session()->put('events.events_view_mode', $this->eventsViewModeDefault);
