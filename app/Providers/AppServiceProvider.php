@@ -26,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
 
             // Localizator
             $this->app->register(\Amirami\Localizator\ServiceProvider::class);
+
+            // Telescope
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            $this->app->register(TelescopeServiceProvider::class);
         }
     }
 
