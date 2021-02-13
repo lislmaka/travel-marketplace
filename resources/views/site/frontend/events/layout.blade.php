@@ -20,10 +20,11 @@
                     </div>
                     <div class="col-md-3">
                         {{--                    @includeIf('site.frontend.events.desktop.search')--}}
+                        @includeIf('site.frontend.events.desktop.default')
                         @includeIf('site.frontend.events.desktop.geography')
 {{--                        @includeIf('site.frontend.events.desktop.thematic')--}}
                         @includeIf('site.frontend.events.desktop.categories')
-                        @includeIf('site.frontend.events.desktop.default')
+
                     </div>
                 </div>
             </div>
