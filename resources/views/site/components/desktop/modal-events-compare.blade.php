@@ -30,6 +30,7 @@
         </tr>
         </thead>
         <tbody>
+
         <tr>
             <td class="fw-bold w-25">
                 @lang('Название тура')
@@ -41,6 +42,32 @@
                        title="{{ $event->name }}">
                         {{ Str::limit($event->name, 40) }}
                     </a>
+                </td>
+            @endforeach
+        </tr>
+
+        <tr>
+            <td class="fw-bold">
+                @lang('Страна')
+            </td>
+            @foreach($events as $key => $event)
+                <td>
+                    <span class="badge rounded-pill bg-light text-muted">
+                        {{ $event->country->name }}
+                    </span>
+                </td>
+            @endforeach
+        </tr>
+
+        <tr>
+            <td class="fw-bold">
+                @lang('Город')
+            </td>
+            @foreach($events as $key => $event)
+                <td>
+                    <span class="badge rounded-pill bg-light text-muted">
+                        {{ $event->city->name }}
+                    </span>
                 </td>
             @endforeach
         </tr>
@@ -75,10 +102,10 @@
             </td>
             @foreach($events as $key => $event)
                 <td>
-                <span class="badge rounded-pill bg-light text-muted">
-                    {{ number_format($event->price, 0, '', '.') }}
-                    <i class="fas fa-ruble-sign"></i>
-                </span>
+                    <span class="badge rounded-pill bg-light text-muted">
+                        {{ number_format($event->price, 0, '', '.') }}
+                        <i class="fas fa-ruble-sign"></i>
+                    </span>
                 </td>
             @endforeach
         </tr>
