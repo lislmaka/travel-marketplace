@@ -75,7 +75,8 @@
     </ul>
 </div>
 
-<div class="card border-light">
+<div class="card border-light"
+     v-if="event_options_price.length > 0">
     <ul class="list-group list-group-flush">
         <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-secondary">
             <div class="fw-bold lead">
@@ -90,8 +91,7 @@
         {{-- Begin optin with price --}}
         <label class="list-group-item d-flex justify-content-between align-items-start"
                v-for="(event_option_price, index) in event_options_price"
-               v-bind:class="[event_option_price.active ? 'list-group-item-primary' : '']"
-               v-if="event_option_price.price">
+               v-bind:class="[event_option_price.active ? 'list-group-item-primary' : '']">
             <div>
                 <div class="fw-bold">
                     <input class="form-check-input me-1" type="checkbox" v-bind:value="index"
