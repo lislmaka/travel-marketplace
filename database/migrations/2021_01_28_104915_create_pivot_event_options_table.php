@@ -17,7 +17,8 @@ class CreatePivotEventOptionsTable extends Migration
             $table->id();
             $table->bigInteger('option_id')->unsigned();
             $table->bigInteger('event_id')->unsigned();
-            $table->integer('price');
+            $table->integer('price')->nullable();
+            $table->boolean('free')->nullable();
             $table->timestamps();
 
             $table->foreign('option_id')->references('id')->on('event_options')->onDelete('cascade');

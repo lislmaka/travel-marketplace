@@ -19,7 +19,7 @@ class EventOptionSeeder extends Seeder
         $options = array();
 
         while (count($options) < config('site.count_of_options')) {
-            $option = $faker->unique()->jobTitle;
+            $option = $faker->unique()->catchPhrase;
             array_push($options, $option);
         }
 

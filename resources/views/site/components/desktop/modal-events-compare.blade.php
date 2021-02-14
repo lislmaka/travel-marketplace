@@ -60,14 +60,14 @@
                 <td>
                     @if($event->old_price)
                         <div class="lead">
-                        <span class="badge bg-success">
+                        <span class="badge rounded-pill bg-success">
                             @php($discount = round(100 - ($event->price * 100) / $event->old_price))
                             @lang('Скидка') {{ $discount }} %
                         </span>
                         </div>
                     @else
                         <div class="lead">
-                        <span class="badge bg-light text-muted">
+                        <span class="badge rounded-pill bg-light text-muted">
                             @lang('Нет')
                         </span>
                         </div>
@@ -82,7 +82,7 @@
             </td>
             @foreach($events as $key => $event)
                 <td>
-                <span class="badge bg-light text-muted">
+                <span class="badge rounded-pill bg-light text-muted">
                     {{ number_format($event->price, 0, '', '.') }}
                     <i class="fas fa-ruble-sign"></i>
                 </span>
@@ -97,7 +97,7 @@
             @foreach($events as $key => $event)
                 <td>
                     @if($event->old_price)
-                        <span class="badge bg-light text-muted">
+                        <span class="badge rounded-pill bg-light text-muted">
                         <del>
                             {{ number_format($event->old_price, 0, '', '.') }}
                             <i class="fas fa-ruble-sign"></i>
@@ -115,7 +115,7 @@
             </td>
             @foreach($events as $key => $event)
                 <td>
-                <span class="badge bg-light text-muted">
+                <span class="badge rounded-pill bg-light text-muted">
                 @if($event->rating > 3)
                         @for($i=1; $i<=$event->rating; $i++)
                             <i class="fas fa-star text-success"></i>
@@ -138,7 +138,7 @@
             </td>
             @foreach($events as $key => $event)
                 <td>
-                <span class="badge bg-light text-muted">
+                <span class="badge rounded-pill bg-light text-muted">
                     @php($rating = rand(1, 5))
                     @if($rating > 3)
                         @for($i=1; $i<=$rating; $i++)
@@ -162,7 +162,7 @@
             </td>
             @foreach($events as $key => $event)
                 <td>
-                <span class="badge bg-light text-muted">
+                <span class="badge rounded-pill bg-light text-muted">
                     {{ number_format(rand(100, 1000), 0, '', '.') }}
                 </span>
                 </td>
@@ -176,7 +176,7 @@
             @foreach($events as $event)
                 <td>
                     @foreach($event->categories as $category)
-                        <span class="badge bg-light text-muted">
+                        <span class="badge rounded-pill bg-light text-muted">
                         {{ $category->category->name }}
                     </span>
                     @endforeach
@@ -212,10 +212,16 @@
                     @endforeach
                     @if($flag)
                         <td>
-                        <span class="badge bg-light text-muted">
-                            {{ number_format($price, 0, '', '.') }}
-                            <i class="fas fa-ruble-sign"></i>
-                        </span>
+                            @if($price)
+                                <span class="badge rounded-pill bg-light text-muted">
+                                    {{ number_format($price, 0, '', '.') }}
+                                    <i class="fas fa-ruble-sign"></i>
+                                </span>
+                            @else
+                                <span class="badge rounded-pill bg-success">
+                                    @lang('Бесплатно')
+                                </span>
+                            @endif
                         </td>
                     @else
                         <td>

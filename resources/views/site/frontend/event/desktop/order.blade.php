@@ -4,7 +4,8 @@
     </div>
 @endcomponent
 
-<input type="hidden" id="event_options" value="{{ $event_options_json }}">
+<input type="hidden" id="event_options_price" value="{{ $event_options_price }}">
+<input type="hidden" id="event_options_free" value="{{ $event_options_free }}">
 
 <div class="card border-light mb-3">
     <ul class="list-group list-group-flush">
@@ -43,10 +44,34 @@
             </div>
             <div class="row d-flex justify-content-end align-items-center">
                 <div class="col-md-12">
-                    <input type="date" value="{{ now()->format('Y-m-d') }}" min="{{ now()->format('Y-m-d') }}" max="{{ now()->addDays(30)->format('Y-m-d') }}">
+                    <input type="date" value="{{ now()->format('Y-m-d') }}" min="{{ now()->format('Y-m-d') }}"
+                           max="{{ now()->addDays(30)->format('Y-m-d') }}">
                 </div>
             </div>
         </li>
+        {{-- Begin optin with free --}}
+        <label class="list-group-item d-flex justify-content-between align-items-start"
+               v-for="(event_option_free, index) in event_options_free"
+               v-bind:class="[event_option_free.active ? 'list-group-item-primary' : '']"
+               v-if="event_option_free.free">
+            <div>
+                <div class="fw-bold">
+                    <input class="form-check-input me-1" type="checkbox" v-bind:value="index"
+                           v-model="event_options_checked_free">
+                    @{{ event_option_free.name }}
+                </div>
+                <div class="small text-muted">
+                    @{{ event_option_free.description | truncate(100) }}
+                </div>
+            </div>
+
+            <div v-if="event_option_free.free">
+                <span class="badge bg-success rounded-pill">
+                    @lang('Бесплатно')
+                </span>
+            </div>
+        </label>
+        {{-- End optin with free --}}
     </ul>
 </div>
 
@@ -62,23 +87,30 @@
             </div>
         </li>
 
+        {{-- Begin optin with price --}}
         <label class="list-group-item d-flex justify-content-between align-items-start"
-               v-for="(event_option, index) in event_options"
-               v-bind:class="[event_option.active ? 'list-group-item-primary' : '']">
+               v-for="(event_option_price, index) in event_options_price"
+               v-bind:class="[event_option_price.active ? 'list-group-item-primary' : '']"
+               v-if="event_option_price.price">
             <div>
                 <div class="fw-bold">
-                    <input class="form-check-input me-1" type="checkbox" v-bind:value="index" v-model="event_options_checked">
-                    @{{ event_option.name }}
+                    <input class="form-check-input me-1" type="checkbox" v-bind:value="index"
+                           v-model="event_options_checked_price">
+                    @{{ event_option_price.name }}
                 </div>
                 <div class="small text-muted">
-                    @{{ event_option.description | truncate(100) }}
+                    @{{ event_option_price.description | truncate(100) }}
                 </div>
             </div>
-            <span class="badge bg-primary rounded-pill" v-bind:class="[event_option.active ? 'bg-primary' : 'bg-light text-muted']">
-                @{{ formatPrice(event_option.price) }}
-                <i class="fas fa-ruble-sign"></i>
-            </span>
-        </label>
 
+            <div v-if="event_option_price.price">
+                <span class="badge rounded-pill"
+                      v-bind:class="[event_option_price.active ? 'bg-primary' : 'bg-light text-muted']">
+                    @{{ formatPrice(event_option_price.price) }}
+                    <i class="fas fa-ruble-sign"></i>
+                </span>
+            </div>
+        </label>
+        {{-- End optin with price --}}
     </ul>
 </div>

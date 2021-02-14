@@ -23,46 +23,69 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 let price = $('#price').val();
 let old_price = $('#old_price').val();
-let event_options = $('#event_options').val();
+let event_options_price = $('#event_options_price').val();
+let event_options_free = $('#event_options_free').val();
 
 const app = new Vue({
     el: '#app',
     data: {
-        event_options: JSON.parse(event_options),
-        event_options_checked: [],
+        event_options_price: event_options_price ? JSON.parse(event_options_price) : [],
+        event_options_free: event_options_free ? JSON.parse(event_options_free) : [],
+        event_options_checked_price: [],
+        event_options_checked_free: [],
         price: price,
         old_price: old_price,
         quantity: 1
     },
     computed: {
         summa: function () {
-            let total_summs = 0;
-            let quantity = this.quantity;
-            let event_options = this.event_options;
+            let total_sums = 0;
+            // let quantity = this.quantity;
+            // let event_options_price = this.event_options_price;
+            // let event_options_free = this.event_options_free;
+            // let event_options_checked = this.event_options_checked;
 
             //
-            this.event_options.forEach(function (item, i, arr) {
-                event_options[i].active = false;
+            this.event_options_price.forEach(function (item, i, arr) {
+                arr[i].active = false;
+            });
+            //
+            this.event_options_free.forEach(function (item, i, arr) {
+                arr[i].active = false;
             });
 
-            if (this.event_options_checked) {
-                this.event_options_checked.forEach(function (item, i, arr) {
-                    total_summs += event_options[item].price * quantity;
-                    event_options[item].active = true;
-                });
+            if (this.event_options_checked_price) {
+                this.event_options_checked_price.forEach(function (item, i, arr) {
+                    if (this.event_options_price.length > 0 && this.event_options_price[item].price) {
+                        total_sums += this.event_options_price[item].price * this.quantity;
+                        this.event_options_price[item].active = true;
+                    }
+                }, this);
             }
-            return this.quantity * this.price + total_summs;
+
+            if (this.event_options_checked_free) {
+                this.event_options_checked_free.forEach(function (item, i, arr) {
+                    if (this.event_options_free.length > 0 && this.event_options_free[item].free) {
+                        this.event_options_free[item].active = true;
+                    }
+                }, this);
+            }
+
+            return this.quantity * this.price + total_sums;
         },
         summa_old: function () {
-            let total_summs = 0;
-            let quantity = this.quantity;
-            let event_options = this.event_options;
-            if (this.event_options_checked) {
-                this.event_options_checked.forEach(function (item, i, arr) {
-                    total_summs += event_options[item].price * quantity;
-                });
+            let total_sums = 0;
+            // let quantity = this.quantity;
+            // let event_options_price = this.event_options_price;
+
+            if (this.event_options_checked_price) {
+                this.event_options_checked_price.forEach(function (item, i, arr) {
+                    if (this.event_options_price.length > 0 && this.event_options_price[item].price) {
+                        total_sums += this.event_options_price[item].price * this.quantity;
+                    }
+                }, this);
             }
-            return this.quantity * this.old_price + total_summs;
+            return this.quantity * this.old_price + total_sums;
         },
     },
     methods: {

@@ -27,11 +27,15 @@ class PivotEventOptionSeeder extends Seeder
             {
                 shuffle($array_of_options);
 
+                $price  =  rand(1000, 10000);
+                $free = $price > 5000 ? false : true;
+
                 $inst = new PivotEventOption();
 
                 $inst->option_id = array_pop($array_of_options);
                 $inst->event_id = $count_of_events;
-                $inst->price = rand(1000, 10000);
+                $inst->price = $price > 5000 ? $price : null;
+                $inst->free = $free;
 
                 $inst->save();
             }

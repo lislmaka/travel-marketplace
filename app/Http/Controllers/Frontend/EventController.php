@@ -166,7 +166,7 @@ class EventController extends Controller
      */
     private function eventsSorts($request)
     {
-         return array(
+        return array(
             'sort_1' =>
                 array(
                     'title' => 'по убыванию цены',
@@ -254,7 +254,7 @@ class EventController extends Controller
      */
     public function viewMode(Request $request, $view)
     {
-        if(array_key_exists($view, $this->eventsViews($request))) {
+        if (array_key_exists($view, $this->eventsViews($request))) {
             $request->session()->put('events.events_view_mode', $view);
         } else {
             $request->session()->put('events.events_view_mode', $this->eventsViewModeDefault);
@@ -436,10 +436,11 @@ class EventController extends Controller
      */
     private function setEventsSeen($request, $event)
     {
-        if($request->session()->has('events.events_seen')) {
+        if ($request->session()->has('events.events_seen')) {
             if (!in_array($event, $request->session()->get('events.events_seen'))) {
-                if(count($request->session()->get('events.events_seen')) >= 4) {
-                    $request->session()->put('events.events_seen', array_slice($request->session()->get('events.events_seen'), 0, 3));
+                if (count($request->session()->get('events.events_seen')) >= 4) {
+                    $request->session()->put('events.events_seen',
+                        array_slice($request->session()->get('events.events_seen'), 0, 3));
                 }
                 $request->session()->push('events.events_seen', $event);
             }
@@ -475,12 +476,22 @@ class EventController extends Controller
         $similarCity = Event::where('active', true)->limit(4)->inRandomOrder()->get();
         $reviews = Review::where('active', true)->limit(4)->inRandomOrder()->get();
 
+        $eventOptionsPrice = $eventOptions->filter(function ($value, $key) {
+            return $value->price;
+        })->values();
+        $eventOptionsFree = $eventOptions->filter(function ($value, $key) {
+            return $value->free;
+        })->values();
+        //dd($eventOptionsJsonFree);
+
         $viewData = array(
             'description' => $eventInfo->short_description,
             'title' => $eventInfo->name,
             'breadcrumbs' => $this->breadcrumbs($request, $eventInfo),
             'event_info' => $eventInfo,
-            'event_options' => $eventOptions,
+            //'event_options' => $eventOptions,
+            'event_options_price' => $eventOptionsPrice->toJson(),
+            'event_options_free' => $eventOptionsFree->toJson(),
             'event_options_json' => $eventOptions->toJson(),
             'similar_author' => $similarAuthor,
             'similar_city' => $similarCity,
