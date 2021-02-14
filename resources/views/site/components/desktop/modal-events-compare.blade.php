@@ -5,37 +5,30 @@
 @endif
 
 @if(!empty($events))
-    <table class="table">
-        <tbody>
-        <tr>
-            <td class="w-25">
-
-            </td>
-            @foreach($events as $event)
-                <td>
-                    <div class="text-center">
-                        <button type="button" class="btn btn-sm btn-outline-primary"
-                                wire:click="deleteEventFromCompare({{ $event->id }})">
-                            @lang('Удалить')
-                        </button>
-                    </div>
-                </td>
-            @endforeach
-        </tr>
-
+    <table class="table table-hover">
+        <thead>
         <tr>
             <td class="w-25">
 
             </td>
             @foreach($events as $key => $event)
                 <td>
-                    <img src="{{ asset('images/demo/demo1/'.$event->img) }}" class="card-img-top" alt="...">
+                    <div class="card shadow-sm">
+                        <img src="{{ asset('images/demo/demo1/'.$event->img) }}" class="card-img-top" alt="...">
+                        <div class="card-img-overlay">
+                            <div class="position-absolute top-0 end-0 p-3">
+                                <button type="button" class="btn btn-sm btn-light"
+                                        wire:click="deleteEventFromCompare({{ $event->id }})">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                 </td>
             @endforeach
         </tr>
-        </tbody>
-    </table>
-    <table class="table table-hover">
+        </thead>
         <tbody>
         <tr>
             <td class="fw-bold w-25">
