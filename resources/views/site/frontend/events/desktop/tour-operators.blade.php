@@ -10,7 +10,7 @@
                 <a href="#"
                    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                     <div class="d-flex justify-content-start align-items-center">
-                        <img src="{{ $demo_faces[rand(1, count($demo_faces) - 1)] }}" class="img-thumbnail rounded-circle me-3" alt="..." width="{{ config('site.img-size-2') }}">
+                        <img src="{{ $demo_faces[rand(1, count($demo_faces) - 1)] }}" class="img-thumbnail rounded-circle me-3" alt="..." width="{{ config('site.img-size-1') }}">
                         {{ $tour_operator->user->name }}
                     </div>
 
