@@ -558,6 +558,36 @@ class EventController extends Controller
         return $events->paginate($this->countPaginate($request));
     }
 
+    private function getCountOfEventsByTourOperators($request)
+    {
+        $eventsTourOperatorsCollection = Event::select(DB::raw('count(user_id) as user_count, user_id'))
+            ->where('active', true)
+            ->groupBy('user_id')
+            ->orderBy('user_count', 'DESC');
+        /*
+         * Если выбрана категория
+         */
+        if ($request->session()->get('events.events_category') != $this->eventsCategoriesDefault) {
+            $event_ids = PivotEventCategory::select('event_id')
+                ->where('category_id', $request->session()->get('events.events_category'))->get();
+            $eventsTourOperatorsCollection->whereIn('id', $event_ids);
+        }
+        /*
+         * Если выбрана страна
+         */
+        if ($request->session()->get('events.events_country') != $this->eventsCountriesDefault) {
+            $eventsTourOperatorsCollection->where('country_id', $request->session()->get('events.events_country'));
+        }
+
+        /*
+         * Если выбран город
+         */
+        if ($request->session()->get('events.events_city') != $this->eventsCitiesDefault) {
+            $eventsTourOperatorsCollection->where('city_id', $request->session()->get('events.events_city'));
+        }
+
+        return $eventsTourOperatorsCollection->get();
+    }
 
     /**
      * Кол-во туров по категориям
@@ -738,6 +768,7 @@ class EventController extends Controller
         $this->checkSessionValues($request);
         $this->countPaginate($request);
 
+        //$events = $this->getEvents($request);
         $eventsCategoriesCollection = $this->getCountOfEventsByCategories($request);
         $eventsCitiesCollection = $this->getCountOfEventsByCities($request);
         $eventsCountriesCollection = $this->getCountOfEventsByCountries($request);
@@ -751,6 +782,9 @@ class EventController extends Controller
 
             // Catalog
             'events' => $this->getEvents($request),
+
+            // tour operator
+            'tour_operators' => $this->getCountOfEventsByTourOperators($request),
 
             // Cities
             'events_cities_collection' => $eventsCitiesCollection,

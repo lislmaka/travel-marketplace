@@ -24,6 +24,7 @@
                         @includeIf('site.frontend.events.desktop.geography')
 {{--                        @includeIf('site.frontend.events.desktop.thematic')--}}
                         @includeIf('site.frontend.events.desktop.categories')
+                        @includeIf('site.frontend.events.desktop.tour-operators')
 
                     </div>
                 </div>

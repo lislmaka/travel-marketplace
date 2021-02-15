@@ -22,6 +22,9 @@
                                     <i class="fas fa-times"></i>
                                 </button>
                             </div>
+                            <div class="position-absolute top-0 start-0 p-2">
+                                <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle" alt="..." width="{{ config('site.img-size-2') }}">
+                            </div>
                         </div>
                     </div>
 
