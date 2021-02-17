@@ -9,10 +9,9 @@ use Illuminate\Support\Str;
 
 class EventCategorySeeder extends Seeder
 {
+
     /**
-     * Run the database seeds.
-     *
-     * @return void
+     * @param  Faker  $faker
      */
     public function run(Faker $faker)
     {

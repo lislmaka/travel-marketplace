@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ReviewSeeder::class);
         $this->call(EventOptionSeeder::class);
         $this->call(PivotEventOptionSeeder::class);
+        $this->call(RoadmapSeeder::class);
     }
 }

@@ -1,9 +1,9 @@
 /******/ (() => { // webpackBootstrap
-/*!************************************!*\
-  !*** ./resources/js/yandex_map.js ***!
-  \************************************/
+/*!****************************************!*\
+  !*** ./resources/js/yandex_roadmap.js ***!
+  \****************************************/
 ymaps.ready().done(function (ym) {
-  var myMap = new ym.Map('YMapsID', {
+  var myMap = new ym.Map('YMapsIDRoadmap', {
     center: [55.751574, 37.573856],
     zoom: 5,
     controls: ['zoomControl', 'fullscreenControl']
@@ -13,11 +13,11 @@ ymaps.ready().done(function (ym) {
 
   myMap.behaviors.disable('scrollZoom');
   var event_id = '';
-  var url = '/events/map_all';
+  var url = '/events/map_roadmap';
 
   if ($('#event_id').val()) {
     event_id = $('#event_id').val();
-    url = '/events/map_city';
+    url = '/events/map_roadmap';
   }
 
   var params = {
@@ -43,7 +43,29 @@ ymaps.ready().done(function (ym) {
     } else {
       // Если объект один то центрируем по его координатам
       myMap.setCenter(json.features[0].geometry.coordinates);
-    }
+    } // Polyline
+
+
+    var polyLineCoordinates = [];
+    json.features.forEach(function (item, index) {
+      polyLineCoordinates.push(item.geometry.coordinates);
+    });
+    console.log(polyLineCoordinates);
+    var myPolyline = new ym.Polyline(polyLineCoordinates, {// Описываем свойства геообъекта.
+      // Содержимое балуна.
+      // balloonContent: "Ломаная линия"
+    }, {
+      // Задаем опции геообъекта.
+      // Отключаем кнопку закрытия балуна.
+      balloonCloseButton: false,
+      // Цвет линии.
+      strokeColor: "#000000",
+      // Ширина линии.
+      strokeWidth: 4,
+      // Коэффициент прозрачности.
+      strokeOpacity: 0.5
+    });
+    myMap.geoObjects.add(myPolyline); //
 
     myMap.geoObjects.add(geoObjects.clusterize({
       groupByCoordinates: groupByCoordinates,

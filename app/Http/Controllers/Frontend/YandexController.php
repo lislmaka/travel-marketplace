@@ -5,10 +5,51 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\PivotEventCategory;
+use App\Models\Roadmap;
 use Illuminate\Http\Request;
 
 class YandexController extends Controller
 {
+
+    public function getRoadmap(Request $request)
+    {
+
+        $roadmaps = Roadmap::where('event_id', $request->input('event_id'));
+        $roadmaps = $roadmaps->get();
+
+        $map_info = array(
+            'type' => 'FeatureCollection',
+            'features' => array(),
+        );
+
+        foreach ($roadmaps as $roadmap) {
+            $coordinates_array = json_decode($roadmap->coordinates, true);
+
+            $map_info['features'][] = array(
+                'type' => 'Feature',
+                'geometry' => array(
+                    'type' => 'Point',
+                    'coordinates' => array(
+                        $coordinates_array['latitude'],
+                        $coordinates_array['longitude']
+                    ),
+                ),
+                'properties' => array(
+                    'balloonContentHeader' => $roadmap->title,
+                    'balloonContentBody' => $roadmap->description,
+                    'iconContent' => $roadmap->section
+                ),
+                'options' => array(
+                    'preset' => 'islands#blueIcon',
+                ),
+            );
+        }
+
+
+        $json_string = json_encode($map_info);
+        echo $json_string;
+    }
+
     public function getCity(Request $request)
     {
 

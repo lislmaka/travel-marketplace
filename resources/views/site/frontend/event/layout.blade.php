@@ -16,11 +16,23 @@
                     </div>
                 </div>
                 @includeIf('site.def.breadcrumb')
+
                 <div class="row">
                     <div class="col-md-9">
                         @includeIf('site.frontend.event.desktop.event-info')
-                        @includeIf('site.frontend.event.desktop.order')
+                        @includeIf('site.frontend.event.desktop.roadmap-description')
                         @includeIf('site.frontend.event.desktop.author')
+                    </div>
+                    <div class="col-md-3">
+                        <div class="sticky-top sticky-offset mb-3">
+                            @includeIf('site.frontend.event.desktop.roadmap-map')
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-9">
+                        @includeIf('site.frontend.event.desktop.order')
                         @includeIf('site.frontend.event.desktop.photos')
                         @includeIf('site.frontend.event.desktop.city')
                         @includeIf('site.frontend.event.desktop.similar-author')
@@ -33,7 +45,6 @@
                         </div>
                     </div>
                 </div>
-
 
             </div>
         </div>
@@ -61,6 +72,7 @@
 @push('scripts')
     <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript" defer></script>
     <script src="{{ asset(mix('js/yandex_map.js')) }}" defer></script>
+    <script src="{{ asset(mix('js/yandex_roadmap.js')) }}" defer></script>
     <script src="{{ asset(mix('js/vuejs.js')) }}" defer></script>
     @livewireStyles
     @livewireScripts

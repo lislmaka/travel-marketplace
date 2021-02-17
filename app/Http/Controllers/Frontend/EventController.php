@@ -10,6 +10,7 @@ use App\Models\EventCountry;
 use App\Models\PivotEventCategory;
 use App\Models\PivotEventOption;
 use App\Models\Review;
+use App\Models\Roadmap;
 use App\Traits\DemoData;
 use Faker\Generator as Faker;
 use Illuminate\Http\Request;
@@ -468,6 +469,8 @@ class EventController extends Controller
         /*
          *
          */
+        $roadmaps = Roadmap::where('event_id', $event)->orderBy('section', 'ASC')->get();
+
         $eventOptions = PivotEventOption::where('event_id', $event)
             ->join('event_options', 'event_options.id', '=', 'pivot_event_options.option_id');
         $eventOptions = $eventOptions->get();
@@ -496,6 +499,8 @@ class EventController extends Controller
             'similar_author' => $similarAuthor,
             'similar_city' => $similarCity,
             'reviews' => $reviews,
+            //
+            'roadmaps' => $roadmaps,
             'demo_images' => DemoData::DemoImages(),
             'demo_faces' => DemoData::DemoFaces()
         );

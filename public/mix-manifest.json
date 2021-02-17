@@ -1,6 +1,7 @@
 {
-    "/js/app.js": "/js/app.js?id=a149b0e08c143e385d04",
-    "/js/yandex_map.js": "/js/yandex_map.js?id=905d50c00780b3ed0aae",
-    "/js/vuejs.js": "/js/vuejs.js?id=91ef6a18ac1011178907",
-    "/css/app.css": "/css/app.css?id=2f0598f2c7f7a266c6f2"
+    "/js/app.js": "/js/app.js",
+    "/js/yandex_map.js": "/js/yandex_map.js",
+    "/js/yandex_roadmap.js": "/js/yandex_roadmap.js",
+    "/js/vuejs.js": "/js/vuejs.js",
+    "/css/app.css": "/css/app.css"
 }

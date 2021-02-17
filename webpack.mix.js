@@ -20,6 +20,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js');
 mix.sass('resources/sass/app.scss', 'public/css');
 mix.js('resources/js/yandex_map.js', 'public/js');
+mix.js('resources/js/yandex_roadmap.js', 'public/js');
 mix.js('resources/js/vuejs.js', 'public/js').vue();
 
 mix.copyDirectory('resources/images', 'public/images');
