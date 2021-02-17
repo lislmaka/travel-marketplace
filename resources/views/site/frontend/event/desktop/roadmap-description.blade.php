@@ -23,8 +23,24 @@
             </button>
         </h2>
         <div id="collapse{{ $roadmap->section }}" class="accordion-collapse collapse {{ $show }}" aria-labelledby="heading{{ $roadmap->section }}" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
+            <div class="accordion-body bg-white">
                 {!! $roadmap->description !!}
+
+                <div class="row row-cols-md-6 g-3 mt-3">
+                    @php(shuffle($demo_images))
+                    @foreach($demo_images as $demo_image)
+                        @php($randCountOfImages = rand(3, 6))
+                        @if($loop->index > $randCountOfImages)
+                            @break
+                        @endif
+                        <div class="col">
+                            <a href="{{ asset('images/demo/demo1/'.$demo_image->getBaseName()) }}" data-lightbox="roadmap_{{ $roadmap->section }}">
+                                <img src="{{ asset('images/demo/demo1/'.$demo_image->getBaseName()) }}" class="img-thumbnail" alt="...">
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+
             </div>
         </div>
     </div>
