@@ -18,9 +18,9 @@ class PivotEventOptionSeeder extends Seeder
 
         while(--$count_of_events)
         {
-            // Рандомное значение колва категорий для каждого event
-            $count_of_options = rand(1, 5);
-            // Кол-во доступных категорий
+            // Рандомное значение колва опций для каждого event
+            $count_of_options = rand(5, 10);
+            // Кол-во доступных опций
             $array_of_options = range(1,config('site.count_of_options'));
 
             while($count_of_options--)
