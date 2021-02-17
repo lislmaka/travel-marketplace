@@ -6,6 +6,8 @@
     <div class="modal-header bg-secondary text-white">
         <div class="modal-title lead fw-bold d-flex justify-content-start align-items-center" id="eventsCompareLabel">
             @lang('Сравнение туров')
+            @php($countCompare = session('events.events_compare') ? count(session('events.events_compare')) : 0)
+            <span class="badge bg-light text-muted ms-3">{{ $countCompare }}</span>
             <div wire:loading.flex>
                 <span class="badge bg-light text-muted ms-3">
                     <span class="spinner-grow spinner-grow-sm text-primary" role="status" aria-hidden="true"></span>

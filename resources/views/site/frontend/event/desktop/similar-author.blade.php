@@ -4,7 +4,7 @@
     </div>
 @endcomponent
 
-<div class="row row-cols-4 g-1">
+<div class="row row-cols-3 g-3">
     @include('site.components.desktop.bock-events-vertically', ['events' => $similar_author])
 </div>
 

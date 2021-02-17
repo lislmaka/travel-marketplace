@@ -27,7 +27,7 @@
         <div class="container-xl">
 
             <div class="row row-cols-md-4 g-3">
-                @include('site.components.desktop.bock-events-vertically', ['events' => $events])
+                @include('site.components.desktop.bock-events-vertically-mainpage', ['events' => $events])
             </div>
 
             <div class="text-center mt-5">

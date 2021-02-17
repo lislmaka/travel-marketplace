@@ -52,7 +52,6 @@ ymaps.ready()
             json.features.forEach(function (item, index) {
                 polyLineCoordinates.push(item.geometry.coordinates);
             });
-            console.log(polyLineCoordinates);
 
             let myPolyline = new ym.Polyline(polyLineCoordinates, {
                 // Описываем свойства геообъекта.

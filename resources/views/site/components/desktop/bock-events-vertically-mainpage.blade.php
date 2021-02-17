@@ -20,10 +20,6 @@
                         </a>
                     </span>
                 </div>
-                <div class="position-absolute bottom-50 end-0 p-3">
-                    @livewire('btn-add-to-compare', ['event_id' => $event->id, 'btnType' => 'catalog'])
-                </div>
-
 
                 <div class="position-absolute top-0 start-0 p-3">
                     <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle" alt="..." width="{{ config('site.img-size-2') }}">

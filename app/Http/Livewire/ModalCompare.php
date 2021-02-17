@@ -36,7 +36,7 @@ class ModalCompare extends Component
         if (session('events.events_compare')) {
 
             $this->events = Event::where('active', true)->whereIn('id',
-                session('events.events_compare'))->limit(5)->get();
+                session('events.events_compare'))->limit(4)->get();
             $this->eventsOptions = EventOption::where('active', true)->get();
 
             //

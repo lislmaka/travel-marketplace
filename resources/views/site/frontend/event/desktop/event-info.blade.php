@@ -14,7 +14,7 @@
         </div>
         <div class="w-100 text-end">
 {{--            @livewire('btn-add-to-favorites')--}}
-            @livewire('btn-add-to-compare', ['event_id' => $event_info->id])
+            @livewire('btn-add-to-compare', ['event_id' => $event_info->id, 'btnType' => 'event'])
         </div>
     </div>
     <div class="card-body">
