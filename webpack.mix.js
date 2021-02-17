@@ -23,6 +23,8 @@ mix.js('resources/js/yandex_map.js', 'public/js');
 mix.js('resources/js/yandex_roadmap.js', 'public/js');
 mix.js('resources/js/vuejs.js', 'public/js').vue();
 
+mix.copy('resources/js/yandex_main.js', 'public/js');
+
 mix.copyDirectory('resources/images', 'public/images');
 
 if (mix.inProduction()) {
