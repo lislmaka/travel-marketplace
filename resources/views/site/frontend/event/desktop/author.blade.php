@@ -90,7 +90,10 @@
     <div class="card-footer d-flex justify-content-end">
 
         <button type="button" class="btn btn-sm btn-outline-primary ms-3" data-bs-toggle="modal"
-                data-bs-target="#helpModal">
+                data-bs-target="#authorTours">
+            @lang('Все туры автора')
+        </button>
+        <button type="button" class="btn btn-sm btn-outline-primary ms-3">
             @lang('Перейти на страницу автора')
         </button>
         <button type="button" class="btn btn-sm btn-outline-primary ms-3">

@@ -48,6 +48,7 @@
 
             </div>
         </div>
+        @includeIf('site.frontend.event.desktop.modal-author-tours')
         {{-- End Desktop --}}
     @endif
 
