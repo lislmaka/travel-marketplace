@@ -3,6 +3,7 @@
     <div class="col">
         <div class="card h-100 shadow-sm my-border-bottom-info">
             <img src="{{ asset('images/demo/demo1/'.$event->img) }}" class="card-img-top" alt="...">
+
             <div class="card-img-overlay">
                 <div class="position-absolute top-0 end-0 p-3 text-end">
                     @if($event->old_price)
@@ -15,14 +16,14 @@
                     @endif
                     <span class="badge bg-light text-muted">
                         <i class="fas fa-globe"></i>
-                        <a href="#" class="stretched-link text-decoration-none text-muted">
+                        <a href="#" class="text-decoration-none text-muted">
                             {{ $event->country->name }}
                         </a>
                     </span>
                     <br>
                     <span class="badge bg-light text-muted">
                         <i class="fas fa-map-marker-alt"></i>
-                        <a href="#" class="stretched-link text-decoration-none text-muted">
+                        <a href="#" class="text-decoration-none text-muted">
                             {{ $event->city->name }}
                         </a>
                     </span>

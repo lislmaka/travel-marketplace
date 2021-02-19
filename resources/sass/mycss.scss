@@ -11,6 +11,7 @@
     .my-border-left-#{$color}:hover {
         border-left-width: .25rem;
         border-left-color: $value;
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
     }
 }
 
@@ -27,6 +28,7 @@
     .my-border-bottom-#{$color}:hover {
         border-bottom-width: .25rem;
         border-bottom-color: $value;
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
     }
 }
 
@@ -68,4 +70,5 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 
