@@ -26,7 +26,7 @@
                 <div class="card-body">
                     <div class="card-title d-flex justify-content-between align-items-start">
                         <div class="d-flex justify-content-start align-items-start">
-                            <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle me-3" alt="..." width="{{ config('site.img-size-2') }}">
+                            <img src="{{ $demo_faces[rand(1, count($demo_faces) - 1)] }}" class="img-thumbnail rounded-circle me-3" alt="..." width="{{ config('site.img-size-2') }}">
                             <a href="{{ route('events.show', ['event' => $event->id]) }}"
                                class="fw-bold text-decoration-none lead stretched-link"
                                title="{{ $event->name }}">
