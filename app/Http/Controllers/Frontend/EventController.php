@@ -475,8 +475,8 @@ class EventController extends Controller
             ->join('event_options', 'event_options.id', '=', 'pivot_event_options.option_id');
         $eventOptions = $eventOptions->get();
 
-        $similarAuthor = Event::where('active', true)->limit(3)->inRandomOrder()->get();
-        $similarCity = Event::where('active', true)->limit(3)->inRandomOrder()->get();
+        $similarAuthor = Event::where('active', true)->limit(4)->inRandomOrder()->get();
+        $similarCity = Event::where('active', true)->limit(4)->inRandomOrder()->get();
         $reviews = Review::where('active', true)->limit(4)->inRandomOrder()->get();
 
         $eventOptionsPrice = $eventOptions->filter(function ($value, $key) {

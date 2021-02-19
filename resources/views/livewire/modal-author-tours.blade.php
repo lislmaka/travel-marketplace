@@ -15,7 +15,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        @include('site.components.desktop.bock-events-horizontal', ['events' => $events])
+        @include('site.components.desktop.bock-events-author-horizontal', ['events' => $events, 'hintPosition' => 'left', 'hintBtnPosition' => 3])
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

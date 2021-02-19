@@ -15,7 +15,7 @@
                     </div>
 
                     <span class="badge bg-primary rounded-pill ms-3">
-                        {{ number_format($tour_operator->user_count, 0, '', ',') }}
+                        {{ number_format($tour_operator->user_count, 0, '', '.') }}
                     </span>
                 </a>
             @endforeach

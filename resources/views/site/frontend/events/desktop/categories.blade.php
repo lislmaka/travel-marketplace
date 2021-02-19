@@ -12,7 +12,7 @@
                    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active">
                     @lang('Все категории')
                     <span class="badge bg-light text-muted rounded-pill ms-3">
-                        {{ number_format($events_categories_total, 0, '', ',') }}
+                        {{ number_format($events_categories_total, 0, '', '.') }}
                     </span>
                 </a>
             @else
@@ -20,7 +20,7 @@
                    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                     @lang('Все категории')
                     <span class="badge bg-primary rounded-pill ms-3">
-                        {{ number_format($events_categories_total, 0, '', ',') }}
+                        {{ number_format($events_categories_total, 0, '', '.') }}
                     </span>
                 </a>
             @endif
@@ -33,7 +33,7 @@
                        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active">
                         {{ $category->category->name }}
                         <span class="badge bg-light text-muted rounded-pill ms-3">
-                            {{ number_format($category->event_count, 0, '', ',') }}
+                            {{ number_format($category->event_count, 0, '', '.') }}
                         </span>
                     </a>
                 @else
@@ -41,7 +41,7 @@
                        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                         {{ $category->category->name }}
                         <span class="badge bg-primary rounded-pill ms-3">
-                            {{ number_format($category->event_count, 0, '', ',') }}
+                            {{ number_format($category->event_count, 0, '', '.') }}
                         </span>
                     </a>
                 @endif

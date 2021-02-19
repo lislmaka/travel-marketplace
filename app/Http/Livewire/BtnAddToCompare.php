@@ -9,6 +9,8 @@ class BtnAddToCompare extends Component
     public $added = false;
     public $event_id;
     public $btnType;
+    public $hintPosition;
+    public $hintBtnPosition;
 
     protected $listeners = ['checkStateBtnAddToCompare' => 'checkStateBtnAddToCompare'];
 
@@ -57,10 +59,12 @@ class BtnAddToCompare extends Component
         }
     }
 
-    public function mount($event_id, $btnType)
+    public function mount($event_id, $btnType, $hintPosition, $hintBtnPosition)
     {
         $this->checkStateBtnAddToCompare($event_id);
         $this->btnType = $btnType;
+        $this->hintPosition = $hintPosition;
+        $this->hintBtnPosition = $hintBtnPosition;
     }
 
     public function render()

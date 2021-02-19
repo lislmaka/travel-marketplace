@@ -13,7 +13,7 @@
             <div class="modal-body">
                 <div class="row row-cols-4 g-3">
                     @if($events_seen)
-                        @include('site.components.desktop.bock-events-vertically', ['events' => $events_seen])
+                        @include('site.components.desktop.bock-events-vertically', ['events' => $events_seen, 'hintPosition' => 'left', 'hintBtnPosition' => 3])
                     @endif
                 </div>
             </div>

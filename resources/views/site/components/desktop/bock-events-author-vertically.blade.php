@@ -4,7 +4,7 @@
         <div class="card h-100 shadow-sm my-border-bottom-info">
             <img src="{{ asset('images/demo/demo1/'.$event->img) }}" class="card-img-top" alt="...">
             <div class="card-img-overlay">
-                <div class="position-absolute top-0 end-0 p-3 text-end">
+                <div class="position-absolute top-0 start-0 p-3">
                     @if($event->old_price)
                         <div class="lead">
                             <span class="badge bg-danger">
@@ -14,6 +14,13 @@
                         </div>
                     @endif
                     <span class="badge bg-light text-muted">
+                        <i class="fas fa-globe"></i>
+                        <a href="#" class="stretched-link text-decoration-none text-muted">
+                            {{ $event->country->name }}
+                        </a>
+                    </span>
+                    <br>
+                    <span class="badge bg-light text-muted">
                         <i class="fas fa-map-marker-alt"></i>
                         <a href="#" class="stretched-link text-decoration-none text-muted">
                             {{ $event->city->name }}
@@ -22,11 +29,6 @@
                 </div>
                 <div class="position-absolute bottom-50 end-0 p-3">
                     @livewire('btn-add-to-compare', ['event_id' => $event->id, 'btnType' => 'catalog', 'hintPosition' => $hintPosition, 'hintBtnPosition' => $hintBtnPosition])
-                </div>
-
-
-                <div class="position-absolute top-0 start-0 p-3">
-                    <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle" alt="..." width="{{ config('site.img-size-2') }}">
                 </div>
             </div>
             <div class="card-body">
