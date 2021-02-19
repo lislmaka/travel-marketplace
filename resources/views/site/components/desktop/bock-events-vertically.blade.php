@@ -14,6 +14,13 @@
                         </div>
                     @endif
                     <span class="badge bg-light text-muted">
+                        <i class="fas fa-globe"></i>
+                        <a href="#" class="stretched-link text-decoration-none text-muted">
+                            {{ $event->country->name }}
+                        </a>
+                    </span>
+                    <br>
+                    <span class="badge bg-light text-muted">
                         <i class="fas fa-map-marker-alt"></i>
                         <a href="#" class="stretched-link text-decoration-none text-muted">
                             {{ $event->city->name }}
