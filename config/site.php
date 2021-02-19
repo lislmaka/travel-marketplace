@@ -7,12 +7,12 @@ return [
     'img-size-2' => 70,
     'img-size-3' => 100,
     // Кол-во создаваемых проектов при seed
-    'count_of_events' => 100,
-    'count_of_categories' => 5,
+    'count_of_events' => 1000,
+    'count_of_categories' => 10,
     // max 50
-    'count_of_countries' => 5,
+    'count_of_countries' => 20,
     // max 39
-    'count_of_cities' => 20,
+    'count_of_cities' => 30,
     'count_of_options' => 10,
     //'count_of_reviews' => 100,
 
