@@ -2,7 +2,7 @@
     @csrf
     <div class="card border-light mb-3">
         <div class="card-header fw-bold lead">
-            @lang('Поиск по категориям')
+            @lang('Категории туров')
         </div>
 
         <ul class="list-group list-group-flush">
