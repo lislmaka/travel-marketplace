@@ -86,6 +86,7 @@
                 </li>
             </ul>
         </div>
+
     </div>
     <div class="card-footer d-flex justify-content-end">
 

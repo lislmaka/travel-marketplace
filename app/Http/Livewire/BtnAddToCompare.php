@@ -7,10 +7,12 @@ use Livewire\Component;
 class BtnAddToCompare extends Component
 {
     public $added = false;
-    public $event_id;
-    public $btnType;
-    public $hintPosition;
-    public $hintBtnPosition;
+    public $livewareParams = [];
+
+//    public $event_id;
+//    public $btnType;
+//    public $hintPosition;
+//    public $hintBtnPosition;
 
     protected $listeners = ['checkStateBtnAddToCompare' => 'checkStateBtnAddToCompare'];
 
@@ -24,8 +26,8 @@ class BtnAddToCompare extends Component
 
             // change session
             if ($sessionArray) {
-                if (in_array($this->event_id, $sessionArray)) {
-                    array_splice($sessionArray, array_search($this->event_id, $sessionArray), 1);
+                if (in_array($this->livewareParams['event_id'], $sessionArray)) {
+                    array_splice($sessionArray, array_search($this->livewareParams['event_id'], $sessionArray), 1);
                     session(['events.events_compare' => $sessionArray]);
                 }
             }
@@ -34,11 +36,11 @@ class BtnAddToCompare extends Component
             $this->added = true;
 
             if ($sessionArray) {
-                if (!in_array($this->event_id, $sessionArray)) {
-                    session()->push('events.events_compare', $this->event_id);
+                if (!in_array($this->livewareParams['event_id'], $sessionArray)) {
+                    session()->push('events.events_compare', $this->livewareParams['event_id']);
                 }
             } else {
-                session()->push('events.events_compare', $this->event_id);
+                session()->push('events.events_compare', $this->livewareParams['event_id']);
             }
         }
 
@@ -47,24 +49,30 @@ class BtnAddToCompare extends Component
 
     }
 
-    public function checkStateBtnAddToCompare($event_id)
+    public function checkStateBtnAddToCompare($eventId = null)
     {
-        $this->event_id = $event_id;
+        if ($eventId) {
+            $this->livewareParams['event_id'] = $eventId;
+        }
+
         $this->added = false;
 
         if (session('events.events_compare')) {
-            if (in_array($this->event_id, session('events.events_compare'))) {
+            if (in_array($this->livewareParams['event_id'], session('events.events_compare'))) {
                 $this->added = true;
             }
         }
     }
 
-    public function mount($event_id, $btnType, $hintPosition, $hintBtnPosition)
+    //public function mount($event_id, $btnType, $hintPosition, $hintBtnPosition)
+    public function mount($livewareParams)
     {
-        $this->checkStateBtnAddToCompare($event_id);
-        $this->btnType = $btnType;
-        $this->hintPosition = $hintPosition;
-        $this->hintBtnPosition = $hintBtnPosition;
+        $this->livewareParams = $livewareParams;
+
+        $this->checkStateBtnAddToCompare();
+//        $this->btnType = $btnType;
+//        $this->hintPosition = $hintPosition;
+//        $this->hintBtnPosition = $hintBtnPosition;
     }
 
     public function render()

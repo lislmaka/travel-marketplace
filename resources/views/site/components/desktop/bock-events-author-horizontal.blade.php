@@ -8,7 +8,9 @@
                         @if($event->old_price)
                             <div class="lead">
                                 <span class="badge bg-danger">
-                                    @php($discount = round(100 - ($event->price * 100) / $event->old_price))
+                                    @php
+                                        $discount = round(100 - ($event->price * 100) / $event->old_price)
+                                    @endphp
                                     @lang('Скидка') {{ $discount }} %
                                 </span>
                             </div>
@@ -81,12 +83,22 @@
                 <div class="card-text px-3 pb-3">
                     {{ Str::limit($event->short_description, 150) }}
                 </div>
-                <div class="card-footer w-100 bg-transparent">
+                <div class="card-footer w-100 bg-transparent d-flex justify-content-between">
                     <div class="card-text text-muted">
                         @foreach($event->categories as $category)
                             <span class="badge bg-light text-muted">{{ $category->category->name }}</span>
                         @endforeach
                     </div>
+                    @php
+                        $livewareParams = [
+                            'event_id' => $event->id,
+                            'btn_type' => 'event',
+                            'hint_position' => 'top',
+                            'hint_btn_position' => 0
+                        ];
+                    @endphp
+
+                    @livewire('btn-add-to-compare', ['livewareParams' => $livewareParams])
                 </div>
             </div>
         </div>

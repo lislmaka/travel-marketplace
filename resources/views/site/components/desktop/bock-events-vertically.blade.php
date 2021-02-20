@@ -9,7 +9,10 @@
                     @if($event->old_price)
                         <div class="lead">
                             <span class="badge bg-danger">
-                                @php($discount = round(100 - ($event->price * 100) / $event->old_price))
+                                @php
+                                    $discount = round(100 - ($event->price * 100) / $event->old_price)
+                                @endphp
+
                                 @lang('Скидка') {{ $discount }} %
                             </span>
                         </div>
@@ -29,12 +32,23 @@
                     </span>
                 </div>
                 <div class="position-absolute bottom-50 end-0 p-3">
-                    @livewire('btn-add-to-compare', ['event_id' => $event->id, 'btnType' => 'catalog', 'hintPosition' => $hintPosition, 'hintBtnPosition' => $hintBtnPosition])
+
+                    @php
+                        $livewareParams = [
+                            'event_id' => $event->id,
+                            'btn_type' => 'catalog',
+                            'hint_position' => $hintPosition,
+                            'hint_btn_position' => $hintBtnPosition
+                        ];
+                    @endphp
+
+                    @livewire('btn-add-to-compare', ['livewareParams' => $livewareParams])
                 </div>
 
 
                 <div class="position-absolute top-0 start-0 p-3">
-                    <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle" alt="..." width="{{ config('site.img-size-2') }}">
+                    <img src="{{ $demo_faces[$key] }}" class="img-thumbnail rounded-circle" alt="..."
+                         width="{{ config('site.img-size-2') }}">
                 </div>
             </div>
             <div class="card-body">

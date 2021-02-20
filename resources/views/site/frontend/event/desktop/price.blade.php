@@ -1,11 +1,10 @@
 <div class="card border-light mb-3 shadow-lg">
-{{--    <div class="card-header fw-bold lead text-center">--}}
-{{--        @lang('Стоимость тура')--}}
-{{--    </div>--}}
+    {{--    <div class="card-header fw-bold lead text-center">--}}
+    {{--        @lang('Стоимость тура')--}}
+    {{--    </div>--}}
 
     <input type="hidden" id="price" value="{{ $event_info->price }}">
     <input type="hidden" id="old_price" value="{{ $event_info->old_price }}">
-
 
 
     <div class="card-body">
@@ -39,10 +38,12 @@
         </li>
         @if($event_info->old_price)
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                @lang('Старая цена')
-                <span class="badge bg-primary rounded-pill">
-                    {{ number_format($event_info->old_price, 0, '', '.') }}
-                    <i class="fas fa-ruble-sign"></i>
+                @lang('Старая цена 1 чел.')
+                <span class="badge bg-light text-muted rounded-pill">
+                    <del>
+                        {{ number_format($event_info->old_price, 0, '', '.') }}
+                        <i class="fas fa-ruble-sign"></i>
+                    </del>
                 </span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">

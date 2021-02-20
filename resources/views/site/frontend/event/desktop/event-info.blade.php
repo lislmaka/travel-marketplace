@@ -14,7 +14,17 @@
         </div>
         <div class="w-100 text-end">
 {{--            @livewire('btn-add-to-favorites')--}}
-            @livewire('btn-add-to-compare', ['event_id' => $event_info->id, 'btnType' => 'event', 'hintPosition' => 'top', 'hintBtnPosition' => 0])
+            @php
+                $livewareParams = [
+                    'event_id' => $event_info->id,
+                    'btn_type' => 'event',
+                    'hint_position' => 'top',
+                    'hint_btn_position' => 0
+                ];
+            @endphp
+
+            @livewire('btn-add-to-compare', ['livewareParams' => $livewareParams])
+
         </div>
     </div>
     <div class="card-body">
