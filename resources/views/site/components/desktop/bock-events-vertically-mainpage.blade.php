@@ -8,7 +8,9 @@
                     @if($event->old_price)
                         <div class="lead">
                             <span class="badge bg-danger">
-                                @php($discount = round(100 - ($event->price * 100) / $event->old_price))
+                                @php
+                                    $discount = round(100 - ($event->price * 100) / $event->old_price)
+                                @endphp
                                 @lang('Скидка') {{ $discount }} %
                             </span>
                         </div>
@@ -43,7 +45,25 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    @lang('Рейтинг')
+                    @lang('Цена')
+                    <span class="badge bg-light text-muted">
+                        {{ number_format($event->price, 0, '', '.') }}
+                        <i class="fas fa-ruble-sign"></i>
+                    </span>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    @lang('Время')
+                    <span class="badge bg-light text-muted">
+                        @php
+                            $interval = Carbon\CarbonInterval::make($event->duration.'h');
+                        @endphp
+                        {{ $interval->cascade()->forHumans() }}
+                    </span>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    @lang('Отзывы')
                     <span class="badge bg-light text-muted">
                         @if($event->rating > 3)
                             @for($i=1; $i<=$event->rating; $i++)
@@ -56,19 +76,7 @@
                             @endfor
                             {{ number_format($event->rating, 0, '', '.') }}
                         @endif
-                    </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    @lang('Цена от')
-                    <span class="badge bg-light text-muted">
-                        {{ number_format($event->price, 0, '', '.') }}
-                        <i class="fas fa-ruble-sign"></i>
-                    </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    @lang('Отзывы')
-                    <span class="badge bg-light text-muted">
-                        {{ number_format($event->reviews->count(), 0, '', '.') }}
+                        ( {{ number_format($event->reviews->count(), 0, '', '.') }} )
                     </span>
                 </li>
             </ul>

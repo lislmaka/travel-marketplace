@@ -53,6 +53,7 @@ class EventFactory extends Factory
             'city_id' => $city_id,
             'country_id' => $country_id,
             'user_id' => rand(1, 10),
+            'duration' => rand(1, 100),
             'address' => $this->faker->address,
             'coordinates' => json_encode($coordinates),
             'active' => $this->faker->boolean(50),

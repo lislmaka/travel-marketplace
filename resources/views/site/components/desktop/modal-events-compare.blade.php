@@ -84,7 +84,9 @@
                     @if($event->old_price)
                         <div class="lead">
                         <span class="badge rounded-pill bg-success">
-                            @php($discount = round(100 - ($event->price * 100) / $event->old_price))
+                            @php
+                                $discount = round(100 - ($event->price * 100) / $event->old_price)
+                            @endphp
                             @lang('Скидка') {{ $discount }} %
                         </span>
                         </div>
@@ -131,6 +133,21 @@
             @endforeach
         </tr>
 
+        <tr>
+            <td class="fw-bold">
+                @lang('Продолжительность тура')
+            </td>
+            @foreach($events as $key => $event)
+                <td>
+                    <span class="badge rounded-pill bg-light text-muted">
+                        @php
+                            $interval = Carbon\CarbonInterval::make($event->duration.'h');
+                        @endphp
+                        {{ $interval->cascade()->forHumans() }}
+                    </span>
+                </td>
+            @endforeach
+        </tr>
 
         <tr>
             <td class="fw-bold">

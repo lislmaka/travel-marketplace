@@ -27,6 +27,7 @@ class CreateEventsTable extends Migration
             $table->json('coordinates');
             $table->integer('price');
             $table->integer('old_price')->nullable();
+            $table->integer('duration')->nullable();
             $table->integer('rating')->nullable();
             $table->boolean('active')->default(true);
             $table->softDeletes();
