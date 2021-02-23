@@ -59,6 +59,12 @@ trait EventIndex
         if ($request->session()->get('events.events_sort_mode') == 'sort_5') {
             $events->orderBy('rating', 'asc');
         }
+        if ($request->session()->get('events.events_sort_mode') == 'sort_6') {
+            $events->orderBy('duration', 'desc');
+        }
+        if ($request->session()->get('events.events_sort_mode') == 'sort_7') {
+            $events->orderBy('duration', 'asc');
+        }
 
         return $events->paginate($this->countPaginate($request));
     }

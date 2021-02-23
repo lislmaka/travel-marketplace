@@ -47,11 +47,6 @@ class AppServiceProvider extends ServiceProvider
          */
         view()->composer('*', function ($view)
         {
-            $events = array();
-            if (session('events.events_seen')) {
-                $events = Event::where('active', true)->whereIn('id', session('events.events_seen'))->get();
-            }
-            $view->with('events_seen', $events );
             $view->with('demo_faces', DemoData::DemoFaces() );
             $view->with('demo_images2', DemoData::DemoImages2() );
         });

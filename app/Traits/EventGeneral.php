@@ -143,6 +143,20 @@ trait EventGeneral
                     'symbol' => '',
                     'active' => $request->session()->get('events.events_sort_mode') == 'sort_5' ? 'active' : '',
                 ),
+            'sort_6' =>
+                array(
+                    'title' => 'по убыванию продолжительности',
+                    'url' => 'sort_6',
+                    'symbol' => '',
+                    'active' => $request->session()->get('events.events_sort_mode') == 'sort_6' ? 'active' : '',
+                ),
+            'sort_7' =>
+                array(
+                    'title' => 'по возрастанию продолжительности',
+                    'url' => 'sort_7',
+                    'symbol' => '',
+                    'active' => $request->session()->get('events.events_sort_mode') == 'sort_7' ? 'active' : '',
+                ),
         );
     }
 

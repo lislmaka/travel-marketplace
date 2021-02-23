@@ -1,6 +1,6 @@
 <div class="w-100">
     <div class="input-group input-group-lg">
-        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+        <span class="input-group-text"><i class="fas fa-map-marker-alt text-primary"></i></span>
         <input
             type="text"
             class="form-control"
@@ -20,6 +20,10 @@
                 <i class="fas fa-times"></i>
             </button>
         @endif
+
+        <button class="btn btn-primary" type="button" id="button-addon2">
+            <i class="fas fa-search"></i>
+        </button>
     </div>
     @if(!empty($query))
         @if($eventsCountries->isNotEmpty() || $eventsCities->isNotEmpty())
