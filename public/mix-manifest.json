@@ -1,8 +1,8 @@
 {
-    "/js/app.js": "/js/app.js?id=4fa41d0b030ab7a2da36",
-    "/js/yandex_map.js": "/js/yandex_map.js?id=905d50c00780b3ed0aae",
-    "/js/yandex_roadmap.js": "/js/yandex_roadmap.js?id=0488843c1cea9adda302",
-    "/js/vuejs.js": "/js/vuejs.js?id=91ef6a18ac1011178907",
-    "/css/app.css": "/css/app.css?id=cbe6a2bab473016dba52",
-    "/js/yandex_main.js": "/js/yandex_main.js?id=5fa3b7733d21e19ce841"
+    "/js/app.js": "/js/app.js",
+    "/js/yandex_map.js": "/js/yandex_map.js",
+    "/js/yandex_roadmap.js": "/js/yandex_roadmap.js",
+    "/js/vuejs.js": "/js/vuejs.js",
+    "/css/app.css": "/css/app.css",
+    "/js/yandex_main.js": "/js/yandex_main.js"
 }

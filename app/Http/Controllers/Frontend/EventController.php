@@ -84,7 +84,7 @@ class EventController extends Controller
         $eventOptionsFree = $eventOptions->filter(function ($value, $key) {
             return $value->free;
         })->values();
-        //dd($eventOptionsJsonFree);
+        //dd($eventOptions);
 
         $viewData = array(
             'description' => $eventInfo->short_description,

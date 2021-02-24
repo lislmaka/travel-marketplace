@@ -35,15 +35,12 @@ const app = new Vue({
         event_options_checked_free: [],
         price: price,
         old_price: old_price,
-        quantity: 1
+        quantity: 1,
+        quantity_options: {}
     },
     computed: {
         summa: function () {
             let total_sums = 0;
-            // let quantity = this.quantity;
-            // let event_options_price = this.event_options_price;
-            // let event_options_free = this.event_options_free;
-            // let event_options_checked = this.event_options_checked;
 
             //
             this.event_options_price.forEach(function (item, i, arr) {
@@ -57,7 +54,10 @@ const app = new Vue({
             if (this.event_options_checked_price) {
                 this.event_options_checked_price.forEach(function (item, i, arr) {
                     if (this.event_options_price.length > 0 && this.event_options_price[item].price) {
-                        total_sums += this.event_options_price[item].price * this.quantity;
+                        //total_sums += this.event_options_price[item].price * this.quantity;
+                        let qo = this.quantity_options['op_'+item] ? this.quantity_options['op_'+item] : 1;
+                        total_sums += this.event_options_price[item].price * qo;
+
                         this.event_options_price[item].active = true;
                     }
                 }, this);
@@ -75,13 +75,12 @@ const app = new Vue({
         },
         summa_old: function () {
             let total_sums = 0;
-            // let quantity = this.quantity;
-            // let event_options_price = this.event_options_price;
 
             if (this.event_options_checked_price) {
                 this.event_options_checked_price.forEach(function (item, i, arr) {
                     if (this.event_options_price.length > 0 && this.event_options_price[item].price) {
-                        total_sums += this.event_options_price[item].price * this.quantity;
+                        let qo = this.quantity_options['op_'+item] ? this.quantity_options['op_'+item] : 1;
+                        total_sums += this.event_options_price[item].price * qo;
                     }
                 }, this);
             }
@@ -93,15 +92,33 @@ const app = new Vue({
             //let val = (value/1).toFixed(2).replace('.', ',')
             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
         },
-        downCount: function () {
-            if (this.quantity === 1) {
-                this.quantity = 1;
+        downCount: function (index) {
+            if (index) {
+                if (!this.quantity_options[index] || this.quantity_options[index] === 1) {
+                    this.quantity_options[index] = 1;
+                } else {
+                    this.quantity_options[index]--;
+                }
             } else {
-                this.quantity--;
+                if (this.quantity === 1) {
+                    this.quantity = 1;
+                } else {
+                    this.quantity--;
+                }
             }
+
         },
-        upCount: function () {
-            this.quantity++;
+        upCount: function (index) {
+            if (index) {
+                if (this.quantity_options[index]) {
+                    let increment = this.quantity_options[index];
+                    Vue.set(app.quantity_options, index, ++increment);
+                } else {
+                    Vue.set(app.quantity_options, index, 2);
+                }
+            } else {
+                this.quantity++;
+            }
         },
     },
     filters: {

@@ -26,9 +26,9 @@
             <div class="row d-flex justify-content-end align-items-center">
                 <div class="col-md-6">
                     <div class="input-group">
-                        <button class="btn btn-secondary" type="button" v-on:click="downCount">-</button>
+                        <button class="btn btn-secondary" type="button" v-on:click="downCount(false)">-</button>
                         <input type="text" class="form-control text-center" v-model="quantity" disabled>
-                        <button class="btn btn-secondary" type="button" v-on:click="upCount">+</button>
+                        <button class="btn btn-secondary" type="button" v-on:click="upCount(false)">+</button>
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                 @livewire('btn-show-help',['helpId' => '1'])
             </div>
             <div class="fw-bold lead">
-                @lang('Цена')
+                @lang('Кол-во') / @lang('Цена')
             </div>
         </li>
 
@@ -103,12 +103,41 @@
                 </div>
             </div>
 
-            <div v-if="event_option_price.price">
-                <span class="badge rounded-pill"
-                      v-bind:class="[event_option_price.active ? 'bg-primary' : 'bg-light text-muted']">
-                    @{{ formatPrice(event_option_price.price) }}
-                    <i class="fas fa-ruble-sign"></i>
-                </span>
+            <div v-if="event_option_price.price" class="d-flex justify-content-end align-items-center w-50">
+
+                <div class="me-3" style="width: 100px">
+                    <div class="input-group" v-if="quantity_options['op_'+index]">
+                        <button class="btn btn-sm btn-secondary" type="button" v-on:click="downCount('op_'+index)">-
+                        </button>
+                        <input type="text" class="form-control form-control-sm text-center"
+                               v-model="quantity_options['op_'+index]" disabled>
+                        <button class="btn btn-sm btn-secondary" type="button" v-on:click="upCount('op_'+index)">+
+                        </button>
+                    </div>
+                    <div class="input-group" v-else>
+                        <button class="btn btn-sm btn-secondary" type="button" v-on:click="downCount('op_'+index)">-
+                        </button>
+                        <input type="text" class="form-control form-control-sm text-center" value="1" disabled>
+                        <button class="btn btn-sm btn-secondary" type="button" v-on:click="upCount('op_'+index)">+
+                        </button>
+                    </div>
+                </div>
+
+                <div class="lead" style="width: 100px">
+                    <span class="badge rounded-pill"
+                          v-bind:class="[event_option_price.active ? 'bg-primary' : 'bg-light text-muted']"
+                          v-if="quantity_options['op_'+index]">
+                        @{{ formatPrice(event_option_price.price * quantity_options['op_'+index]) }}
+                        <i class="fas fa-ruble-sign"></i>
+                    </span>
+                    <span class="badge rounded-pill"
+                          v-bind:class="[event_option_price.active ? 'bg-primary' : 'bg-light text-muted']"
+                          v-else>
+                        @{{ formatPrice(event_option_price.price) }}
+                        <i class="fas fa-ruble-sign"></i>
+                    </span>
+                </div>
+
             </div>
         </label>
         {{-- End optin with price --}}
