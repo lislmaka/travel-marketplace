@@ -95,9 +95,10 @@ const app = new Vue({
         downCount: function (index) {
             if (index) {
                 if (!this.quantity_options[index] || this.quantity_options[index] === 1) {
-                    this.quantity_options[index] = 1;
+                    Vue.set(app.quantity_options, index, 1);
                 } else {
-                    this.quantity_options[index]--;
+                    let increment = this.quantity_options[index];
+                    Vue.set(app.quantity_options, index, --increment);
                 }
             } else {
                 if (this.quantity === 1) {
