@@ -33,8 +33,8 @@
 
                 {{-- Begin --}}
                 <li class="nav-item fw-normal">
-                    <a class="nav-link" href="#" title="@lang('Гиды')">
-                        @lang('Гиды')
+                    <a class="nav-link" href="#" title="@lang('Авторы туров')">
+                        @lang('Авторы туров')
                     </a>
                 </li>
                 {{-- End --}}
