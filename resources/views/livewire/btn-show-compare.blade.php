@@ -5,7 +5,7 @@
                data-bs-toggle="modal" data-bs-target="#eventsCompare"
             wire:click="$emit('modalCompare')">
                 @lang('Сравнить')
-                <span class="badge bg-light text-muted">{{ count(session('events.events_compare')) }}</span>
+                <span class="badge bg-light text-muted rounded-pill">{{ count(session('events.events_compare')) }}</span>
             </a>
         </div>
     @endif

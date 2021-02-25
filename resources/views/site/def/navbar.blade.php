@@ -54,7 +54,7 @@
                     <a class="btn btn-primary" href="#" role="button"
                        data-bs-toggle="modal" data-bs-target="#eventsSeen">
                         @lang('Просмотрено')
-                        <span class="badge bg-light text-muted">{{ count(session('events.events_seen')) }}</span>
+                        <span class="badge bg-light text-muted rounded-pill">{{ count(session('events.events_seen')) }}</span>
                     </a>
                 </div>
             @endif

@@ -3,7 +3,7 @@
         <div class="modal-title lead fw-bold" id="helpModalLabel">
             {{ $title }}
             <div wire:loading>
-                <span class="badge bg-light text-muted ms-3">
+                <span class="badge bg-light text-muted ms-3 rounded-pill">
                     <span class="spinner-grow spinner-grow-sm text-primary" role="status" aria-hidden="true"></span>
                     @lang('Идет обновление...')
                 </span>

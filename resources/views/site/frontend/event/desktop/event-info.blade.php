@@ -34,19 +34,77 @@
             <span class="fw-bold">
                 @lang('Страна')
             </span>
-            <span class="badge bg-secondary">{{ $event_info->country->name }}</span>
+            <span class="badge bg-secondary rounded-pill">{{ $event_info->country->name }}</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <span class="fw-bold">
                 @lang('Город')
             </span>
-            <span class="badge bg-secondary">{{ $event_info->city->name }}</span>
+            <span class="badge bg-secondary rounded-pill">{{ $event_info->city->name }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <span class="fw-bold">
+                    @lang('Активность')
+                </span>
+{{--                <div class="small text-muted">--}}
+{{--                    {{ $event_info->activity->description }}--}}
+{{--                </div>--}}
+            </div>
+
+            <div>
+                <span class="badge bg-secondary rounded-pill">{{ $event_info->activity->name }}</span>
+                @livewire('btn-show-help',['helpId' => '1'])
+            </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <span class="fw-bold">
+                    @lang('Проживание')
+                </span>
+{{--                --}}
+{{--                <div class="small text-muted">--}}
+{{--                    {{ $event_info->residence->description }}--}}
+{{--                </div>--}}
+            </div>
+
+            <div>
+                <span class="badge bg-secondary rounded-pill">
+                    {{ $event_info->residence->name }}
+                </span>
+                @livewire('btn-show-help',['helpId' => '1'])
+            </div>
+
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <span class="fw-bold">
+                    @lang('Основной язык группы')
+                </span>
+                <div class="small text-muted">
+                    {{ $event_info->language->description }}
+                </div>
+            </div>
+
+            <span class="badge bg-secondary rounded-pill">{{ $event_info->language->name }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <span class="fw-bold">
+                    @lang('Средний возраст группы')
+                </span>
+                <div class="small text-muted">
+                    {{ $event_info->age->description }}
+                </div>
+            </div>
+
+            <span class="badge bg-secondary rounded-pill">{{ $event_info->age->name }}</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <span class="fw-bold">
                 @lang('Продолжительность тура')
             </span>
-            <span class="badge bg-secondary">
+            <span class="badge bg-secondary rounded-pill">
                 @php
                     $interval = Carbon\CarbonInterval::make($event_info->duration.'h');
                 @endphp
@@ -60,7 +118,7 @@
 
             <div>
                 @foreach($event_info->categories as $category)
-                    <span class="badge bg-secondary">{{ $category->category->name }}</span>
+                    <span class="badge bg-secondary rounded-pill">{{ $category->category->name }}</span>
                 @endforeach
             </div>
         </li>

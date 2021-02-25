@@ -151,6 +151,58 @@
 
         <tr>
             <td class="fw-bold">
+                @lang('Активность')
+            </td>
+            @foreach($events as $key => $event)
+                <td>
+                    <span class="badge rounded-pill bg-light text-muted">
+                        {{ $event->activity->name }}
+                    </span>
+                </td>
+            @endforeach
+        </tr>
+
+        <tr>
+            <td class="fw-bold">
+                @lang('Проживание')
+            </td>
+            @foreach($events as $key => $event)
+                <td>
+                    <span class="badge rounded-pill bg-light text-muted">
+                        {{ $event->residence->name }}
+                    </span>
+                </td>
+            @endforeach
+        </tr>
+
+        <tr>
+            <td class="fw-bold">
+                @lang('Средний возраст группы')
+            </td>
+            @foreach($events as $key => $event)
+                <td>
+                    <span class="badge rounded-pill bg-light text-muted">
+                        {{ $event->age->name }}
+                    </span>
+                </td>
+            @endforeach
+        </tr>
+
+        <tr>
+            <td class="fw-bold">
+                @lang('Основной язык группы')
+            </td>
+            @foreach($events as $key => $event)
+                <td>
+                    <span class="badge rounded-pill bg-light text-muted">
+                        {{ $event->language->name }}
+                    </span>
+                </td>
+            @endforeach
+        </tr>
+
+        <tr>
+            <td class="fw-bold">
                 @lang('Рейтинг тура')
             </td>
             @foreach($events as $key => $event)

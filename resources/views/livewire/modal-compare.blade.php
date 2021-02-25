@@ -6,10 +6,22 @@
     <div class="modal-header bg-secondary text-white">
         <div class="modal-title lead fw-bold d-flex justify-content-start align-items-center" id="eventsCompareLabel">
             @lang('Сравнение туров')
-            @php($countCompare = session('events.events_compare') ? count(session('events.events_compare')) : 0)
-            <span class="badge bg-light text-muted ms-3">{{ $countCompare }}</span>
+            @php
+                $countCompare = session('events.events_compare') ? count(session('events.events_compare')) : 0
+            @endphp
+
+            @if($countCompare > 4)
+                <i class="fas fa-chevron-right mx-3"></i>
+                @lang('Показано')
+                <span class="badge bg-light text-muted mx-3 rounded-pill">4</span>
+                @lang('из')
+                <span class="badge bg-light text-muted mx-3 rounded-pill">{{ $countCompare }}</span>
+            @else
+                <span class="badge bg-light text-muted mx-3 rounded-pill">{{ $countCompare }}</span>
+            @endif
+
             <div wire:loading.flex>
-                <span class="badge bg-light text-muted ms-3">
+                <span class="badge bg-light text-muted ms-3 rounded-pill">
                     <span class="spinner-grow spinner-grow-sm text-primary" role="status" aria-hidden="true"></span>
                     @lang('Идет обновление...')
                 </span>

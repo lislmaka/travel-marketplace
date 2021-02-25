@@ -11,9 +11,9 @@
                  class="img-thumbnail rounded-circle">
             <div class="text-center">
                 @if(rand(1, 100) >= 50)
-                    <span class="badge bg-primary">@lang('Агентство')</span>
+                    <span class="badge bg-primary rounded-pill">@lang('Агентство')</span>
                 @else
-                    <span class="badge bg-success">@lang('Частник')</span>
+                    <span class="badge bg-success rounded-pill">@lang('Частник')</span>
                 @endif
             </div>
             <div class="text-center">
