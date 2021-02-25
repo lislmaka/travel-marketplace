@@ -57,7 +57,7 @@
                                    wire:click="selectTopEventsName({{ $id }})">
                                     {{ $name }}
                                     <span class="badge bg-light text-muted">
-                                        {{ number_format($value->count, 0, '', ',') }}
+                                        {{ number_format($value->count, 0, '', '.') }}
                                     </span>
                                 </a>
                             </li>

@@ -7,7 +7,7 @@ return [
     'img-size-2' => 70,
     'img-size-3' => 100,
     // Кол-во создаваемых проектов при seed
-    'count_of_events' => 10000,
+    'count_of_events' => 100,
     'count_of_categories' => 10,
     // max 50
     'count_of_countries' => 5,
