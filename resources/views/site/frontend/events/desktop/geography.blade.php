@@ -15,7 +15,7 @@
                    data-bs-toggle="modal" data-bs-target="#eventsCountries">
                     @lang('Все страны')
                     <span class="badge bg-primary rounded-pill">
-                        {{ number_format($events_countries_total, 0, '', ',') }}
+                        {{ number_format($events_countries_total, 0, '', '.') }}
                     </span>
                 </a>
             @else
@@ -23,7 +23,7 @@
                    data-bs-toggle="modal" data-bs-target="#eventsCountries">
                     {{$events_countries_selected->country->name}}
                     <span class="badge bg-light text-muted rounded-pill">
-                        {{ number_format($events_countries_selected->count, 0, '', ',') }}
+                        {{ number_format($events_countries_selected->count, 0, '', '.') }}
                     </span>
                 </a>
             @endif
@@ -42,7 +42,7 @@
                    data-bs-toggle="modal" data-bs-target="#eventsCities">
                     @lang('Все города')
                     <span class="badge bg-primary rounded-pill">
-                        {{ number_format($events_cities_total, 0, '', ',') }}
+                        {{ number_format($events_cities_total, 0, '', '.') }}
                     </span>
                 </a>
             @else
@@ -54,7 +54,7 @@
                     </div>
 
                     <span class="badge bg-light text-muted rounded-pill">
-                        {{ number_format($events_cities_selected->count, 0, '', ',') }}
+                        {{ number_format($events_cities_selected->count, 0, '', '.') }}
                     </span>
                 </a>
             @endif

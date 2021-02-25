@@ -39,7 +39,7 @@
                    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active">
                     @lang('Все города')
                     <span class="badge bg-light text-muted rounded-pill">
-                    {{ number_format($eventsCitiesTotal, 0, '', ',') }}
+                    {{ number_format($eventsCitiesTotal, 0, '', '.') }}
                 </span>
                 </a>
             @else
@@ -47,7 +47,7 @@
                    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                     @lang('Все города')
                     <span class="badge bg-primary rounded-pill">
-                    {{ number_format($eventsCitiesTotal, 0, '', ',') }}
+                    {{ number_format($eventsCitiesTotal, 0, '', '.') }}
                 </span>
                 </a>
             @endif
@@ -61,7 +61,7 @@
                             <div class="small text-white">{{ $eventsCity->country->name }}</div>
                         </div>
                         <span class="badge bg-light text-muted rounded-pill">
-                        {{ number_format($eventsCity->count, 0, '', ',') }}
+                        {{ number_format($eventsCity->count, 0, '', '.') }}
                     </span>
                     </a>
                 @else
@@ -72,7 +72,7 @@
                             <div class="small text-muted">{{ $eventsCity->country->name }}</div>
                         </div>
                         <span class="badge bg-primary rounded-pill">
-                        {{ number_format($eventsCity->count, 0, '', ',') }}
+                        {{ number_format($eventsCity->count, 0, '', '.') }}
                     </span>
                     </a>
                 @endif
